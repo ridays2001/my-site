@@ -3,3 +3,7 @@
 *.env
 *log*
 */build/
+*cache*
+
+# Include these.
+!*logo*
