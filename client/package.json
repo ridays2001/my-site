@@ -1,0 +1,63 @@
+{
+	"name": "client",
+	"version": "0.1.0",
+	"private": true,
+	"author": {
+		"name": "Riday ♡",
+		"email": "ridayshah2001@gmail.com"
+	},
+	"license": "MIT",
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
+	},
+	"dependencies": {
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
+		"react-router-dom": "^5.2.0",
+		"react-switch": "^6.0.0-beta.0",
+		"styled-components": "^5.2.1"
+	},
+	"devDependencies": {
+		"@testing-library/jest-dom": "^5.11.6",
+		"@testing-library/react": "^11.2.2",
+		"@testing-library/user-event": "^12.6.0",
+		"@types/jest": "^26.0.19",
+		"@types/node": "^14.14.14",
+		"@types/react": "^16.14.2",
+		"@types/react-dom": "^16.9.10",
+		"@types/react-router-dom": "^5.1.6",
+		"@types/styled-components": "^5.1.7",
+		"react-scripts": "^4.0.1",
+		"typescript": "^4.1.3"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		],
+		"rules": {
+			"@typescript-eslint/no-unused-vars": "off",
+			"@typescript-eslint/array-type": [
+				"warn",
+				{
+					"default": "generic"
+				}
+			]
+		}
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
+}
