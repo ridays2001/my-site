@@ -1,13 +1,18 @@
 import styled from 'styled-components';
-import { colors } from '../theme/constants';
+import { colors, shadows } from '../theme/constants';
 
 const Section = styled.section<{ dark?: boolean }>`
-	margin-top: 0.75em;
 	padding: 2em;
-	height: 90vh;
 	background-color: ${({ dark }) => (dark ? colors.dark1 : colors.white2)};
-	box-shadow: ${({ dark }) => (dark ? 'none' : '0 0 4px 8px rgba(0, 0, 0, 0.08)')};
+	box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer1)};
 	border-radius: 21px;
+	height: 82.5vh;
+	width: 98%;
+	max-width: 100%;
+
+	@media (min-width: 768px) {
+		height: 90vh;
+	}
 `;
 
 export default Section;
