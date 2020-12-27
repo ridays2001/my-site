@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, shadows } from '../theme/constants';
+import { breakpoints, colors, shadows } from '../theme/constants';
 
 const Section = styled.section<{ dark?: boolean }>`
 	padding: 2em;
@@ -10,7 +10,7 @@ const Section = styled.section<{ dark?: boolean }>`
 	width: 98%;
 	max-width: 100%;
 
-	@media (min-width: 768px) {
+	@media (min-width: ${breakpoints.md}) {
 		height: 90vh;
 	}
 `;

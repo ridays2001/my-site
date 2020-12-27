@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, shadows } from '../theme/constants';
+import { breakpoints, colors, shadows } from '../theme/constants';
 
 const HeroStatement = styled.div<{ dark?: boolean }>`
 	font-size: 1.25em;
@@ -13,7 +13,12 @@ const HeroStatement = styled.div<{ dark?: boolean }>`
 	}
 
 	@media (max-width: 768px) {
-		margin-top: 1rem;
+		margin-top: 0.5rem;
+	}
+
+	@media (max-width: ${breakpoints.xs}) {
+		margin-top: -1rem;
+		font-size: 0.8rem;
 	}
 `;
 
