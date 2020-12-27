@@ -1,10 +1,10 @@
 import React, { Fragment, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import ThemeSwitch from './themeSwitch';
-import ThemeContext from '../assets/theme/themeContext';
-import NavLink from '../assets/styles/navLink';
 import HamburgerMenu from '../assets/styles/hamburgerMenu';
 import MobileNav from '../assets/styles/mobileNav';
+import NavLink from '../assets/styles/navLink';
+import ThemeContext from '../assets/theme/themeContext';
+import ThemeSwitch from './themeSwitch';
 
 type Props = {
 	active: 'home' | 'contact' | 'blog';
@@ -24,13 +24,13 @@ const Nav = ({ active }: Props) => {
 					<h2>Riday 💙</h2>
 				</Link>
 				<nav className='col-md-2 offset-6 d-flex justify-content-between align-items-center'>
-					<NavLink dark={dark} href='https://www.google.com' active={active === 'home'}>
+					<NavLink to={{ pathname: '/' }} dark={dark} active={active === 'home'}>
 						Home
 					</NavLink>
-					<NavLink dark={dark} href='https://www.google.com' active={active === 'contact'}>
+					<NavLink to={{ pathname: '/contact' }} dark={dark} active={active === 'contact'}>
 						Contact Me
 					</NavLink>
-					<NavLink dark={dark} href='https://www.google.com' active={active === 'blog'}>
+					<NavLink to={{ pathname: '/blog' }} dark={dark} active={active === 'blog'}>
 						Blog
 					</NavLink>
 				</nav>
@@ -95,13 +95,13 @@ const Nav = ({ active }: Props) => {
 								</svg>
 							</button>
 						</div>
-						<NavLink dark={dark} href='https://www.google.com' active={active === 'home'}>
+						<NavLink to={{ pathname: '/' }} dark={dark} active={active === 'home'}>
 							Home
 						</NavLink>
-						<NavLink dark={dark} href='https://www.google.com' active={active === 'contact'}>
+						<NavLink to={{ pathname: '/contact' }} dark={dark} active={active === 'contact'}>
 							Contact Me
 						</NavLink>
-						<NavLink dark={dark} href='https://www.google.com' active={active === 'blog'}>
+						<NavLink to={{ pathname: '/blog' }} dark={dark} active={active === 'blog'}>
 							Blog
 						</NavLink>
 						<ThemeSwitch />
