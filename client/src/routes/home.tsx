@@ -5,6 +5,8 @@ import Avatar from '../assets/styles/avatar';
 import HeroStatement from '../assets/styles/heroStatement';
 import ThemeContext from '../assets/theme/themeContext';
 import pfp from '../assets/images/me.jpg';
+import ProjectSection from '../assets/styles/projectSection';
+import projects from '../util/projects';
 
 const Home = () => {
 	const { dark } = useContext(ThemeContext);
@@ -16,10 +18,33 @@ const Home = () => {
 					<Avatar src={pfp} alt='My Profile Picture.' dark={dark} />
 				</div>
 				<HeroStatement className='col-md-6' dark={dark}>
-					Hi, I am Riday. I am a self-taught Web Developer. My favorite tools of choice are Nodejs and
-					Typescript. I strive to make effective use of my expertise to develop things that matter.
+					Hi, I am Riday. I am a Web Developer. My favorite tool of choice is Typescript. I strive to make
+					effective use of my expertise to develop significant things.
 				</HeroStatement>
 			</HeroSection>
+			<h2 style={{ marginTop: '10vh' }}>Projects that I worked on</h2>
+			<ProjectSection className='row row-cols-1 row-cols-md-3 row-cols-lg-4 align-items-center' dark={dark}>
+				{projects.map((project) => (
+					<div className='col'>
+						<div className='card'>
+							<div className='card-body'>
+								<div className='card-title'>{project.name}</div>
+								<div className='card-text'>{project.description}</div>
+							</div>
+							<ul className='list-group list-group-flush text-start'>
+								<li className='list-group-item'>Made With: {project.languages}</li>
+								<li className='list-group-item'>Status: {project.status}</li>
+								<li className='list-group-item'>Future Scope: {project.future}</li>
+								<li className='list-group-item'>Front End: {project.front}</li>
+								<li className='list-group-item'>Back End: {project.back}</li>
+								<li className='list-group-item text-center'>
+									<a href={project.github}>GitHub ↗</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				))}
+			</ProjectSection>
 		</Fragment>
 	);
 };
