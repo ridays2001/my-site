@@ -4407,7 +4407,6 @@ fieldset:disabled .btn {
 	z-index: 1;
 	color: #495057;
 	text-decoration: none;
-	background-color: var(--bs-light);
 }
 .list-group-item-action:active {
 	color: var(--bs-dark);
@@ -4418,7 +4417,6 @@ fieldset:disabled .btn {
 	display: block;
 	padding: 0.5rem 1rem;
 	text-decoration: none;
-	background-color: var(--bs-white);
 	border: 1px solid rgba(0, 0, 0, 0.125);
 }
 .list-group-item:first-child {
