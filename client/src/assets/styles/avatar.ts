@@ -16,25 +16,69 @@ const Avatar = styled.img<{ dark?: boolean }>`
 		width: 50%;
 	}
 
+	/* Different animation lengths for different devices. */
+
 	@keyframes floating {
 		from {
 			transform: translate(0, 0px);
 		}
 		50% {
-			transform: translate(0, -50px);
+			transform: translate(0, -20px);
 		}
 		to {
 			transform: translate(0, 0px);
 		}
 	}
 
-	@media (max-width: ${breakpoints.xs}) {
+	@media (min-width: ${breakpoints.sm}) {
 		@keyframes floating {
 			from {
 				transform: translate(0, 0px);
 			}
 			50% {
 				transform: translate(0, -25px);
+			}
+			to {
+				transform: translate(0, 0px);
+			}
+		}
+	}
+
+	@media (min-width: ${breakpoints.md}) {
+		@keyframes floating {
+			from {
+				transform: translate(0, 0px);
+			}
+			50% {
+				transform: translate(0, -40px);
+			}
+			to {
+				transform: translate(0, 0px);
+			}
+		}
+	}
+
+	@media (min-width: ${breakpoints.lg}) {
+		@keyframes floating {
+			from {
+				transform: translate(0, 0px);
+			}
+			50% {
+				transform: translate(0, -50px);
+			}
+			to {
+				transform: translate(0, 0px);
+			}
+		}
+	}
+
+	@media (min-width: ${breakpoints.xl}) {
+		@keyframes floating {
+			from {
+				transform: translate(0, 0px);
+			}
+			50% {
+				transform: translate(0, -65px);
 			}
 			to {
 				transform: translate(0, 0px);
