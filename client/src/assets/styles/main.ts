@@ -12,11 +12,27 @@ body {
 	font-family: 'Bree Serif', Helvetica;
 	letter-spacing: 1px;
 	color: ${({ dark }) => (dark ? colors.white2 : colors.dark0)};
+	transition: all 1s;
 }
 
 ::selection {
 	background-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
 	color: ${({ dark }) => (dark ? colors.white2 : colors.white1)};
+}
+
+a {
+	color: ${({ dark }) => (dark ? colors.pink : colors.azure)};
+	display: inline-block;
+	padding: 5px 10px;
+	border-radius: 3.5px;
+	text-underline-offset: 5px;
+	text-decoration-thickness: 0.125em;
+}
+
+a:hover {
+	color: ${colors.white1};
+	text-decoration: none;
+	background-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
 }
 
 ` as GlobalStyleComponent<Props, DefaultTheme>;
