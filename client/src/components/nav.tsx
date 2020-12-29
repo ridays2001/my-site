@@ -23,7 +23,7 @@ const Nav = ({ active }: Props) => {
 				>
 					<h2>Riday 💙</h2>
 				</Link>
-				<nav className='col-md-2 offset-6 d-flex justify-content-between align-items-center'>
+				<nav className='col-md-3 col-xl-2 offset-6 offset-lg-7 d-flex justify-content-between align-items-center'>
 					<NavLink to={{ pathname: '/' }} dark={dark} active={active === 'home'}>
 						Home
 					</NavLink>
