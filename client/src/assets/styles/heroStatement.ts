@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { breakpoints, colors, shadows } from '../theme/constants';
 
 const HeroStatement = styled.div<{ dark?: boolean }>`
+	cursor: default;
 	font-size: 1.25em;
 	box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer2)};
 	background-color: ${({ dark }) => (dark ? colors.dark2 : 'inherit')};
