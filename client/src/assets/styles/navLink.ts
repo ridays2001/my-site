@@ -12,6 +12,8 @@ const NavLink = styled(Link)<Props>`
 	background-color: ${({ active, dark }) => (active ? (dark ? highlights.pink : highlights.blue) : 'none')};
 	text-decoration: ${({ active }) => (active ? 'none' : 'underline')};
 	padding: 5px 10px;
+	border-radius: 3.5px;
+	display: inline-block;
 
 	:hover {
 		color: ${colors.white1};
