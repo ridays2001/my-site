@@ -1,4 +1,4 @@
-import { createGlobalStyle, DefaultTheme, GlobalStyleComponent } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import { colors, darkBg, highlights, lightBg } from '../theme/constants';
 
 type Props = {
@@ -20,7 +20,7 @@ body {
 	color: ${({ dark }) => (dark ? colors.white2 : colors.white1)};
 }
 
-a {
+a:not(.nope) {
 	color: ${({ dark }) => (dark ? colors.pink : colors.azure)};
 	display: inline-block;
 	padding: 5px 10px;
@@ -29,7 +29,7 @@ a {
 	text-decoration-thickness: 0.125em;
 }
 
-a:hover {
+a:not(.nope):hover {
 	color: ${colors.white1};
 	text-decoration: none;
 	background-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
