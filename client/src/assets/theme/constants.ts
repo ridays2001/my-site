@@ -3,9 +3,12 @@ export const colors = {
 	azure: '#007af5',
 	dark0: '#181719',
 	dark1: '#27242c',
-	dark2: '#3d3a41',
-	white1: '#ffffff',
-	white2: '#f3f3f9'
+	dark2: '#322F37',
+	dark3: '#3d3a41',
+	white0: '#ffffff',
+	white1: '#fcfcfe',
+	white2: '#fbfbfd',
+	white3: '#f9f9fc'
 };
 
 export const highlights = {
