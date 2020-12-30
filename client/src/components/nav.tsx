@@ -1,14 +1,16 @@
-import React, { Fragment, useContext, useState, useEffect } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import AppHeader from '../assets/styles/appHeader';
 import HamburgerMenu from '../assets/styles/hamburgerMenu';
 import MobileNav from '../assets/styles/mobileNav';
 import NavLink from '../assets/styles/navLink';
 import ThemeContext from '../assets/theme/themeContext';
 import ThemeSwitch from './themeSwitch';
-import AppHeader from '../assets/styles/appHeader';
+
+type Pages = 'home' | 'contact' | 'blog';
 
 type Props = {
-	active: 'home' | 'contact' | 'blog';
+	active: Pages;
 };
 
 const Nav = ({ active }: Props) => {
@@ -24,17 +26,31 @@ const Nav = ({ active }: Props) => {
 		return () => undefined;
 	}, [bg]);
 
+	const links: Array<{ pathname: string; name: string; id: Pages }> = [
+		{
+			name: 'Home',
+			pathname: '/',
+			id: 'home'
+		},
+		{
+			name: 'Contact Me',
+			pathname: '/contact',
+			id: 'contact'
+		},
+		{
+			name: 'Blog',
+			pathname: '/blog',
+			id: 'blog'
+		}
+	];
+
 	const NavLinks = (
 		<Fragment>
-			<NavLink to={{ pathname: '/' }} dark={dark ? 1 : 0} active={active === 'home' ? 1 : 0}>
-				Home
-			</NavLink>
-			<NavLink to={{ pathname: '/contact' }} dark={dark ? 1 : 0} active={active === 'contact' ? 1 : 0}>
-				Contact Me
-			</NavLink>
-			<NavLink to={{ pathname: '/blog' }} dark={dark ? 1 : 0} active={active === 'blog' ? 1 : 0}>
-				Blog
-			</NavLink>
+			{links.map(({ id, name, pathname }) => (
+				<NavLink to={{ pathname }} className='nope' dark={dark ? 1 : 0} active={active === id ? 1 : 0} key={id}>
+					{name}
+				</NavLink>
+			))}
 		</Fragment>
 	);
 
@@ -48,7 +64,7 @@ const Nav = ({ active }: Props) => {
 				<Link
 					to={{ pathname: '/' }}
 					style={{ textDecoration: 'none', color: 'inherit', backgroundColor: 'inherit !import' }}
-					className='col-md-3 col-lg-2 text-start ps-5'
+					className='col-md-3 col-lg-2 text-start ps-5 nope'
 				>
 					<h2>Riday 💙</h2>
 				</Link>
@@ -67,7 +83,7 @@ const Nav = ({ active }: Props) => {
 				<Link
 					to={{ pathname: '/' }}
 					style={{ textDecoration: 'none', color: 'inherit', backgroundColor: 'inherit !import' }}
-					className='col-8 d-flex align-items-center ps-4'
+					className='col-8 d-flex align-items-center ps-4 nope'
 				>
 					<h2 className='d-flex align-items-center'>Riday 💙</h2>
 				</Link>
@@ -97,7 +113,7 @@ const Nav = ({ active }: Props) => {
 							<Link
 								to={{ pathname: '/' }}
 								style={{ textDecoration: 'none', color: 'inherit', backgroundColor: 'inherit !import' }}
-								className='d-flex col-8 align-items-center'
+								className='d-flex col-8 align-items-center nope'
 							>
 								<h2 className='d-flex align-items-center' style={{ top: '10px', left: '0' }}>
 									Riday 💙
