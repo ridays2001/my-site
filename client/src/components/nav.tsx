@@ -1,10 +1,11 @@
-import React, { Fragment, useContext, useState } from 'react';
+import React, { Fragment, useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import HamburgerMenu from '../assets/styles/hamburgerMenu';
 import MobileNav from '../assets/styles/mobileNav';
 import NavLink from '../assets/styles/navLink';
 import ThemeContext from '../assets/theme/themeContext';
 import ThemeSwitch from './themeSwitch';
+import AppHeader from '../assets/styles/appHeader';
 
 type Props = {
 	active: 'home' | 'contact' | 'blog';
@@ -13,34 +14,64 @@ type Props = {
 const Nav = ({ active }: Props) => {
 	const { dark } = useContext(ThemeContext);
 	const [open, setOpen] = useState(false);
+	const [bg, setBg] = useState(false);
+
+	useEffect(() => {
+		window.addEventListener('scroll', () => {
+			if (window.scrollY > 10) setBg(true);
+			else setBg(false);
+		});
+		return () => undefined;
+	}, [bg]);
+
+	const NavLinks = (
+		<Fragment>
+			<NavLink to={{ pathname: '/' }} dark={dark ? 1 : 0} active={active === 'home' ? 1 : 0}>
+				Home
+			</NavLink>
+			<NavLink to={{ pathname: '/contact' }} dark={dark ? 1 : 0} active={active === 'contact' ? 1 : 0}>
+				Contact Me
+			</NavLink>
+			<NavLink to={{ pathname: '/blog' }} dark={dark ? 1 : 0} active={active === 'blog' ? 1 : 0}>
+				Blog
+			</NavLink>
+		</Fragment>
+	);
+
 	return (
 		<Fragment>
-			<header className='mt-1 mx-2 row d-none d-md-flex justify-content-between'>
+			<AppHeader
+				className='mt-1 d-none row d-md-flex justify-content-between sticky-top'
+				bg={bg ? 1 : 0}
+				dark={dark ? 1 : 0}
+			>
 				<Link
 					to={{ pathname: '/' }}
-					style={{ textDecoration: 'none', color: 'inherit' }}
-					className='col-md-3 col-lg-2'
+					style={{ textDecoration: 'none', color: 'inherit', backgroundColor: 'inherit !import' }}
+					className='col-md-3 col-lg-2 text-start ps-5'
 				>
 					<h2>Riday 💙</h2>
 				</Link>
 				<nav className='col-md-3 col-xl-2 offset-6 offset-lg-7 d-flex justify-content-between align-items-center'>
-					<NavLink to={{ pathname: '/' }} dark={dark} active={active === 'home'}>
-						Home
-					</NavLink>
-					<NavLink to={{ pathname: '/contact' }} dark={dark} active={active === 'contact'}>
-						Contact Me
-					</NavLink>
-					<NavLink to={{ pathname: '/blog' }} dark={dark} active={active === 'blog'}>
-						Blog
-					</NavLink>
+					{NavLinks}
 				</nav>
-				<div className='col-1 d-flex justify-content-end'>
+				<div className='col-1 d-flex justify-content-end pe-5'>
 					<ThemeSwitch className='my-auto' />
 				</div>
-			</header>
-			<header className='d-flex d-md-none mt-1 mx-2 row justify-content-between'>
-				<h2 className='d-flex align-items-center col-8'>Riday 💙</h2>
-				<HamburgerMenu dark={dark} />
+			</AppHeader>
+			<AppHeader
+				className='d-flex row d-md-none mt-1 justify-content-between sticky-top'
+				bg={bg ? 1 : 0}
+				dark={dark ? 1 : 0}
+			>
+				<Link
+					to={{ pathname: '/' }}
+					style={{ textDecoration: 'none', color: 'inherit', backgroundColor: 'inherit !import' }}
+					className='col-8 d-flex align-items-center ps-4'
+				>
+					<h2 className='d-flex align-items-center'>Riday 💙</h2>
+				</Link>
+				<HamburgerMenu dark={dark ? 1 : 0} />
 				<button
 					className={`d-flex p-0 offset-2 col-2 h-100 ${open ? 'open' : ''}`}
 					onClick={() => setOpen(!open)}
@@ -61,11 +92,17 @@ const Nav = ({ active }: Props) => {
 					</svg>
 				</button>
 				{open && (
-					<MobileNav className={`text-center ${open ? 'slide-in' : ''}`} dark={dark} id='mobileNav'>
+					<MobileNav className={`text-center ${open ? 'slide-in' : ''}`} dark={dark ? 1 : 0} id='mobileNav'>
 						<div className='row mt-1 mx-2'>
-							<h2 className='d-flex col-8 align-items-center' style={{ top: '10px', left: '10px' }}>
-								Riday 💙
-							</h2>
+							<Link
+								to={{ pathname: '/' }}
+								style={{ textDecoration: 'none', color: 'inherit', backgroundColor: 'inherit !import' }}
+								className='d-flex col-8 align-items-center'
+							>
+								<h2 className='d-flex align-items-center' style={{ top: '10px', left: '0' }}>
+									Riday 💙
+								</h2>
+							</Link>
 							<button
 								className={`d-flex p-0 offset-2 col-2 h-100 ${open ? 'open' : ''}`}
 								onClick={() => {
@@ -95,19 +132,11 @@ const Nav = ({ active }: Props) => {
 								</svg>
 							</button>
 						</div>
-						<NavLink to={{ pathname: '/' }} dark={dark} active={active === 'home'}>
-							Home
-						</NavLink>
-						<NavLink to={{ pathname: '/contact' }} dark={dark} active={active === 'contact'}>
-							Contact Me
-						</NavLink>
-						<NavLink to={{ pathname: '/blog' }} dark={dark} active={active === 'blog'}>
-							Blog
-						</NavLink>
+						{NavLinks}
 						<ThemeSwitch />
 					</MobileNav>
 				)}
-			</header>
+			</AppHeader>
 		</Fragment>
 	);
 };
