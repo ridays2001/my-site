@@ -14,9 +14,11 @@ const ProjectSection = styled.section<Props>`
 		margin: 2em 1em;
 		border-radius: 21px;
 		padding: 1.25em;
+		transition: all 0.2s ease-in-out;
 	}
 
 	.card:hover {
+		transform: translateY(-7.5px);
 		box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer3)};
 	}
 
@@ -25,9 +27,20 @@ const ProjectSection = styled.section<Props>`
 	}
 
 	.list-group-item {
-		border-bottom: 1px solid ${({ dark }) => (dark ? 'rgba(125, 125, 125, 0.25)' : 'rgba(0, 0, 0, 0.25)')};
+		border: none;
 	}
 	.list-group-item:first-of-type {
+		margin-top: 12px;
+	}
+	.list-group-item:nth-last-of-type(2) {
+		margin-bottom: 12px;
+	}
+
+	.card-body {
+		border-bottom: 1px solid ${({ dark }) => (dark ? 'rgba(125, 125, 125, 0.25)' : 'rgba(0, 0, 0, 0.25)')};
+	}
+
+	.links {
 		border-top: 1px solid ${({ dark }) => (dark ? 'rgba(125, 125, 125, 0.25)' : 'rgba(0, 0, 0, 0.25)')};
 	}
 `;

@@ -14,6 +14,9 @@ const NavLink = styled(Link)<Props>`
 	padding: 5px 10px;
 	border-radius: 3.5px;
 	display: inline-block;
+	transition: all 0.3s ease-in-out;
+	text-underline-offset: 5px;
+	text-decoration-thickness: 0.125em;
 
 	:hover {
 		color: ${colors.white1};

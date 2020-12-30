@@ -8,7 +8,7 @@ type Props = {
 const HeroStatement = styled.div<Props>`
 	cursor: default;
 	box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer2)};
-	background-color: ${({ dark }) => (dark ? colors.dark2 : 'inherit')};
+	background-color: ${({ dark }) => (dark ? colors.dark2 : colors.white2)};
 	padding: 1.25em;
 	border-radius: 14px;
 	font-size: 0.75rem;

@@ -17,7 +17,7 @@ const Avatar = styled.img<Props>`
 	animation-timing-function: ease-in-out;
 
 	@media (min-width: ${breakpoints.md}) {
-		width: 50%;
+		width: 60%;
 	}
 
 	/* Different animation lengths for different devices. */

@@ -25,6 +25,7 @@ a:not(.nope) {
 	display: inline-block;
 	padding: 5px 10px;
 	border-radius: 3.5px;
+	transition: all 0.3s ease-in-out;
 	text-underline-offset: 5px;
 	text-decoration-thickness: 0.125em;
 }
