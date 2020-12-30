@@ -1,8 +1,6 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AppHeader from '../assets/styles/appHeader';
-import HamburgerMenu from '../assets/styles/hamburgerMenu';
-import MobileNav from '../assets/styles/mobileNav';
 import NavLink from '../assets/styles/navLink';
 import ThemeContext from '../assets/theme/themeContext';
 import ThemeSwitch from './themeSwitch';
@@ -57,7 +55,7 @@ const Nav = ({ active }: Props) => {
 	return (
 		<Fragment>
 			<AppHeader
-				className='mt-1 d-none row d-md-flex justify-content-between sticky-top'
+				className='mt-1 d-none row d-md-flex justify-content-between sticky-top py-2'
 				bg={bg ? 1 : 0}
 				dark={dark ? 1 : 0}
 			>
@@ -87,7 +85,6 @@ const Nav = ({ active }: Props) => {
 				>
 					<h2 className='d-flex align-items-center'>Riday 💙</h2>
 				</Link>
-				<HamburgerMenu dark={dark ? 1 : 0} />
 				<button
 					className={`d-flex p-0 offset-2 col-2 h-100 ${open ? 'open' : ''}`}
 					onClick={() => setOpen(!open)}
@@ -108,7 +105,7 @@ const Nav = ({ active }: Props) => {
 					</svg>
 				</button>
 				{open && (
-					<MobileNav className={`text-center ${open ? 'slide-in' : ''}`} dark={dark ? 1 : 0} id='mobileNav'>
+					<nav className={`text-center ${open ? 'slide-in' : ''}`} id='mobileNav'>
 						<div className='row mt-1 mx-2'>
 							<Link
 								to={{ pathname: '/' }}
@@ -150,7 +147,7 @@ const Nav = ({ active }: Props) => {
 						</div>
 						{NavLinks}
 						<ThemeSwitch />
-					</MobileNav>
+					</nav>
 				)}
 			</AppHeader>
 		</Fragment>
