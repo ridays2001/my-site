@@ -1,11 +1,11 @@
-import React, { useContext, Fragment } from 'react';
-import Nav from '../components/nav';
-import HeroSection from '../assets/styles/heroSection';
-import Avatar from '../assets/styles/avatar';
-import HeroStatement from '../assets/styles/heroStatement';
-import ThemeContext from '../assets/theme/themeContext';
+import React, { Fragment, useContext } from 'react';
 import pfp from '../assets/images/me.jpg';
+import Avatar from '../assets/styles/avatar';
+import HeroSection from '../assets/styles/heroSection';
+import HeroStatement from '../assets/styles/heroStatement';
 import ProjectSection from '../assets/styles/projectSection';
+import ThemeContext from '../assets/theme/themeContext';
+import Nav from '../components/nav';
 import projects from '../util/projects';
 
 const Home = () => {

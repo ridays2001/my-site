@@ -1,5 +1,5 @@
-import Home from '../routes/home';
 import Contact from '../routes/contact';
+import Home from '../routes/home';
 
 type RouteType = {
 	exact?: boolean;

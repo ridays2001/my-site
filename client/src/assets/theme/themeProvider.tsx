@@ -1,8 +1,8 @@
 import React, { ReactNode, useLayoutEffect, useState } from 'react';
-import ThemeContext from './themeContext';
-import MainStyle from '../styles/main';
 import Bootstrap from '../styles/bootstrap';
+import MainStyle from '../styles/main';
 import { colors } from './constants';
+import ThemeContext from './themeContext';
 
 const ThemeProvider = ({ children }: { children: ReactNode | Array<ReactNode> }) => {
 	const [dark, setDark] = useState(false);
