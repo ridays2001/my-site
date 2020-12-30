@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 import { colors } from '../theme/constants';
 
-const MobileNav = styled.nav<{ dark?: boolean }>`
-	height: 100%;
+type Props = {
+	dark: 0 | 1;
+};
+
+const MobileNav = styled.nav<Props>`
+	height: 100vh;
 	position: fixed;
 	z-index: 1;
 	left: 0;

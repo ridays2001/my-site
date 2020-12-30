@@ -1,7 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 import { colors } from '../theme/constants';
 
-const HamburgerMenu = createGlobalStyle<{ dark?: boolean }>`
+type Props = {
+	dark: 0 | 1;
+};
+
+const HamburgerMenu = createGlobalStyle<Props>`
 	.line {
 		fill: none;
 		stroke: ${({ dark }) => (dark ? colors.white1 : colors.dark0)};

@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { breakpoints, colors, highlights } from '../theme/constants';
 
 type Props = {
-	dark?: boolean;
-	active?: boolean;
+	dark: 0 | 1;
+	active: 0 | 1;
 };
 
 const NavLink = styled(Link)<Props>`

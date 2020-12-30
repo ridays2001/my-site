@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import { colors, shadows } from '../theme/constants';
 
-const ProjectSection = styled.section<{ dark?: boolean }>`
+type Props = {
+	dark: 0 | 1;
+};
+
+const ProjectSection = styled.section<Props>`
 	cursor: default;
 
 	.card {
@@ -13,7 +17,7 @@ const ProjectSection = styled.section<{ dark?: boolean }>`
 	}
 
 	.card:hover {
-		box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer2)};
+		box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer3)};
 	}
 
 	.list-group {

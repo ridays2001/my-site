@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import { breakpoints, colors, shadows } from '../theme/constants';
 
-const Section = styled.section<{ dark?: boolean }>`
+type Props = {
+	dark: 0 | 1;
+};
+
+const Section = styled.section<Props>`
 	padding: 2em;
 	background-color: ${({ dark }) => (dark ? colors.dark1 : colors.white2)};
 	box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer1)};

@@ -2,10 +2,10 @@ import { createGlobalStyle, DefaultTheme, GlobalStyleComponent } from 'styled-co
 import { colors, darkBg, highlights, lightBg } from '../theme/constants';
 
 type Props = {
-	dark?: boolean;
+	dark: 0 | 1;
 };
 
-const Theme = createGlobalStyle`
+const Theme = createGlobalStyle<Props>`
 body {
 	background-color: ${({ dark }) => (dark ? colors.dark0 : colors.white1)};
 	background-image: ${({ dark }) => (dark ? darkBg : lightBg)};
@@ -34,7 +34,6 @@ a:hover {
 	text-decoration: none;
 	background-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
 }
-
-` as GlobalStyleComponent<Props, DefaultTheme>;
+`;
 
 export default Theme;

@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import { breakpoints, colors, shadows } from '../theme/constants';
 
-const HeroStatement = styled.div<{ dark?: boolean }>`
+type Props = {
+	dark: 0 | 1;
+};
+
+const HeroStatement = styled.div<Props>`
 	cursor: default;
 	box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer2)};
 	background-color: ${({ dark }) => (dark ? colors.dark2 : 'inherit')};

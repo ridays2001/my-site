@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import { breakpoints, colors, shadows } from '../theme/constants';
 
-const Avatar = styled.img<{ dark?: boolean }>`
+type Props = {
+	dark: 0 | 1;
+};
+
+const Avatar = styled.img<Props>`
 	border-radius: 50%;
 	width: 75%;
 	border: solid 7.5px ${({ dark }) => (dark ? colors.pink : colors.azure)};
