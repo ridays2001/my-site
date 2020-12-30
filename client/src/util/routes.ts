@@ -1,5 +1,8 @@
+import About from '../routes/about';
+import Blog from '../routes/blog';
 import Contact from '../routes/contact';
 import Home from '../routes/home';
+import Projects from '../routes/projects';
 
 type RouteType = {
 	exact?: boolean;
@@ -19,6 +22,22 @@ const routes: Array<RouteType> = [
 		component: Contact,
 		key: 'contact',
 		path: '/contact'
+	},
+	{
+		component: About,
+		key: 'about',
+		path: '/about'
+	},
+	{
+		component: Blog,
+		key: 'blog',
+		path: '/blog',
+		exact: true
+	},
+	{
+		component: Projects,
+		key: 'projects',
+		path: '/projects'
 	}
 ];
 
