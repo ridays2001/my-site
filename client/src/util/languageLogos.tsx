@@ -57,8 +57,8 @@ export const ts = {
 const Languages = ({ list }: { list: Array<{ name: string; logo: string }> }) => (
 	<Fragment>
 		{list.map(({ name, logo }) => (
-			<Fragment>
-				<abbr title={name}>
+			<Fragment key={name}>
+				<abbr title={name} key={name}>
 					<img src={logo} alt={name} className='mx-1 mx-md-2' />
 				</abbr>
 			</Fragment>
