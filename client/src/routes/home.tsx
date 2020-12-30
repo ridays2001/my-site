@@ -26,36 +26,40 @@ const Home = () => {
 					effective use of my expertise to develop significant things.
 				</HeroStatement>
 			</HeroSection>
+
 			<h2 style={{ marginTop: '10vh' }}>Projects that I worked on</h2>
 			<ProjectSection
 				className='row row-cols-1 row-cols-md-3 row-cols-lg-4 align-items-center'
 				dark={dark ? 1 : 0}
 			>
-				{projects.map((project) => (
-					<div className='col' key={project.name}>
+				{projects.map(({ back, description, front, future, github, languages, month, name, status }) => (
+					<div className='col' key={name}>
 						<div className='card'>
 							<div className='card-body'>
-								<div className='card-title'>{project.name}</div>
-								<div className='card-text'>{project.description}</div>
+								<div className='card-title'>{name}</div>
+								<div className='card-text'>{description}</div>
 							</div>
 							<ul className='list-group list-group-flush text-start'>
 								<li className='list-group-item' key='made-with'>
-									Made With: {project.languages}
+									Made With: {languages}
+								</li>
+								<li className='list-group-item' key='timeline'>
+									Timeline: {month}
 								</li>
 								<li className='list-group-item' key='status'>
-									Status: {project.status}
+									Status: {status}
 								</li>
 								<li className='list-group-item' key='future'>
-									Future Scope: {project.future}
+									Future Scope: {future}
 								</li>
 								<li className='list-group-item' key='front'>
-									Front End: {project.front}
+									Front End: {front}
 								</li>
 								<li className='list-group-item' key='back'>
-									Back End: {project.back}
+									Back End: {back}
 								</li>
 								<li className='list-group-item text-center' key='gh'>
-									<a href={project.github}>GitHub ↗</a>
+									<a href={github}>GitHub ↗</a>
 								</li>
 							</ul>
 						</div>
