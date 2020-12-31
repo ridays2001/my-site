@@ -16,6 +16,15 @@ export const highlights = {
 	blue: 'rgb(0, 122, 245, 0.5)'
 };
 
+export const text = {
+	darkHigh: 'rgba(255, 255, 255, 0.87)',
+	darkMedium: 'rgba(255, 255, 255, 0.6)',
+	darkLow: 'rgba(255, 255, 255, 0.38)',
+	lightHigh: 'rgba(0, 0, 0, 0.9)',
+	lightMedium: 'rgba(0, 0, 0, 0.75)',
+	lightLow: 'rgba(0, 0, 0, 0.5)'
+};
+
 export const shadows = {
 	layer1: '0 2px 4px rgba(112, 144, 176, 0.1), 0 4px 8px rgba(112, 144, 176, 0.12)',
 	layer2: '0 4px 8px rgba(112, 144, 176, 0.12), 0 8px 16px rgba(112, 144, 176, 0.16)',
