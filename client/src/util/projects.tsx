@@ -3,12 +3,11 @@ import Languages, { css, electron, eslint, html, java, js, node, react, ts } fro
 
 type Project = {
 	description: string;
-	future: string;
 	github: string;
-	languages: JSX.Element;
+	tech: JSX.Element;
 	front: string;
 	back: string;
-	month: string;
+	timeline: string;
 	name: string;
 	status: string;
 	important: boolean;
@@ -20,11 +19,10 @@ const projects: Array<Project> = [
 	{
 		description: 'My personal website that you currently tread on.',
 		github: `${gh}/my-site`,
-		languages: <Languages list={[ts, react, css]} />,
-		month: 'December 2020',
+		tech: <Languages list={[ts, react, css]} />,
+		timeline: 'December 2020',
 		name: 'My Personal Website',
 		status: 'Ongoing',
-		future: 'Feedback section, Blog, other pages.',
 		important: false,
 		front: 'Typescript (React TSX) and CSS (Bootstrap).',
 		back: 'Typescript (Express) and Mongo DB.'
@@ -32,11 +30,10 @@ const projects: Array<Project> = [
 	{
 		description: 'A simple screen recording app for desktop. Made with the Nodejs framework Electron.',
 		github: `${gh}/tulip-screen-recorder`,
-		languages: <Languages list={[electron, js, html, css]} />,
-		month: 'December 2020',
+		tech: <Languages list={[electron, js, html, css]} />,
+		timeline: 'December 2020',
 		name: 'Tulip Screen Recorder',
-		status: 'Completed basic model.',
-		future: 'Planned to make an optimized model.',
+		status: 'This is a basic model. A more optimized model is planned.',
 		important: false,
 		front: 'Javascript (Vanilla), HTML, and CSS (Bootstrap).',
 		back: 'Node.js (Electron).'
@@ -44,11 +41,12 @@ const projects: Array<Project> = [
 	{
 		description: 'Our college sem 3 mini-project, based on the topic Medicare (Or, E - Healthcare).',
 		github: `${gh}/medicare-client`,
-		languages: <Languages list={[ts, react, css, java]} />,
-		month: 'November 2020',
+		tech: <Languages list={[ts, react, css, java]} />,
+		timeline: 'November 2020',
 		name: 'Medicare',
-		status: 'Completed.',
-		future: 'Google Maps API integration, Payments API integration, Tie-Ups with medical practitioners.',
+		status:
+			'This is a basic model. Maps, payments, and tie-ups with local services' +
+			' can be integrated for a full-fledged platform.',
 		important: false,
 		front: 'Typescript (React TSX) and CSS (Bootstrap).',
 		back: 'Typescript (Express), Java (Spring Boot), Maven, and MySQL DB.'
@@ -56,11 +54,10 @@ const projects: Array<Project> = [
 	{
 		description: 'A basic demonstration to send HTML based emails using Node.js and Gmail API.',
 		github: `${gh}/email-api`,
-		languages: <Languages list={[ts]} />,
-		month: 'October 2020',
+		tech: <Languages list={[ts]} />,
+		timeline: 'October 2020',
 		name: 'Email API',
-		status: 'Completed.',
-		future: 'None, this is a stand-alone project.',
+		status: 'This simple demonstration is complete.',
 		important: false,
 		front: 'None, this is an API.',
 		back: 'Typescript (Express).'
@@ -68,11 +65,12 @@ const projects: Array<Project> = [
 	{
 		description: 'A simple quiz web app built with React TSX and Open Trivia DB API to learn React.',
 		github: `${gh}/tsx-quiz`,
-		languages: <Languages list={[ts, react, css]} />,
-		month: 'September 2020',
+		tech: <Languages list={[ts, react, css]} />,
+		timeline: 'September 2020',
 		name: 'TSX Quiz',
-		status: 'Completed.',
-		future: 'Question categories, backend for advanced security, group quiz.',
+		status:
+			'Completed basic model. Question categories, backend-based verification, group quiz mode' +
+			' can be added for an advanced version.',
 		important: false,
 		front: 'Typescript (React TSX) and CSS (Bootstrap).',
 		back: 'None, this is client side project.'
@@ -81,11 +79,10 @@ const projects: Array<Project> = [
 		// prettier-ignore
 		description: 'A designer greeting cards generator for Teachers\' day for my teachers.',
 		github: `${gh}/td-greet`,
-		languages: <Languages list={[node, js, css]} />,
-		month: 'September 2020',
+		tech: <Languages list={[node, js, css]} />,
+		timeline: 'September 2020',
 		name: 'TD Greet',
-		status: 'Completed.',
-		future: 'None, this is a stand-alone project.',
+		status: 'This one-off project is complete.',
 		important: false,
 		front: 'Pug, Javascript (Vanilla), and CSS (Bootstrap).',
 		back: 'Node.js (Express)'
@@ -93,11 +90,12 @@ const projects: Array<Project> = [
 	{
 		description: 'My personalized ESLint configuration for my Javascript and Typescript projects.',
 		github: `${gh}/eslint-config-tulip`,
-		languages: <Languages list={[eslint, node]} />,
-		month: 'August 2020 - Current',
+		tech: <Languages list={[eslint, node]} />,
+		timeline: 'August 2020, December 2020',
 		name: 'ESLint Config Tulip',
-		status: 'Completed partially, with support for Node.js and Typescript.',
-		future: 'Add support for React JSX, React TSX, Browser js, etc.',
+		status:
+			'Completed partially, with support for Node.js and Typescript. ' +
+			'Further support for React JSX, TSX, browser js can be added.',
 		important: true,
 		front: 'None, this is configuration.',
 		back: 'Node.js (ESLint)'
@@ -105,23 +103,21 @@ const projects: Array<Project> = [
 	{
 		description: 'An interior design website made for our team-based Verzeo internship project.',
 		github: `${gh}/interior-design`,
-		languages: <Languages list={[node, js, html, css]} />,
-		month: 'August 2020',
+		tech: <Languages list={[node, js, html, css]} />,
+		timeline: 'August 2020',
 		name: 'Interior Design',
-		status: 'Completed.',
-		future: 'Maybe a blog. This is like an interior designer portfolio, not much scope.',
+		status: 'This basic interior designing portfolio is complete.',
 		important: true,
 		front: 'Javascript (jQuery + Vanilla), HTML, and CSS (Bootstrap).',
 		back: 'Node.js (Express) and MySQL DB.'
 	},
 	{
-		description: 'My discord bot, with music functionality.',
+		description: 'My discord bot, with music functionality. Made with Love ♥.',
 		github: `${gh}/Julis`,
-		languages: <Languages list={[js]} />,
-		month: 'August - September 2020',
+		tech: <Languages list={[js]} />,
+		timeline: 'August - September 2020',
 		name: 'Julis',
-		status: 'Completed basic model.',
-		future: 'A version with more features, written in Typescript.',
+		status: 'Completed basic model. An advanced version with more features is planned.',
 		important: true,
 		front: 'Markdown (Discord)',
 		back: 'Node.js and Firestore DB.'
@@ -130,11 +126,10 @@ const projects: Array<Project> = [
 		// prettier-ignore
 		description: 'A student portal site for my sister\'s home tutorials.',
 		github: `${gh}/ht-site`,
-		languages: <Languages list={[node, js, css]} />,
-		month: 'July 2020',
+		tech: <Languages list={[node, js, css]} />,
+		timeline: 'July 2020',
 		name: 'HT - Site',
-		status: 'Completed.',
-		future: 'A revamped dashboard, built-in option to upload images directly to the database.',
+		status: 'Completed basic site. A revamped dashboard, image processing could be added for an advanced version.',
 		important: true,
 		front: 'Pug, Javascript (jQuery), and CSS (Bootstrap).',
 		back: 'Node.js (Express) and Firestore DB.'
