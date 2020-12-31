@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { colors, darkBg, highlights, lightBg } from '../theme/constants';
+import { colors, darkBg, highlights, lightBg, text } from '../theme/constants';
 
 type Props = {
 	dark: 0 | 1;
@@ -11,7 +11,7 @@ body {
 	background-image: ${({ dark }) => (dark ? darkBg : lightBg)};
 	font-family: 'Bree Serif', Helvetica;
 	letter-spacing: 1px;
-	color: ${({ dark }) => (dark ? colors.white2 : colors.dark0)};
+	color: ${({ dark }) => (dark ? text.darkMedium : text.lightMedium)};
 	transition: all 1s;
 }
 
