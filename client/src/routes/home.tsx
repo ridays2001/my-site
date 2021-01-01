@@ -30,7 +30,7 @@ const Home = () => {
 
 			<ProjectSection className='align-items-center' dark={dark ? 1 : 0}>
 				<h2 style={{ marginTop: '10vh' }}>Projects that I worked on</h2>
-				<div className='row row-cols-1 row-cols-md-3 row-cols-lg-4 align-items-center'>
+				<div className='row row-cols-1 row-cols-md-3 row-cols-lg-4 align-items-start'>
 					{projects.map(({ back, description, front, github, tech, timeline, name, status }) => (
 						<div className='col' key={name}>
 							<div className='card'>
@@ -47,10 +47,14 @@ const Home = () => {
 										{status}
 									</li>
 									<li className='list-group-item' key='front'>
-										<FrontEnd dark={dark} /> {front}
+										<FrontEnd dark={dark} /> Front End:
+										<br />
+										{front}
 									</li>
 									<li className='list-group-item' key='back'>
-										<BackEnd dark={dark} /> {back}
+										<BackEnd dark={dark} /> Back End:
+										<br />
+										{back}
 									</li>
 									<li className='list-group-item text-center links' key='gh'>
 										<a href={github}>GitHub ↗</a>
