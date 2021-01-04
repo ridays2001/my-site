@@ -1,52 +1,55 @@
+// cSpell: disable
 import { createGlobalStyle, DefaultTheme, GlobalStyleComponent } from 'styled-components';
+import { colors, highlights } from '../theme/constants';
 
 type Props = {
-	blue?: string;
-	indigo?: string;
-	purple?: string;
-	pink?: string;
-	red?: string;
-	orange?: string;
-	yellow?: string;
-	green?: string;
-	teal?: string;
-	cyan?: string;
-	white?: string;
-	gray?: string;
-	darkGray?: string;
-	primary?: string;
-	secondary?: string;
-	success?: string;
-	info?: string;
-	warning?: string;
-	danger?: string;
-	light?: string;
-	dark?: string;
+	blueColor?: string;
+	indigoColor?: string;
+	purpleColor?: string;
+	pinkColor?: string;
+	redColor?: string;
+	orangeColor?: string;
+	yellowColor?: string;
+	greenColor?: string;
+	tealColor?: string;
+	cyanColor?: string;
+	whiteColor?: string;
+	grayColor?: string;
+	darkGrayColor?: string;
+	primaryColor?: string;
+	secondaryColor?: string;
+	successColor?: string;
+	infoColor?: string;
+	warningColor?: string;
+	dangerColor?: string;
+	lightColor?: string;
+	darkColor?: string;
+	dark?: 0 | 1;
 };
 
 const Bootstrap = createGlobalStyle`
 :root {
-	--bs-blue: ${({ blue }) => blue || '#0d6efd'};
-	--bs-indigo: ${({ indigo }) => indigo || '#6610f2'};
-	--bs-purple: ${({ purple }) => purple || '#6f42c1'};
-	--bs-pink: ${({ pink }) => pink || '#d63384'};
-	--bs-red: ${({ red }) => red || '#dc3545'};
-	--bs-orange: ${({ orange }) => orange || '#fd7e14'};
-	--bs-yellow: ${({ yellow }) => yellow || '#ffc107'};
-	--bs-green: ${({ green }) => green || '#198754'};
-	--bs-teal: ${({ teal }) => teal || '#20c997'};
-	--bs-cyan: ${({ cyan }) => cyan || '#0dcaf0'};
-	--bs-white: ${({ white }) => white || '#ffffff'};
-	--bs-gray: ${({ gray }) => gray || '#6c757d'};
-	--bs-gray-dark: ${({ darkGray }) => darkGray || '#343a40'};
-	--bs-primary: ${({ primary }) => primary || '#0d6efd'};
-	--bs-secondary: ${({ secondary }) => secondary || '#6c757d'};
-	--bs-success: ${({ success }) => success || '#198754'};
-	--bs-info: ${({ info }) => info || '#0dcaf0'};
-	--bs-warning: ${({ warning }) => warning || '#ffc107'};
-	--bs-danger: ${({ danger }) => danger || '#dc3545'};
-	--bs-light: ${({ light }) => light || '#f8f9fa'};
-	--bs-dark: ${({ dark }) => dark || '#212529'};
+	--bs-blue: ${({ blueColor: blue }) => blue || '#0d6efd'};
+	--bs-indigo: ${({ indigoColor: indigo }) => indigo || '#6610f2'};
+	--bs-purple: ${({ purpleColor: purple }) => purple || '#6f42c1'};
+	--bs-pink: ${({ pinkColor: pink }) => pink || '#d63384'};
+	--bs-red: ${({ redColor: red }) => red || '#dc3545'};
+	--bs-orange: ${({ orangeColor: orange }) => orange || '#fd7e14'};
+	--bs-yellow: ${({ yellowColor: yellow }) => yellow || '#ffc107'};
+	--bs-green: ${({ greenColor: green }) => green || '#198754'};
+	--bs-teal: ${({ tealColor: teal }) => teal || '#20c997'};
+	--bs-cyan: ${({ cyanColor: cyan }) => cyan || '#0dcaf0'};
+	--bs-white: ${({ whiteColor: white }) => white || '#ffffff'};
+	--bs-gray: ${({ grayColor: gray }) => gray || '#6c757d'};
+	--bs-gray-dark: ${({ darkGrayColor: darkGray }) => darkGray || '#343a40'};
+	--bs-primary: ${({ primaryColor: primary }) => primary || '#0d6efd'};
+	--bs-secondary: ${({ secondaryColor: secondary }) => secondary || '#6c757d'};
+	--bs-success: ${({ successColor: success }) => success || '#198754'};
+	--bs-info: ${({ infoColor: info }) => info || '#0dcaf0'};
+	--bs-warning: ${({ warningColor: warning }) => warning || '#ffc107'};
+	--bs-danger: ${({ dangerColor: danger }) => danger || '#dc3545'};
+	--bs-light: ${({ lightColor: light }) => light || '#f8f9fa'};
+	--bs-dark: ${({ darkColor: dark }) => dark || '#212529'};
 	--bs-font-sans-serif: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
 		'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 	--bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
@@ -179,13 +182,6 @@ strong {
 .small,
 small {
 	font-size: 0.875em;
-}
-a {
-	color: var(--bs-blue);
-	text-decoration: underline;
-}
-a:hover {
-	color: #0a58ca;
 }
 a:not([href]):not([class]),
 a:not([href]):not([class]):hover {
@@ -1959,7 +1955,6 @@ textarea.form-control-lg {
 	font-weight: 400;
 	line-height: 1.5;
 	color: var(--bs-dark);
-	vertical-align: middle;
 	background-color: var(--bs-white);
 	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
 	background-repeat: no-repeat;
@@ -2503,42 +2498,20 @@ fieldset:disabled .btn {
 }
 .btn-primary {
 	color: var(--bs-white);
-	background-color: var(--bs-blue);
-	border-color: var(--bs-blue);
+	background-color: ${({ dark }) => (dark ? colors.pink : colors.azure)};
+	border-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
 }
 .btn-primary:hover {
 	color: var(--bs-white);
-	background-color: #0b5ed7;
-	border-color: #0a58ca;
+	background-color: ${({ dark }) => (dark ? '#ff44a0' : '#0d68e3')};
+	border-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
 }
 .btn-check:focus + .btn-primary,
 .btn-primary:focus {
 	color: var(--bs-white);
-	background-color: #0b5ed7;
-	border-color: #0a58ca;
-	box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);
-}
-.btn-check:active + .btn-primary,
-.btn-check:checked + .btn-primary,
-.btn-primary.active,
-.btn-primary:active,
-.show > .btn-primary.dropdown-toggle {
-	color: var(--bs-white);
-	background-color: #0a58ca;
-	border-color: #0a53be;
-}
-.btn-check:active + .btn-primary:focus,
-.btn-check:checked + .btn-primary:focus,
-.btn-primary.active:focus,
-.btn-primary:active:focus,
-.show > .btn-primary.dropdown-toggle:focus {
-	box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);
-}
-.btn-primary.disabled,
-.btn-primary:disabled {
-	color: var(--bs-white);
-	background-color: var(--bs-blue);
-	border-color: var(--bs-blue);
+	background-color: ${({ dark }) => (dark ? '#ff44a0' : '#0d68e3')};
+	border-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
+	box-shadow: ${({ dark }) => (dark ? 'none' : `0 0 0 0.25rem ${highlights.blue}`)};
 }
 .btn-secondary {
 	color: var(--bs-white);
