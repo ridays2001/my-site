@@ -10,7 +10,7 @@ const AppHeader = styled.header<Props>`
 	background-color: ${({ bg, dark }) => (bg ? (dark ? colors.dark0 : colors.white3) : 'inherit')};
 	box-shadow: ${({ bg, dark }) => (bg ? (dark ? 'none' : shadows.layer3) : 'none')};
 
-	#mobileNav {
+	#mobile-nav {
 		height: 100vh;
 		position: fixed;
 		z-index: 1;

@@ -105,7 +105,7 @@ const Nav = ({ active }: Props) => {
 					</svg>
 				</button>
 				{open && (
-					<nav className={`text-center ${open ? 'slide-in' : ''}`} id='mobileNav'>
+					<nav className={`text-center ${open ? 'slide-in' : ''}`} id='mobile-nav'>
 						<div className='row mt-1 mx-2'>
 							<Link
 								to={{ pathname: '/' }}
@@ -120,7 +120,7 @@ const Nav = ({ active }: Props) => {
 								className={`d-flex p-0 offset-2 col-2 h-100 ${open ? 'open' : ''}`}
 								onClick={() => {
 									if (open) {
-										const nav = document.getElementById('mobileNav') as HTMLElement;
+										const nav = document.getElementById('mobile-nav') as HTMLElement;
 										nav.classList.remove('slide-in');
 										nav.classList.add('slide-out');
 										setTimeout(() => setOpen(false), 525);
