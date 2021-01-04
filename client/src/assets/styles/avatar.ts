@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakpoints, colors, shadows } from '../theme/constants';
+import { colors, devices, shadows } from '../theme/constants';
 
 type Props = {
 	dark: 0 | 1;
@@ -16,7 +16,7 @@ const Avatar = styled.img<Props>`
 	animation-iteration-count: infinite;
 	animation-timing-function: ease-in-out;
 
-	@media (min-width: ${breakpoints.md}) {
+	@media (${devices.md}) {
 		width: 60%;
 	}
 
@@ -24,68 +24,68 @@ const Avatar = styled.img<Props>`
 
 	@keyframes floating {
 		from {
-			transform: translate(0, 0px);
+			transform: translateY(0);
 		}
 		50% {
-			transform: translate(0, -20px);
+			transform: translateY(-20px);
 		}
 		to {
-			transform: translate(0, 0px);
+			transform: translateY(0);
 		}
 	}
 
-	@media (min-width: ${breakpoints.sm}) {
+	@media (${devices.sm}) {
 		@keyframes floating {
 			from {
-				transform: translate(0, 0px);
+				transform: translateY(0);
 			}
 			50% {
-				transform: translate(0, -25px);
+				transform: translateY(-25px);
 			}
 			to {
-				transform: translate(0, 0px);
-			}
-		}
-	}
-
-	@media (min-width: ${breakpoints.md}) {
-		@keyframes floating {
-			from {
-				transform: translate(0, 0px);
-			}
-			50% {
-				transform: translate(0, -40px);
-			}
-			to {
-				transform: translate(0, 0px);
+				transform: translateY(0);
 			}
 		}
 	}
 
-	@media (min-width: ${breakpoints.lg}) {
+	@media (${devices.md}) {
 		@keyframes floating {
 			from {
-				transform: translate(0, 0px);
+				transform: translateY(0);
 			}
 			50% {
-				transform: translate(0, -50px);
+				transform: translateY(-40px);
 			}
 			to {
-				transform: translate(0, 0px);
+				transform: translateY(0);
 			}
 		}
 	}
 
-	@media (min-width: ${breakpoints.xl}) {
+	@media (${devices.lg}) {
 		@keyframes floating {
 			from {
-				transform: translate(0, 0px);
+				transform: translateY(0);
 			}
 			50% {
-				transform: translate(0, -65px);
+				transform: translateY(-50px);
 			}
 			to {
-				transform: translate(0, 0px);
+				transform: translateY(0);
+			}
+		}
+	}
+
+	@media (${devices.xl}) {
+		@keyframes floating {
+			from {
+				transform: translateY(0);
+			}
+			50% {
+				transform: translateY(-65px);
+			}
+			to {
+				transform: translateY(0);
 			}
 		}
 	}

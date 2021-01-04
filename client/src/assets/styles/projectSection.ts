@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, shadows, text, breakpoints } from '../theme/constants';
+import { colors, devices, shadows, text } from '../theme/constants';
 
 type Props = {
 	dark: 0 | 1;
@@ -17,7 +17,8 @@ const ProjectSection = styled.section<Props>`
 		transition: all 0.25s ease;
 	}
 
-	.card:hover {
+	.card:hover,
+	.card:focus {
 		transform: translateY(-7.5px);
 		box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer3)};
 	}
@@ -27,7 +28,7 @@ const ProjectSection = styled.section<Props>`
 		color: ${({ dark }) => (dark ? text.darkLow : text.lightLow)};
 	}
 
-	@media (min-width: ${breakpoints.md}) {
+	@media (${devices.md}) {
 		.card-subtitle {
 			font-size: 0.9rem;
 		}
