@@ -32,6 +32,15 @@ export const shadows = {
 	layer4: '0 16px 32px rgba(112, 144, 176, 0.2), 0 20px 40px rgba(112, 144, 176, 0.25)'
 };
 
+export const devices = {
+	xs: 'min-width: 320px',
+	sm: 'min-width: 576px',
+	md: 'min-width: 768px',
+	lg: 'min-width: 992px',
+	xl: 'min-width: 1200px',
+	xxl: 'min-width: 1400px'
+};
+
 export const breakpoints = {
 	xs: '320px',
 	sm: '576px',
