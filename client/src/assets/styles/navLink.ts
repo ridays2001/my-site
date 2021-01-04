@@ -18,7 +18,8 @@ const NavLink = styled(Link)<Props>`
 	text-underline-offset: 5px;
 	text-decoration-thickness: 0.125em;
 
-	:hover {
+	:hover,
+	:focus {
 		color: ${colors.white1};
 		background-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
 		text-decoration: none;

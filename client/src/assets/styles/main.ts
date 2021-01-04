@@ -1,3 +1,4 @@
+// cSpell: disable
 import { createGlobalStyle } from 'styled-components';
 import { colors, darkBg, highlights, lightBg, text } from '../theme/constants';
 
@@ -30,7 +31,7 @@ a:not(.nope) {
 	text-decoration-thickness: 0.125em;
 }
 
-a:not(.nope):hover {
+a:not(.nope):hover, a:not(.nope):focus {
 	color: ${colors.white1};
 	text-decoration: none;
 	background-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
