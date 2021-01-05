@@ -31,7 +31,7 @@ const ThemeProvider = ({ children }: { children: ReactNode | Array<ReactNode> })
 
 	return (
 		<ThemeContext.Provider value={{ dark, toggle }}>
-			<Bootstrap dark={dark ? 1 : 0} />
+			<Bootstrap />
 			<MainStyle dark={dark ? 1 : 0} />
 			{children}
 		</ThemeContext.Provider>

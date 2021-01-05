@@ -1,55 +1,29 @@
 // cSpell: disable
-import { createGlobalStyle, DefaultTheme, GlobalStyleComponent } from 'styled-components';
-import { colors, highlights } from '../theme/constants';
-
-type Props = {
-	blueColor?: string;
-	indigoColor?: string;
-	purpleColor?: string;
-	pinkColor?: string;
-	redColor?: string;
-	orangeColor?: string;
-	yellowColor?: string;
-	greenColor?: string;
-	tealColor?: string;
-	cyanColor?: string;
-	whiteColor?: string;
-	grayColor?: string;
-	darkGrayColor?: string;
-	primaryColor?: string;
-	secondaryColor?: string;
-	successColor?: string;
-	infoColor?: string;
-	warningColor?: string;
-	dangerColor?: string;
-	lightColor?: string;
-	darkColor?: string;
-	dark?: 0 | 1;
-};
+import { createGlobalStyle } from 'styled-components';
 
 const Bootstrap = createGlobalStyle`
 :root {
-	--bs-blue: ${({ blueColor: blue }) => blue || '#0d6efd'};
-	--bs-indigo: ${({ indigoColor: indigo }) => indigo || '#6610f2'};
-	--bs-purple: ${({ purpleColor: purple }) => purple || '#6f42c1'};
-	--bs-pink: ${({ pinkColor: pink }) => pink || '#d63384'};
-	--bs-red: ${({ redColor: red }) => red || '#dc3545'};
-	--bs-orange: ${({ orangeColor: orange }) => orange || '#fd7e14'};
-	--bs-yellow: ${({ yellowColor: yellow }) => yellow || '#ffc107'};
-	--bs-green: ${({ greenColor: green }) => green || '#198754'};
-	--bs-teal: ${({ tealColor: teal }) => teal || '#20c997'};
-	--bs-cyan: ${({ cyanColor: cyan }) => cyan || '#0dcaf0'};
-	--bs-white: ${({ whiteColor: white }) => white || '#ffffff'};
-	--bs-gray: ${({ grayColor: gray }) => gray || '#6c757d'};
-	--bs-gray-dark: ${({ darkGrayColor: darkGray }) => darkGray || '#343a40'};
-	--bs-primary: ${({ primaryColor: primary }) => primary || '#0d6efd'};
-	--bs-secondary: ${({ secondaryColor: secondary }) => secondary || '#6c757d'};
-	--bs-success: ${({ successColor: success }) => success || '#198754'};
-	--bs-info: ${({ infoColor: info }) => info || '#0dcaf0'};
-	--bs-warning: ${({ warningColor: warning }) => warning || '#ffc107'};
-	--bs-danger: ${({ dangerColor: danger }) => danger || '#dc3545'};
-	--bs-light: ${({ lightColor: light }) => light || '#f8f9fa'};
-	--bs-dark: ${({ darkColor: dark }) => dark || '#212529'};
+	--bs-blue: #0d6efd;
+	--bs-indigo: #6610f2;
+	--bs-purple: #6f42c1;
+	--bs-pink: #d63384;
+	--bs-red: #dc3545;
+	--bs-orange: #fd7e14;
+	--bs-yellow: #ffc107;
+	--bs-green: #198754;
+	--bs-teal: #20c997;
+	--bs-cyan: #0dcaf0;
+	--bs-white: #ffffff;
+	--bs-gray:#6c757d;
+	--bs-gray-dark: #343a40;
+	--bs-primary: #0d6efd;
+	--bs-secondary: #6c757d;
+	--bs-success: #198754;
+	--bs-info: #0dcaf0;
+	--bs-warning: #ffc107;
+	--bs-danger: #dc3545;
+	--bs-light: #f8f9fa;
+	--bs-dark: #212529;
 	--bs-font-sans-serif: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
 		'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 	--bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
@@ -2495,23 +2469,6 @@ textarea.form-control.is-invalid {
 fieldset:disabled .btn {
 	pointer-events: none;
 	opacity: 0.65;
-}
-.btn-primary {
-	color: var(--bs-white);
-	background-color: ${({ dark }) => (dark ? colors.pink : colors.azure)};
-	border-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
-}
-.btn-primary:hover {
-	color: var(--bs-white);
-	background-color: ${({ dark }) => (dark ? '#ff44a0' : '#0d68e3')};
-	border-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
-}
-.btn-check:focus + .btn-primary,
-.btn-primary:focus {
-	color: var(--bs-white);
-	background-color: ${({ dark }) => (dark ? '#ff44a0' : '#0d68e3')};
-	border-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
-	box-shadow: ${({ dark }) => (dark ? 'none' : `0 0 0 0.25rem ${highlights.blue}`)};
 }
 .btn-secondary {
 	color: var(--bs-white);
@@ -7185,6 +7142,6 @@ fieldset:disabled .btn {
 		text-align: center !important;
 	}
 }
-` as GlobalStyleComponent<Props, DefaultTheme>;
+`;
 
 export default Bootstrap;
