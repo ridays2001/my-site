@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import reviewsData, { Review } from '../util/reviews';
 import ReviewSection from '../assets/styles/reviewSection';
 import { QuoEnd, QuoStart, Star, StarFill } from '../util/icons';
@@ -28,9 +28,10 @@ const Testimonials = ({ className, dark }: Props) => {
 						<div className='card'>
 							<div className='card-body'>
 								<div className='card-title mb-3 text-center'>
-									{new Array(5)
-										.fill(<StarFill dark={dark} />, 0, rating)
-										.fill(<Star dark={dark} />, rating)}
+									{new Array(5).fill('x').map((_, i) => {
+										if (i < rating) return <StarFill dark={dark} key={i} />;
+										return <Star dark={dark} key={i} />;
+									})}
 								</div>
 								<div className='card-text text-center'>
 									<QuoStart dark={dark} className='me-2' />
