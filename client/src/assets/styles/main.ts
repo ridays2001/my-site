@@ -36,6 +36,24 @@ a:not(.nope):hover, a:not(.nope):focus {
 	text-decoration: none;
 	background-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
 }
+
+.btn-primary {
+	color: ${colors.white1};
+	background-color: ${({ dark }) => (dark ? colors.pink : colors.azure)};
+	border-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
+}
+.btn-primary:hover {
+	color: ${colors.white1};
+	background-color: ${({ dark }) => (dark ? '#ff44a0' : '#0d68e3')};
+	border-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
+}
+.btn-check:focus + .btn-primary,
+.btn-primary:focus {
+	color: ${colors.white1};
+	background-color: ${({ dark }) => (dark ? '#ff44a0' : '#0d68e3')};
+	border-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
+	box-shadow: ${({ dark }) => (dark ? 'none' : `0 0 0 0.25rem ${highlights.blue}`)};
+}
 `;
 
 export default Theme;
