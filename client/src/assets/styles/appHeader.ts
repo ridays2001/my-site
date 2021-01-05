@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, shadows } from '../theme/constants';
+import { colors, shadows, text } from '../theme/constants';
 
 type Props = {
 	dark: 0 | 1;
@@ -7,7 +7,7 @@ type Props = {
 };
 
 const AppHeader = styled.header<Props>`
-	background-color: ${({ bg, dark }) => (bg ? (dark ? colors.dark0 : colors.white3) : 'inherit')};
+	background-color: ${({ bg, dark }) => (bg ? (dark ? colors.dark3 : colors.white3) : 'inherit')};
 	box-shadow: ${({ bg, dark }) => (bg ? (dark ? 'none' : shadows.layer3) : 'none')};
 
 	#mobile-nav {
@@ -19,6 +19,10 @@ const AppHeader = styled.header<Props>`
 		background-color: ${({ dark }) => (dark ? colors.dark0 : colors.white1)};
 		overflow: hidden;
 		transition: 0.5s;
+	}
+
+	h2 {
+		color: ${({ dark }) => (dark ? text.darkHigh : text.lightHigh)};
 	}
 
 	/* Hamburger menu on mobile. */
