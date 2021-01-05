@@ -23,12 +23,22 @@ const ProjectSection = styled.section<Props>`
 		box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer3)};
 	}
 
+	.card-title {
+		font-size: 1.19em;
+	}
+
+	${devices.md} {
+		.card-title {
+			font-size: 1.5em;
+		}
+	}
+
 	.card-subtitle {
 		font-size: 0.8rem;
 		color: ${({ dark }) => (dark ? text.darkLow : text.lightLow)};
 	}
 
-	@media (${devices.md}) {
+	${devices.md} {
 		.card-subtitle {
 			font-size: 0.9rem;
 		}
