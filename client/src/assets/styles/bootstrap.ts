@@ -1,5 +1,6 @@
 // cSpell: disable
 import { createGlobalStyle } from 'styled-components';
+import { breakpoints, devices } from '../theme/constants';
 
 const Bootstrap = createGlobalStyle`
 :root {
@@ -82,7 +83,7 @@ h6 {
 h1 {
 	font-size: calc(1.375rem + 1.5vw);
 }
-@media (min-width: 1200px) {
+${devices.xl} {
 	.h1,
 	h1 {
 		font-size: 2.5rem;
@@ -92,7 +93,7 @@ h1 {
 h2 {
 	font-size: calc(1.325rem + 0.9vw);
 }
-@media (min-width: 1200px) {
+${devices.xl} {
 	.h2,
 	h2 {
 		font-size: 2rem;
@@ -102,7 +103,7 @@ h2 {
 h3 {
 	font-size: calc(1.3rem + 0.6vw);
 }
-@media (min-width: 1200px) {
+${devices.xl} {
 	.h3,
 	h3 {
 		font-size: 1.75rem;
@@ -112,7 +113,7 @@ h3 {
 h4 {
 	font-size: calc(1.275rem + 0.3vw);
 }
-@media (min-width: 1200px) {
+${devices.xl} {
 	.h4,
 	h4 {
 		font-size: 1.5rem;
@@ -288,7 +289,7 @@ legend {
 	font-size: calc(1.275rem + 0.3vw);
 	line-height: inherit;
 }
-@media (min-width: 1200px) {
+${devices.xl} {
 	legend {
 		font-size: 1.5rem;
 	}
@@ -344,7 +345,7 @@ progress {
 	font-weight: 300;
 	line-height: 1.2;
 }
-@media (min-width: 1200px) {
+${devices.xl} {
 	.display-1 {
 		font-size: 5rem;
 	}
@@ -354,7 +355,7 @@ progress {
 	font-weight: 300;
 	line-height: 1.2;
 }
-@media (min-width: 1200px) {
+${devices.xl} {
 	.display-2 {
 		font-size: 4.5rem;
 	}
@@ -364,7 +365,7 @@ progress {
 	font-weight: 300;
 	line-height: 1.2;
 }
-@media (min-width: 1200px) {
+${devices.xl} {
 	.display-3 {
 		font-size: 4rem;
 	}
@@ -374,7 +375,7 @@ progress {
 	font-weight: 300;
 	line-height: 1.2;
 }
-@media (min-width: 1200px) {
+${devices.xl} {
 	.display-4 {
 		font-size: 3.5rem;
 	}
@@ -384,7 +385,7 @@ progress {
 	font-weight: 300;
 	line-height: 1.2;
 }
-@media (min-width: 1200px) {
+${devices.xl} {
 	.display-5 {
 		font-size: 3rem;
 	}
@@ -394,7 +395,7 @@ progress {
 	font-weight: 300;
 	line-height: 1.2;
 }
-@media (min-width: 1200px) {
+${devices.xl} {
 	.display-6 {
 		font-size: 2.5rem;
 	}
@@ -469,20 +470,20 @@ progress {
 	margin-right: auto;
 	margin-left: auto;
 }
-@media (min-width: 576px) {
+${devices.sm} {
 	.container,
 	.container-sm {
 		max-width: 540px;
 	}
 }
-@media (min-width: 768px) {
+${devices.md} {
 	.container,
 	.container-md,
 	.container-sm {
 		max-width: 720px;
 	}
 }
-@media (min-width: 992px) {
+${devices.lg} {
 	.container,
 	.container-lg,
 	.container-md,
@@ -490,7 +491,7 @@ progress {
 		max-width: 960px;
 	}
 }
-@media (min-width: 1200px) {
+${devices.xl} {
 	.container,
 	.container-lg,
 	.container-md,
@@ -499,7 +500,7 @@ progress {
 		max-width: 1140px;
 	}
 }
-@media (min-width: 1400px) {
+${devices.xxl} {
 	.container,
 	.container-lg,
 	.container-md,
@@ -690,7 +691,7 @@ progress {
 .gy-5 {
 	--bs-gutter-y: 3rem;
 }
-@media (min-width: 576px) {
+${devices.sm} {
 	.col-sm {
 		flex: 1 0 0%;
 	}
@@ -859,7 +860,7 @@ progress {
 		--bs-gutter-y: 3rem;
 	}
 }
-@media (min-width: 768px) {
+${devices.md} {
 	.col-md {
 		flex: 1 0 0%;
 	}
@@ -1028,7 +1029,7 @@ progress {
 		--bs-gutter-y: 3rem;
 	}
 }
-@media (min-width: 992px) {
+${devices.lg} {
 	.col-lg {
 		flex: 1 0 0%;
 	}
@@ -1197,7 +1198,7 @@ progress {
 		--bs-gutter-y: 3rem;
 	}
 }
-@media (min-width: 1200px) {
+${devices.xl} {
 	.col-xl {
 		flex: 1 0 0%;
 	}
@@ -1366,7 +1367,7 @@ progress {
 		--bs-gutter-y: 3rem;
 	}
 }
-@media (min-width: 1400px) {
+${devices.xxl} {
 	.col-xxl {
 		flex: 1 0 0%;
 	}
@@ -1683,31 +1684,31 @@ progress {
 	overflow-x: auto;
 	-webkit-overflow-scrolling: touch;
 }
-@media (max-width: 575.98px) {
+@media (max-width: ${parseInt(breakpoints.sm) - 0.02}px) {
 	.table-responsive-sm {
 		overflow-x: auto;
 		-webkit-overflow-scrolling: touch;
 	}
 }
-@media (max-width: 767.98px) {
+@media (max-width: ${parseInt(breakpoints.md) - 0.02}px) {
 	.table-responsive-md {
 		overflow-x: auto;
 		-webkit-overflow-scrolling: touch;
 	}
 }
-@media (max-width: 991.98px) {
+@media (max-width: ${parseInt(breakpoints.lg) - 0.02}px) {
 	.table-responsive-lg {
 		overflow-x: auto;
 		-webkit-overflow-scrolling: touch;
 	}
 }
-@media (max-width: 1199.98px) {
+@media (max-width: ${parseInt(breakpoints.xl) - 0.02}px) {
 	.table-responsive-xl {
 		overflow-x: auto;
 		-webkit-overflow-scrolling: touch;
 	}
 }
-@media (max-width: 1399.98px) {
+@media (max-width: ${parseInt(breakpoints.xxl) - 0.02}px) {
 	.table-responsive-xxl {
 		overflow-x: auto;
 		-webkit-overflow-scrolling: touch;
@@ -3239,7 +3240,7 @@ fieldset:disabled .btn {
 .card-group > .card {
 	margin-bottom: 0.75rem;
 }
-@media (min-width: 576px) {
+${devices.sm} {
 	.card-group {
 		display: flex;
 		flex-flow: row wrap;
@@ -3591,7 +3592,7 @@ fieldset:disabled .btn {
 	margin-left: -1px;
 	border-left-width: 1px;
 }
-@media (min-width: 576px) {
+${devices.sm} {
 	.list-group-horizontal-sm {
 		flex-direction: row;
 	}
@@ -3615,7 +3616,7 @@ fieldset:disabled .btn {
 		border-left-width: 1px;
 	}
 }
-@media (min-width: 768px) {
+${devices.md} {
 	.list-group-horizontal-md {
 		flex-direction: row;
 	}
@@ -3639,7 +3640,7 @@ fieldset:disabled .btn {
 		border-left-width: 1px;
 	}
 }
-@media (min-width: 992px) {
+${devices.lg} {
 	.list-group-horizontal-lg {
 		flex-direction: row;
 	}
@@ -3663,7 +3664,7 @@ fieldset:disabled .btn {
 		border-left-width: 1px;
 	}
 }
-@media (min-width: 1200px) {
+${devices.xl} {
 	.list-group-horizontal-xl {
 		flex-direction: row;
 	}
@@ -3687,7 +3688,7 @@ fieldset:disabled .btn {
 		border-left-width: 1px;
 	}
 }
-@media (min-width: 1400px) {
+${devices.xxl} {
 	.list-group-horizontal-xxl {
 		flex-direction: row;
 	}
@@ -3942,7 +3943,7 @@ fieldset:disabled .btn {
 	top: 0;
 	z-index: 1020;
 }
-@media (min-width: 576px) {
+${devices.sm} {
 	.sticky-sm-top {
 		position: -webkit-sticky;
 		position: sticky;
@@ -3950,7 +3951,7 @@ fieldset:disabled .btn {
 		z-index: 1020;
 	}
 }
-@media (min-width: 768px) {
+${devices.md} {
 	.sticky-md-top {
 		position: -webkit-sticky;
 		position: sticky;
@@ -3958,7 +3959,7 @@ fieldset:disabled .btn {
 		z-index: 1020;
 	}
 }
-@media (min-width: 992px) {
+${devices.lg} {
 	.sticky-lg-top {
 		position: -webkit-sticky;
 		position: sticky;
@@ -3966,7 +3967,7 @@ fieldset:disabled .btn {
 		z-index: 1020;
 	}
 }
-@media (min-width: 1200px) {
+${devices.xl} {
 	.sticky-xl-top {
 		position: -webkit-sticky;
 		position: sticky;
@@ -3974,7 +3975,7 @@ fieldset:disabled .btn {
 		z-index: 1020;
 	}
 }
-@media (min-width: 1400px) {
+${devices.xxl} {
 	.sticky-xxl-top {
 		position: -webkit-sticky;
 		position: sticky;
@@ -4782,7 +4783,7 @@ fieldset:disabled .btn {
 .bg-gradient {
 	background-image: var(--bs-gradient) !important;
 }
-@media (min-width: 576px) {
+${devices.sm} {
 	.float-sm-start {
 		float: left !important;
 	}
@@ -5254,7 +5255,7 @@ fieldset:disabled .btn {
 		text-align: center !important;
 	}
 }
-@media (min-width: 768px) {
+${devices.md} {
 	.float-md-start {
 		float: left !important;
 	}
@@ -5726,7 +5727,7 @@ fieldset:disabled .btn {
 		text-align: center !important;
 	}
 }
-@media (min-width: 992px) {
+${devices.lg} {
 	.float-lg-start {
 		float: left !important;
 	}
@@ -6198,7 +6199,7 @@ fieldset:disabled .btn {
 		text-align: center !important;
 	}
 }
-@media (min-width: 1200px) {
+${devices.xl} {
 	.float-xl-start {
 		float: left !important;
 	}
@@ -6670,7 +6671,7 @@ fieldset:disabled .btn {
 		text-align: center !important;
 	}
 }
-@media (min-width: 1400px) {
+${devices.xxl} {
 	.float-xxl-start {
 		float: left !important;
 	}

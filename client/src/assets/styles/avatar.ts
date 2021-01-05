@@ -16,7 +16,7 @@ const Avatar = styled.img<Props>`
 	animation-iteration-count: infinite;
 	animation-timing-function: ease-in-out;
 
-	@media (${devices.md}) {
+	${devices.md} {
 		width: 60%;
 	}
 
@@ -34,7 +34,7 @@ const Avatar = styled.img<Props>`
 		}
 	}
 
-	@media (${devices.sm}) {
+	${devices.sm} {
 		@keyframes floating {
 			from {
 				transform: translateY(0);
@@ -48,7 +48,7 @@ const Avatar = styled.img<Props>`
 		}
 	}
 
-	@media (${devices.md}) {
+	${devices.md} {
 		@keyframes floating {
 			from {
 				transform: translateY(0);
@@ -62,7 +62,7 @@ const Avatar = styled.img<Props>`
 		}
 	}
 
-	@media (${devices.lg}) {
+	${devices.lg} {
 		@keyframes floating {
 			from {
 				transform: translateY(0);
@@ -76,7 +76,7 @@ const Avatar = styled.img<Props>`
 		}
 	}
 
-	@media (${devices.xl}) {
+	${devices.xl} {
 		@keyframes floating {
 			from {
 				transform: translateY(0);

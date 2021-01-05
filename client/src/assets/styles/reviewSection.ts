@@ -28,7 +28,7 @@ const ReviewSection = styled.section<Props>`
 		color: ${({ dark }) => (dark ? text.darkLow : text.lightLow)};
 	}
 
-	@media (${devices.md}) {
+	${devices.md} {
 		.card-subtitle {
 			font-size: 0.9rem;
 		}

@@ -14,7 +14,7 @@ const Section = styled.section<Props>`
 	width: 98%;
 	max-width: 100%;
 
-	@media (${devices.md}) {
+	${devices.md} {
 		height: 90vh;
 	}
 
@@ -28,20 +28,20 @@ const Section = styled.section<Props>`
 		margin-top: -1rem;
 	}
 
-	@media (${devices.xs}) {
+	${devices.xs} {
 		#hero-statement {
 			margin-top: 0.5rem;
 			font-size: 1.15em;
 		}
 	}
 
-	@media (${devices.sm}) {
+	${devices.sm} {
 		#hero-statement {
 			font-size: 1.25em;
 		}
 	}
 
-	@media (${devices.md}) {
+	${devices.md} {
 		#hero-statement {
 			font-size: 2em;
 			margin-top: 0;
