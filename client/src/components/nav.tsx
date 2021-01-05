@@ -66,7 +66,7 @@ const Nav = ({ active }: Props) => {
 				>
 					<h2>Riday 💙</h2>
 				</Link>
-				<nav className='col-md-3 col-xl-2 offset-6 offset-lg-7 d-flex justify-content-between align-items-center'>
+				<nav className='col-md-4 col-lg-3 offset-5 offset-lg-6 d-flex justify-content-evenly align-items-center'>
 					{NavLinks}
 				</nav>
 				<div className='col-1 d-flex justify-content-end pe-5'>

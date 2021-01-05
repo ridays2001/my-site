@@ -11,7 +11,7 @@ type Props = {
 const Projects = ({ className, dark }: Props) => (
 	<ProjectSection className={className} dark={dark ? 1 : 0}>
 		<h2 style={{ marginTop: '10vh' }}>Projects that I worked on</h2>
-		<div className='row row-cols-1 row-cols-md-3 row-cols-lg-4 align-items-start'>
+		<div className='row row-cols-1 row-cols-md-3 row-cols-xxl-4 align-items-start'>
 			{projects.map(({ back, description, front, github, tech, timeline, name, status }) => (
 				<div className='col' key={name}>
 					<div className='card'>
@@ -22,7 +22,7 @@ const Projects = ({ className, dark }: Props) => (
 						</div>
 						<ul className='list-group list-group-flush text-start'>
 							<li className='list-group-item text-center' key='made-with'>
-								Made With: {tech}
+								Tech: {tech}
 							</li>
 							<li className='list-group-item' key='status'>
 								{status}
