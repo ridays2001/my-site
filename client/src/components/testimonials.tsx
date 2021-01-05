@@ -22,7 +22,7 @@ const Testimonials = ({ className, dark }: Props) => {
 	return (
 		<ReviewSection className={className} dark={dark ? 1 : 0}>
 			<h2>Testimonials:</h2>
-			<div className='row row-cols-1 row-cols-md-3 row-cols-lg-4 align-items-start justify-content-evenly'>
+			<div className='row row-cols-1 row-cols-md-2 row-cols-xxl-4 align-items-start justify-content-evenly'>
 				{reviews.map(({ message, name, rating }) => (
 					<div className='col' key={name}>
 						<div className='card'>
