@@ -20,9 +20,9 @@ const Home = () => {
 				<div className='col-md-4 p-5 text-center'>
 					<Avatar src={pfp} alt='My Profile Picture.' dark={dark ? 1 : 0} />
 				</div>
-				<article className='col-md-6' id='hero-statement'>
-					Hi, I am Riday. I am a Web Developer. My favorite tool of choice is Typescript. I strive to make
-					effective use of my expertise to develop significant things.
+				<article className='col-md-6 d-flex align-items-center' id='hero-statement'>
+					Hi, I am Riday. I am a self-taught Web Developer. I strive to make effective use of my expertise to
+					develop things that matter.
 				</article>
 			</HeroSection>
 
