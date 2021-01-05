@@ -25,7 +25,7 @@ const Testimonials = ({ className, dark }: Props) => {
 			<div className='row row-cols-1 row-cols-md-3 row-cols-lg-4 align-items-start justify-content-evenly'>
 				{reviews.map(({ message, name, rating }) => (
 					<div className='col' key={name}>
-						<div className='col card'>
+						<div className='card'>
 							<div className='card-body'>
 								<div className='card-title mb-3 text-center'>
 									{new Array(5)
