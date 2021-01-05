@@ -15,7 +15,7 @@ const reviews: Array<Review> = [
 			' Pellentesque vulputate tortor eget diam ornare, at condimentum mi luctus.' +
 			' Nulla facilisi. Fusce lectus ligula, consequat nec sapien sed, fermentum ornare orci.' +
 			' Quisque est metus, tincidunt vitae tempor eget, accumsan faucibus sapien. ',
-		rating: 4
+		rating: 2
 	},
 	{
 		name: 'Test 2',
@@ -30,6 +30,17 @@ const reviews: Array<Review> = [
 	},
 	{
 		name: 'Test 3',
+		message:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
+			' Phasellus cursus ipsum ut dolor commodo, a lacinia felis fringilla.' +
+			' Vestibulum pharetra enim vitae euismod volutpat. Nullam non fermentum justo.' +
+			' Pellentesque vulputate tortor eget diam ornare, at condimentum mi luctus.' +
+			' Nulla facilisi. Fusce lectus ligula, consequat nec sapien sed, fermentum ornare orci.' +
+			' Quisque est metus, tincidunt vitae tempor eget, accumsan faucibus sapien. ',
+		rating: 4
+	},
+	{
+		name: 'Test 4',
 		message:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
 			' Phasellus cursus ipsum ut dolor commodo, a lacinia felis fringilla.' +
