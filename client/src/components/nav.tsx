@@ -17,6 +17,9 @@ const Nav = ({ active }: Props) => {
 	const [bg, setBg] = useState(false);
 
 	useEffect(() => {
+		if (window.scrollY > 10) setBg(true);
+		else setBg(false);
+
 		window.addEventListener('scroll', () => {
 			if (window.scrollY > 10) setBg(true);
 			else setBg(false);
