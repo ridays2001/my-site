@@ -1,6 +1,6 @@
 import React from 'react';
 import ProjectSection from '../assets/styles/projectSection';
-import { BackEnd, FrontEnd } from '../util/icons';
+import { BackEnd, FrontEnd, GitHub } from '../util/icons';
 import projects from '../util/projectsData';
 
 type Props = {
@@ -37,7 +37,9 @@ const ListProjects = ({ className, dark, feat }: Props) => (
 									{back}
 								</li>
 								<li className='list-group-item links' key='gh'>
-									<a href={github}>GitHub ↗</a>
+									<a href={github}>
+										<GitHub dark={dark} /> GitHub
+									</a>
 								</li>
 							</ul>
 						</div>
