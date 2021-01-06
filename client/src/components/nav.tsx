@@ -5,7 +5,7 @@ import NavLink from '../assets/styles/navLink';
 import ThemeContext from '../assets/theme/themeContext';
 import ThemeSwitch from './themeSwitch';
 
-type Pages = 'home' | 'contact' | 'blog';
+type Pages = 'home' | 'contact' | 'blog' | 'about' | 'projects';
 
 type Props = {
 	active: Pages;
@@ -29,6 +29,16 @@ const Nav = ({ active }: Props) => {
 			name: 'Home',
 			pathname: '/',
 			id: 'home'
+		},
+		{
+			name: 'About Me',
+			pathname: '/about',
+			id: 'about'
+		},
+		{
+			name: 'Projects',
+			pathname: '/projects',
+			id: 'projects'
 		},
 		{
 			name: 'Contact Me',
@@ -62,11 +72,11 @@ const Nav = ({ active }: Props) => {
 				<Link
 					to={{ pathname: '/' }}
 					style={{ textDecoration: 'none', color: 'inherit', backgroundColor: 'inherit !import' }}
-					className='col-md-3 col-lg-2 text-start ps-5 nope'
+					className='col-md-3 col-xl-2 text-start ps-5 nope'
 				>
 					<h2>Riday 💙</h2>
 				</Link>
-				<nav className='col-md-4 col-lg-3 offset-5 offset-lg-6 d-flex justify-content-evenly align-items-center'>
+				<nav className='col-md-7 col-lg-6 col-xl-5 col-xxl-4 offset-lg-2 offset-xl-4 offset-xxl-5 d-flex justify-content-evenly align-items-center'>
 					{NavLinks}
 				</nav>
 				<div className='col-1 d-flex justify-content-end pe-5'>
