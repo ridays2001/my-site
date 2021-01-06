@@ -9,7 +9,7 @@ type Project = {
 	back: string;
 	timeline: string;
 	name: string;
-	important: boolean;
+	featured: boolean;
 };
 
 const gh = 'https://github.com/ridays2001';
@@ -21,7 +21,7 @@ const projects: Array<Project> = [
 		tech: <Languages list={[ts, react, css]} />,
 		timeline: 'December 2020',
 		name: 'My Personal Website',
-		important: false,
+		featured: false,
 		front: 'TS (React TSX) and CSS (Bootstrap).',
 		back: 'TS (Express) and Mongo DB.'
 	},
@@ -31,7 +31,7 @@ const projects: Array<Project> = [
 		tech: <Languages list={[electron, js, html, css]} />,
 		timeline: 'December 2020',
 		name: 'Tulip Screen Recorder',
-		important: false,
+		featured: false,
 		front: 'JS, HTML, and CSS (Bootstrap).',
 		back: 'Node (Electron).'
 	},
@@ -41,7 +41,7 @@ const projects: Array<Project> = [
 		tech: <Languages list={[ts, react, css, java]} />,
 		timeline: 'November 2020',
 		name: 'Medicare',
-		important: false,
+		featured: false,
 		front: 'TS (React TSX) and CSS (Bootstrap).',
 		back: 'TS (Express), Java (Spring Boot), and MySQL DB.'
 	},
@@ -51,7 +51,7 @@ const projects: Array<Project> = [
 		tech: <Languages list={[ts]} />,
 		timeline: 'October 2020',
 		name: 'Email API',
-		important: false,
+		featured: false,
 		front: 'None, this is an API.',
 		back: 'TS (Express).'
 	},
@@ -61,7 +61,7 @@ const projects: Array<Project> = [
 		tech: <Languages list={[ts, react, css]} />,
 		timeline: 'September 2020',
 		name: 'TSX Quiz',
-		important: false,
+		featured: false,
 		front: 'TS (React TSX) and CSS (Bootstrap).',
 		back: 'None, this is client side project.'
 	},
@@ -72,7 +72,7 @@ const projects: Array<Project> = [
 		tech: <Languages list={[node, js, css]} />,
 		timeline: 'September 2020',
 		name: 'TD Greet',
-		important: false,
+		featured: false,
 		front: 'Pug, JS, and CSS (Bootstrap).',
 		back: 'Node (Express)'
 	},
@@ -82,7 +82,7 @@ const projects: Array<Project> = [
 		tech: <Languages list={[eslint, node]} />,
 		timeline: 'August 2020, December 2020',
 		name: 'ESLint Config Tulip',
-		important: true,
+		featured: true,
 		front: 'None, this is configuration.',
 		back: 'Node (ESLint)'
 	},
@@ -92,7 +92,7 @@ const projects: Array<Project> = [
 		tech: <Languages list={[node, js, html, css]} />,
 		timeline: 'August 2020',
 		name: 'Interior Design',
-		important: true,
+		featured: true,
 		front: 'JS (jQuery), HTML, and CSS (Bootstrap).',
 		back: 'Node (Express) and MySQL DB.'
 	},
@@ -102,7 +102,7 @@ const projects: Array<Project> = [
 		tech: <Languages list={[node]} />,
 		timeline: 'August - September 2020',
 		name: 'Julis',
-		important: true,
+		featured: true,
 		front: 'Markdown (Discord)',
 		back: 'Node and Firestore DB.'
 	},
@@ -113,7 +113,7 @@ const projects: Array<Project> = [
 		tech: <Languages list={[node, js, css]} />,
 		timeline: 'July 2020',
 		name: 'HT - Site',
-		important: true,
+		featured: true,
 		front: 'Pug, JS (jQuery), and CSS (Bootstrap).',
 		back: 'Node (Express) and Firestore DB.'
 	}
