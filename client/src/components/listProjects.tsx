@@ -11,7 +11,6 @@ type Props = {
 
 const ListProjects = ({ className, dark, feat }: Props) => (
 	<ProjectSection className={className} dark={dark ? 1 : 0}>
-		<h2 style={{ marginTop: '10vh' }}>My Projects:</h2>
 		<div className='row row-cols-1 row-cols-md-2 row-cols-xxl-4 align-items-start justify-content-center'>
 			{projects
 				.filter((project) => (feat ? project.featured : true))
