@@ -4,7 +4,7 @@ import Avatar from '../assets/styles/avatar';
 import HeroSection from '../assets/styles/heroSection';
 import ThemeContext from '../assets/theme/themeContext';
 import Nav from '../components/nav';
-import Projects from '../components/projects';
+import ListProjects from '../components/listProjects';
 import Testimonials from '../components/testimonials';
 
 const Home = () => {
@@ -26,7 +26,7 @@ const Home = () => {
 				</article>
 			</HeroSection>
 
-			<Projects dark={dark} className='align-items-center' />
+			<ListProjects dark={dark} className='align-items-center' feat={true} />
 
 			<Testimonials dark={dark} className='mb-5' />
 		</Fragment>
