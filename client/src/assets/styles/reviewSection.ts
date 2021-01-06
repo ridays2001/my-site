@@ -8,6 +8,10 @@ type Props = {
 const ReviewSection = styled.section<Props>`
 	cursor: default;
 
+	h2 {
+		color: ${({ dark }) => (dark ? text.darkHigh : text.lightHigh)};
+	}
+
 	.card {
 		background-color: ${({ dark }) => (dark ? colors.dark1 : colors.white1)};
 		box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer1)};
