@@ -16,7 +16,7 @@ const Avatar = styled.img<Props>`
 	animation-iteration-count: infinite;
 	animation-timing-function: ease-in-out;
 
-	${devices.md} {
+	${devices.lg} {
 		width: 60%;
 	}
 
