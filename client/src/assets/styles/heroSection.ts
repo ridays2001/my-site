@@ -6,7 +6,7 @@ type Props = {
 };
 
 const Section = styled.section<Props>`
-	padding: 2em;
+	padding: 1.25em;
 	background-color: ${({ dark }) => (dark ? colors.dark1 : colors.white1)};
 	box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer1)};
 	border-radius: 21px;
