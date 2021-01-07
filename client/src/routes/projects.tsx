@@ -1,8 +1,8 @@
 import React, { Fragment, useContext } from 'react';
-import ThemeContext from '../assets/theme/themeContext';
-import Nav from '../components/nav';
-import ListProjects from '../components/listProjects';
 import { text } from '../assets/theme/constants';
+import ThemeContext from '../assets/theme/themeContext';
+import ListProjects from '../components/listProjects';
+import Nav from '../components/nav';
 
 const Projects = () => {
 	const { dark } = useContext(ThemeContext);

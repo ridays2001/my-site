@@ -1,8 +1,8 @@
 import React, { Fragment, useContext, useEffect } from 'react';
+import pfp from '../assets/images/me.jpg';
+import AboutSection from '../assets/styles/aboutSection';
 import ThemeContext from '../assets/theme/themeContext';
 import Nav from '../components/nav';
-import AboutSection from '../assets/styles/aboutSection';
-import pfp from '../assets/images/me.jpg';
 
 const About = () => {
 	const { dark } = useContext(ThemeContext);

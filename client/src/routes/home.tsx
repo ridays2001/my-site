@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import pfp from '../assets/images/me.jpg';
 import Avatar from '../assets/styles/avatar';
 import HeroSection from '../assets/styles/heroSection';
-import ThemeContext from '../assets/theme/themeContext';
-import Nav from '../components/nav';
-import ListProjects from '../components/listProjects';
-import Testimonials from '../components/testimonials';
 import { text } from '../assets/theme/constants';
+import ThemeContext from '../assets/theme/themeContext';
+import ListProjects from '../components/listProjects';
+import Nav from '../components/nav';
+import Testimonials from '../components/testimonials';
 
 const Home = () => {
 	const { dark } = useContext(ThemeContext);

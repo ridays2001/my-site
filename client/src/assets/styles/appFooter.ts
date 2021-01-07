@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { text, highlights } from '../theme/constants';
+import { text } from '../theme/constants';
 
 type Props = {
 	dark: 1 | 0;

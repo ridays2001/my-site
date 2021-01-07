@@ -1,7 +1,7 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import reviewsData, { Review } from '../util/reviews';
+import React, { useEffect, useState } from 'react';
 import ReviewSection from '../assets/styles/reviewSection';
 import { QuoEnd, QuoStart, Star, StarFill } from '../util/icons';
+import reviewsData, { Review } from '../util/reviews';
 
 type Props = { dark: boolean; className: string };
 
