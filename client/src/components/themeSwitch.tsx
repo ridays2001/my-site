@@ -50,6 +50,7 @@ const ThemeSwitch = ({ className }: { className?: string }) => {
 					<SunFillIcon />
 				</div>
 			}
+			aria-label='Theme Switcher'
 		/>
 	);
 };

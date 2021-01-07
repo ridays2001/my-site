@@ -13,6 +13,7 @@ const Footer = ({ dark }: Props) => (
 				viewBox='0 0 24 24'
 				fill={dark ? '#ffffff' : '#000000'}
 				className='d-inline d-md-none'
+				aria-label='GitHub Icon'
 			>
 				<path
 					fillRule='evenodd'
@@ -27,6 +28,7 @@ const Footer = ({ dark }: Props) => (
 				viewBox='0 0 24 24'
 				fill={dark ? '#ffffff' : '#000000'}
 				className='d-none d-md-inline'
+				aria-label='GitHub Icon'
 			>
 				<path
 					fill-rule='evenodd'
