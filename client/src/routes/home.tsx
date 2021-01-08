@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import pfp from '../assets/images/me.jpg';
 import Avatar from '../assets/styles/avatar';
@@ -11,6 +11,10 @@ import Testimonials from '../components/testimonials';
 
 const Home = () => {
 	const { dark } = useContext(ThemeContext);
+
+	useEffect(() => {
+		document.title = 'Riday Shah';
+	}, []);
 
 	return (
 		<Fragment>
