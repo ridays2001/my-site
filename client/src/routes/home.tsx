@@ -23,7 +23,7 @@ const Home = () => {
 					<Avatar src={pfp} alt='My Profile Picture.' dark={dark ? 1 : 0} />
 				</div>
 				<article className='col-md-6 d-flex align-items-center' id='hero-statement'>
-					Hi, I am Riday. I am a self-taught Web Developer. I strive to make effective use of my expertise to
+					Hi, I am Riday. I am a Full Stack Web Developer. I strive to make effective use of my expertise to
 					develop things that matter.
 				</article>
 			</HeroSection>
