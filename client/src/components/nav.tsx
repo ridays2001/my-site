@@ -34,11 +34,6 @@ const Nav = ({ active }: Props) => {
 			id: 'home'
 		},
 		{
-			name: 'About Me',
-			pathname: '/about',
-			id: 'about'
-		},
-		{
 			name: 'Projects',
 			pathname: '/projects',
 			id: 'projects'
@@ -52,6 +47,11 @@ const Nav = ({ active }: Props) => {
 			name: 'Blog',
 			pathname: '/blog',
 			id: 'blog'
+		},
+		{
+			name: 'About Me',
+			pathname: '/about',
+			id: 'about'
 		}
 	];
 
