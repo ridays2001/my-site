@@ -5,10 +5,14 @@ export const colors = {
 	dark1: '#27242c',
 	dark2: '#322F37',
 	dark3: '#3d3a41',
+	darkErr: '#cf6679',
+	darkSuccess: '#3ded97',
 	white0: '#ffffff',
 	white1: '#fcfcfe',
 	white2: '#fbfbfd',
-	white3: '#f9f9fc'
+	white3: '#f9f9fc',
+	lightErr: '#b00020',
+	lightSuccess: '#198754'
 };
 
 export const highlights = {
