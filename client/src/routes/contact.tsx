@@ -1,9 +1,9 @@
-import React, { Fragment, useContext, useEffect, FormEvent, useState } from 'react';
+import React, { FormEvent, Fragment, useContext, useEffect, useState } from 'react';
+import ContactSection from '../assets/styles/contactSection';
+import { text } from '../assets/theme/constants';
 import ThemeContext from '../assets/theme/themeContext';
 import Nav from '../components/nav';
-import ContactSection from '../assets/styles/contactSection';
 import { GitHub } from '../util/icons';
-import { text } from '../assets/theme/constants';
 import { discordInv } from '../util/misc';
 
 const Contact = () => {
