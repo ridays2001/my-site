@@ -1,0 +1,5 @@
+{
+	"watch": ["src"],
+	"ext": "ts,json",
+	"exec": "echo Compiling TypeScript files... && tsc && echo Compiled! && echo Starting server! && node dist/index.js"
+}
