@@ -1,6 +1,6 @@
 // cSpell: disable
 import { createGlobalStyle } from 'styled-components';
-import { colors, darkBg, highlights, lightBg, text } from '../theme/constants';
+import { colors, darkBg, highlights, lightBg, text, shadows } from '../theme/constants';
 
 type Props = {
 	dark: 0 | 1;
@@ -41,6 +41,7 @@ a:not(.nope):hover, a:not(.nope):focus {
 	color: ${colors.white1};
 	background-color: ${({ dark }) => (dark ? colors.pink : colors.azure)};
 	border-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
+	box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer2)};
 }
 .btn-primary:hover {
 	color: ${colors.white1};
@@ -53,6 +54,24 @@ a:not(.nope):hover, a:not(.nope):focus {
 	background-color: ${({ dark }) => (dark ? '#ff44a0' : '#0d68e3')};
 	border-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
 	box-shadow: ${({ dark }) => (dark ? 'none' : `0 0 0 0.25rem ${highlights.blue}`)};
+}
+
+.is-valid {
+	border-color: ${({ dark }) => (dark ? colors.darkSuccess : colors.lightSuccess)};
+}
+
+.is-valid:focus {
+	border-color: ${({ dark }) => (dark ? colors.darkSuccess : colors.lightSuccess)};
+	box-shadow: 0 0 0 0.25rem ${({ dark }) => (dark ? 'rgba(61, 237, 151, 0.25)' : 'rgba(25, 135, 84, 0.25)')};
+}
+
+.is-invalid {
+	border-color: ${({ dark }) => (dark ? colors.darkErr : colors.lightErr)};
+}
+
+.is-invalid:focus {
+	border-color: ${({ dark }) => (dark ? colors.darkErr : colors.lightErr)};
+	box-shadow: 0 0 0 0.25rem ${({ dark }) => (dark ? 'rgba(207, 102, 121, 0.25)' : 'rgba(176, 0, 32, 0.25)')};
 }
 `;
 
