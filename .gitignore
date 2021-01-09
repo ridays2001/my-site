@@ -4,6 +4,8 @@
 *log*
 */build/
 *cache*
+*/dist/
+*.vscode/
 
 # Include these.
 !*logo*
