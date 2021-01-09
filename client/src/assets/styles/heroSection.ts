@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, devices, shadows } from '../theme/constants';
+import { colors, devices, shadows, text } from '../theme/constants';
 
 type Props = {
 	dark: 0 | 1;
@@ -26,6 +26,7 @@ const Section = styled.section<Props>`
 		border-radius: 14px;
 		font-size: 0.75rem;
 		margin-top: -1rem;
+		color: ${({ dark }) => (dark ? text.darkHigh : text.lightHigh)};
 	}
 
 	${devices.xs} {
