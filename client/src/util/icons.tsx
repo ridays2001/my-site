@@ -104,7 +104,7 @@ export const GitHub = ({ dark }: Props) => (
 		width='24'
 		height='24'
 		viewBox='0 0 24 24'
-		fill={dark ? '#ffffff' : '#000000'}
+		fill={dark ? '#ffffff' : '#181717'}
 		aria-label='GitHub icon'
 	>
 		<path
