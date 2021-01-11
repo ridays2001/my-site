@@ -17,7 +17,6 @@
 	"license": "MIT",
 	"dependencies": {
 		"@sentry/node": "^5.29.2",
-		"@sentry/tracing": "^5.29.2",
 		"cors": "^2.8.5",
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
