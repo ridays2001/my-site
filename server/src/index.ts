@@ -5,10 +5,11 @@ dotenv.config();
 import cors from 'cors';
 import logger from 'morgan';
 import db from './util/db';
-import router from './router';
+import testimonials from './routers/testimonials';
 import * as sentry from '@sentry/node';
 import { join } from 'path';
 import rateLimit from 'express-rate-limit';
+import contact from './routers/contact';
 
 import express from 'express';
 const app = express();
@@ -39,8 +40,10 @@ app.use(baseLimiter);
 // Trust first proxy.
 app.set('trust proxy', 1);
 
-// Use the router.
-app.use('/', router);
+// Use the routers.
+app.get('/', (_req, res) => res.end('Hello World!'));
+app.use('/contact', contact);
+app.use('/testimonials', testimonials);
 
 // Attach sentry error handling middleware.
 app.use(sentry.Handlers.errorHandler());
