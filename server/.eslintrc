@@ -10,6 +10,7 @@
 			{
 				"ignorePattern": "prettier.*|cSpell.*"
 			}
-		]
+		],
+		"@typescript-eslint/naming-convention": "off"
 	}
 }
