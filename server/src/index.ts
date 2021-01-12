@@ -8,6 +8,7 @@ import db from './util/db';
 import router from './router';
 import * as sentry from '@sentry/node';
 import { join } from 'path';
+import rateLimit from 'express-rate-limit';
 
 import express from 'express';
 const app = express();
@@ -18,6 +19,14 @@ sentry.init({
 	integrations: [new sentry.Integrations.Http({ tracing: true })]
 });
 
+// Base Rate Limiter - 100 requests in 10 mins.
+const baseLimiter = rateLimit({
+	windowMs: 10 * 60 * 1000,
+	max: 100,
+	message: 'Please slow down.',
+	headers: true
+});
+
 // Attach middleware.
 app.use(sentry.Handlers.requestHandler());
 app.use(cors());
@@ -25,6 +34,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(join(__dirname, 'public')));
+app.use(baseLimiter);
 
 // Trust first proxy.
 app.set('trust proxy', 1);
