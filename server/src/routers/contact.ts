@@ -22,11 +22,16 @@ router.post('/', limiter, async (req, res) => {
 	const collection = db.db('main').collection<ContactForm>('contact');
 	const count = await collection.countDocuments();
 
-	const { email, message, name } = req.body as ContactForm;
+	const { message, name } = req.body as ContactForm;
+	const email = (req.body as ContactForm).email.trim();
 
 	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 	if (!email?.length || !name?.length || !message?.length) {
 		return res.status(502).end('Incomplete Body.');
+	}
+
+	if (!/.*@.*[.].*/g.test(email) || message.length < 10 || name.length < 2) {
+		return res.status(502).end('Invalid Body.');
 	}
 
 	void collection.insertOne({ id: count + 1, email, message, name, timestamp: Date.now() });

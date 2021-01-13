@@ -36,6 +36,10 @@ router.post('/', limiter, (req, res) => {
 		return res.status(502).end('Incomplete Body.');
 	}
 
+	if (message.length < 25 || rating < 0 || rating > 5 || name.length < 2) {
+		return res.status(502).end('Invalid Body.');
+	}
+
 	void db
 		.db('main')
 		.collection<Testimonial>('testimonials')
