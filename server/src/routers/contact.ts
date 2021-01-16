@@ -3,6 +3,7 @@ import rateLimit from 'express-rate-limit';
 import fetch from 'node-fetch';
 import db from '../util/db';
 import type { ContactForm } from '../util/schemas';
+import { collections } from '../util/schemas';
 import sendMail from '../util/sendMail';
 import contactConfirmation from '../util/templates/contactConfirmation';
 import contactMessage from '../util/templates/contactMessage';
@@ -19,19 +20,18 @@ const limiter = rateLimit({
 });
 
 router.post('/', limiter, async (req, res) => {
-	const collection = db.db('main').collection<ContactForm>('contact');
+	const collection = db.db('main').collection<ContactForm>(collections.contact);
 	const count = await collection.countDocuments();
 
-	const { message, name } = req.body as ContactForm;
-	const email = (req.body as ContactForm).email.trim();
+	const { message, name } = req.body as ContactForm | Record<string, undefined>;
+	const email = (req.body as ContactForm | Record<string, undefined>).email?.trim();
 
-	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 	if (!email?.length || !name?.length || !message?.length) {
-		return res.status(502).end('Incomplete Body.');
+		return res.status(502).send('Incomplete Body.');
 	}
 
 	if (!/.*@.*[.].*/g.test(email) || message.length < 10 || name.length < 2) {
-		return res.status(502).end('Invalid Body.');
+		return res.status(502).send('Invalid Body.');
 	}
 
 	void collection.insertOne({ id: count + 1, email, message, name, timestamp: Date.now() });
@@ -62,7 +62,7 @@ router.post('/', limiter, async (req, res) => {
 		});
 	} catch (err) {
 		sentry.captureException(err);
-		return res.status(503).end('Internal server error.');
+		return res.status(503).send('Internal server error.');
 	}
 
 	try {
@@ -84,10 +84,10 @@ router.post('/', limiter, async (req, res) => {
 		});
 	} catch (err) {
 		sentry.captureException(err);
-		return res.status(503).end('Internal server error.');
+		return res.status(503).send('Internal server error.');
 	}
 
-	return res.end('Received.');
+	return res.send('Received.');
 });
 
 export default router;
