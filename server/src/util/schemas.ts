@@ -11,6 +11,7 @@ export interface BlogComments {
 }
 
 export interface BlogPost {
+	id: string;
 	title: string;
 	likes: number;
 	post: string;
@@ -24,3 +25,15 @@ export interface ContactForm {
 	message: string;
 	timestamp: number;
 }
+
+export interface Subscriber {
+	name: string;
+	email: string;
+}
+
+export const collections = {
+	blog: 'blog',
+	testimonials: 'testimonials',
+	contact: 'contact',
+	subs: 'subscribers'
+};
