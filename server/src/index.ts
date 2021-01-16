@@ -4,12 +4,14 @@ dotenv.config();
 
 import cors from 'cors';
 import logger from 'morgan';
+import cookies from 'cookie-parser';
 import db from './util/db';
 import testimonials from './routers/testimonials';
 import * as sentry from '@sentry/node';
 import { join } from 'path';
 import rateLimit from 'express-rate-limit';
 import contact from './routers/contact';
+import blog from './routers/blog';
 
 import express from 'express';
 const app = express();
@@ -36,14 +38,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(join(__dirname, 'public')));
 app.use(baseLimiter);
+app.use(cookies());
 
 // Trust first proxy.
 app.set('trust proxy', 1);
 
 // Use the routers.
-app.get('/', (_req, res) => res.end('Hello World!'));
+app.get('/', (_req, res) => res.send('Hello World!'));
 app.use('/contact', contact);
 app.use('/testimonials', testimonials);
+app.use('/blog', blog);
 
 // Attach sentry error handling middleware.
 app.use(sentry.Handlers.errorHandler());
@@ -57,7 +61,7 @@ app.use((req, res) => {
 		sentry.captureMessage(`[404] ${req.url.replace('/client', '')}`);
 	});
 
-	return res.status(404).end('Error: Not Found!');
+	return res.status(404).send('Error: Not Found!');
 });
 
 // Start the server.
