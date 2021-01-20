@@ -1,9 +1,13 @@
 import * as sentry from '@sentry/node';
 import rateLimit from 'express-rate-limit';
 import fetch from 'node-fetch';
+
+// Database and schemas.
 import db from '../util/db';
 import type { ContactForm } from '../util/schemas';
 import { collections } from '../util/schemas';
+
+// Mail and templates.
 import sendMail from '../util/sendMail';
 import contactConfirmation from '../util/templates/contactConfirmation';
 import contactMessage from '../util/templates/contactMessage';
@@ -38,7 +42,7 @@ router.post('/', limiter, async (req, res) => {
 
 	// Send contact forms to Discord channel, via a webhook.
 	try {
-		await fetch(process.env.WEBHOOK as string, {
+		await fetch(process.env.WB_Contact as string, {
 			method: 'POST',
 			body: JSON.stringify({
 				tts: false,

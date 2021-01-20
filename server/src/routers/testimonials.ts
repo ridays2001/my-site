@@ -1,4 +1,8 @@
+import { captureException } from '@sentry/node';
 import rateLimit from 'express-rate-limit';
+import fetch from 'node-fetch';
+
+// Database and schemas.
 import db from '../util/db';
 import type { Testimonial } from '../util/schemas';
 import { collections } from '../util/schemas';
@@ -28,7 +32,7 @@ const limiter = rateLimit({
 });
 
 router.post('/', limiter, (req, res) => {
-	if (req.headers.authorization !== (process.env.AUTH as string)) return res.status(501).send('Denied!');
+	if (req.headers.authorization !== (process.env.AUTH as string)) return res.status(403).send('Denied!');
 	const { message, name, rating } = req.body as Testimonial | Record<string, undefined>;
 
 	if (!message?.length || !name?.length || !rating) {
@@ -43,6 +47,24 @@ router.post('/', limiter, (req, res) => {
 		.db('main')
 		.collection<Testimonial>(collections.testimonials)
 		.insertOne({ message, name, rating: Number(rating) });
+
+	void fetch(process.env.WB_Subs as string, {
+		method: 'POST',
+		body: JSON.stringify({
+			tts: false,
+			embeds: [
+				{
+					color: 0x007af5,
+					author: { name },
+					description: `__**Rating:**__${rating}\n__**Message:**__ ${message}`,
+					timestamp: new Date()
+				}
+			]
+		}),
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}).catch(err => captureException(err));
 
 	return res.send('Saved.');
 });
