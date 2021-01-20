@@ -6,6 +6,7 @@
 *cache*
 */dist/
 *.vscode/
+*.code-workspace
 
 # Include these.
 !*logo*
