@@ -4,18 +4,30 @@ export interface Testimonial {
 	message: string;
 }
 
-export interface BlogComments {
+export interface PublicComment {
 	name: string;
-	email: string;
 	comment: string;
+	timestamp: number;
 }
 
-export interface BlogPost {
+export interface BlogComment extends PublicComment {
+	email: string;
+}
+
+interface Post {
 	id: string;
 	title: string;
 	likes: number;
 	post: string;
-	comments: Array<BlogComments>;
+	timestamp: number;
+}
+
+export interface PublicPost extends Post {
+	comments: Array<PublicComment>;
+}
+
+export interface BlogPost extends Post {
+	comments: Array<BlogComment>;
 }
 
 export interface ContactForm {
