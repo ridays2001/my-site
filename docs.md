@@ -76,7 +76,29 @@ This file contains the list of all routes planned for the site.
         ```
     + *Ratelimit:* 100 requests / 10 mins.
 - Get 5 Recent Blog Posts
-    + `GET /blog/`
+    + `GET /blog`
+    + *Response:*
+        ```json
+        [
+            {
+                "id": "string",
+	            "title": "string",
+	            "post": "string",
+	            "likes": 0,
+	            "timestamp": 0,
+	            "comments": [
+                    {
+                        "name": "string",
+	                    "comment": "string",
+	                    "timestamp": 0
+                    }
+                ]
+            }
+        ]
+        ```
+    + *Ratelimit:* 100 requests / 10 mins.
+- Get All Blog Posts
+    + `GET /blog/posts`
     + *Response:*
         ```json
         [
