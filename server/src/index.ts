@@ -12,6 +12,7 @@ import { join } from 'path';
 import rateLimit from 'express-rate-limit';
 import contact from './routers/contact';
 import blog from './routers/blog';
+import parseMd from './util/parseMd';
 
 import express from 'express';
 const app = express();
@@ -38,7 +39,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(join(__dirname, 'public')));
 app.use(baseLimiter);
-app.use(cookies());
+app.use(cookies(process.env.SECRET));
 
 // Trust first proxy.
 app.set('trust proxy', 1);
@@ -48,6 +49,25 @@ app.get('/', (_req, res) => res.send('Hello World!'));
 app.use('/contact', contact);
 app.use('/testimonials', testimonials);
 app.use('/blog', blog);
+app.get('/login/:secret', (req, res) => {
+	const { secret } = req.params as { secret?: string };
+	if (!secret?.length) return res.status(403).end('Denied!');
+	if (secret !== process.env.SECRET) return res.status(403).end('Denied!');
+	res.cookie('secret', process.env.SECRET, {
+		path: '/',
+		signed: true,
+		httpOnly: true,
+		sameSite: 'strict',
+		// 6 hours.
+		maxAge: 6 * 60 * 60
+	});
+	return res.end('Logged in successfully.');
+});
+app.post('/parse', (req, res) => {
+	const { md } = req.body as { md?: string };
+	if (!md?.length) return res.status(502).send('Incomplete Body');
+	return res.json({ parsed: parseMd(md) });
+});
 
 // Attach sentry error handling middleware.
 app.use(sentry.Handlers.errorHandler());
