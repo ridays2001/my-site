@@ -1,10 +1,11 @@
 import { captureException } from '@sentry/node';
 import rateLimit from 'express-rate-limit';
 import fetch from 'node-fetch';
+import parseMd from '../util/parseMd';
 
 // Database and schemas.
 import db from '../util/db';
-import type { BlogComments, BlogPost, Subscriber } from '../util/schemas';
+import type { BlogComment, BlogPost, Subscriber, PublicPost } from '../util/schemas';
 import { collections } from '../util/schemas';
 
 // Mail and templates.
@@ -18,27 +19,48 @@ const router = express.Router();
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 router.get('/', async (_req, res) => {
-	const posts: Array<BlogPost> = [];
+	const posts: Array<PublicPost> = [];
 	await db
 		.db('main')
 		.collection<BlogPost>(collections.blog)
-		.find()
-		.limit(5)
+		.find({}, { sort: { timestamp: 1 }, limit: 5 })
 		.toArray()
-		.then(blogPosts => posts.push(...blogPosts));
+		.then(blogPosts => {
+			blogPosts.forEach(({ comments, id, likes, post, timestamp, title }) => {
+				posts.push({
+					comments: comments.map(c => ({ name: c.name, comment: c.comment, timestamp: c.timestamp })),
+					id,
+					likes,
+					post,
+					timestamp,
+					title
+				});
+			});
+		});
 
 	return res.json(posts);
 });
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 router.get('/posts', async (_req, res) => {
-	const posts: Array<BlogPost> = [];
+	const posts: Array<PublicPost> = [];
 	await db
 		.db('main')
 		.collection<BlogPost>(collections.blog)
 		.find()
 		.toArray()
-		.then(blogPosts => posts.push(...blogPosts));
+		.then(blogPosts => {
+			blogPosts.forEach(({ comments, id, likes, post, timestamp, title }) => {
+				posts.push({
+					comments: comments.map(c => ({ name: c.name, comment: c.comment, timestamp: c.timestamp })),
+					id,
+					likes,
+					post,
+					timestamp,
+					title
+				});
+			});
+		});
 
 	return res.json(posts);
 });
@@ -53,7 +75,7 @@ const limiter = rateLimit({
 
 router.post('/posts', limiter, async (req, res) => {
 	if (req.headers.authorization !== (process.env.AUTH as string)) return res.status(403).send('Denied!');
-	if ((req.cookies as { secret: string } | undefined)?.secret !== process.env.SECRET) {
+	if ((req.signedCookies as { secret: string } | undefined)?.secret !== process.env.SECRET) {
 		return res.status(403).send('Denied!');
 	}
 
@@ -98,7 +120,10 @@ router.post('/posts', limiter, async (req, res) => {
 		});
 	}
 
-	void db.db('main').collection<BlogPost>(collections.blog).insertOne({ id, post, title, comments: [], likes: 0 });
+	void db
+		.db('main')
+		.collection<BlogPost>(collections.blog)
+		.insertOne({ id, post: parseMd(post), title, comments: [], likes: 0, timestamp: Date.now() });
 
 	return res.send('Saved.');
 });
@@ -109,22 +134,37 @@ router.get('/posts/:id', async (req, res) => {
 	if (!id?.length) return res.status(504).send('Post does not exist.');
 	const post = await db.db('main').collection<BlogPost>(collections.blog).findOne({ id });
 	if (!post?.id) return res.status(504).send('Post does not exist.');
-	return res.json(post);
+	const response: PublicPost = {
+		comments: post.comments.map(c => ({ name: c.name, comment: c.comment, timestamp: c.timestamp })),
+		id: post.id,
+		likes: post.likes,
+		post: post.post,
+		timestamp: post.timestamp,
+		title: post.title
+	};
+	return res.json(response);
 });
 
 router.post('/comments/:post', (req, res) => {
 	if (req.headers.authorization !== (process.env.AUTH as string)) return res.status(403).send('Denied!');
-	const { comment, email, name } = req.body as BlogComments | Record<string, undefined>;
+	const { comment, email, name } = req.body as BlogComment | Record<string, undefined>;
 	const { post } = req.params as { post?: string };
 
 	if (!comment?.length || !email?.length || !name?.length || !post?.length) {
 		return res.status(502).send('Incomplete Body.');
 	}
 
+	if (!/.*@.*[.].*/g.test(email) || name.length < 2) {
+		return res.status(502).send('Invalid Body.');
+	}
+
 	void db
 		.db('main')
 		.collection<BlogPost>(collections.blog)
-		.updateOne({ id: post }, { $push: { comments: { $each: [{ comment, email, name }] } } });
+		.updateOne(
+			{ id: post },
+			{ $push: { comments: { $each: [{ comment: parseMd(comment), email, name, timestamp: Date.now() }] } } }
+		);
 
 	void fetch(process.env.WB_Subs as string, {
 		method: 'POST',
