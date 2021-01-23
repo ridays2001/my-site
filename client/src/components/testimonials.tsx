@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import ReviewSection from '../assets/styles/reviewSection';
 import { QuoEnd, QuoStart, Star, StarFill } from '../util/icons';
-import reviewsData, { Review } from '../util/reviews';
+import type { Review } from '../util/reviews';
+import reviewsData from '../util/reviews';
 
-type Props = { dark: boolean; className: string };
+interface Props {
+	dark: boolean;
+	className: string;
+}
 
 const Testimonials = ({ className, dark }: Props) => {
 	const [index, setIndex] = useState(0);

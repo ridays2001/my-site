@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { colors, highlights, shadows, text } from '../theme/constants';
 
-type Props = {
+interface Props {
 	dark: 0 | 1;
-};
+}
 
 const ContactSection = styled.section<Props>`
 	h2 {
@@ -50,6 +50,7 @@ const ContactSection = styled.section<Props>`
 
 	li::before {
 		content: '▹';
+		font-size: 1.5rem;
 		margin-left: 0.75rem;
 		margin-right: 0.75rem;
 		color: ${({ dark }) => (dark ? colors.pink : colors.azure)};

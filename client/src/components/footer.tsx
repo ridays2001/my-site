@@ -1,7 +1,9 @@
 import React from 'react';
 import AppFooter from '../assets/styles/appFooter';
 
-type Props = { dark: boolean };
+interface Props {
+	dark: boolean;
+}
 
 const Footer = ({ dark }: Props) => (
 	<AppFooter dark={dark ? 1 : 0}>

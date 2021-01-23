@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { colors, devices, shadows, text } from '../theme/constants';
 
-type Props = {
+interface Props {
 	dark: 0 | 1;
-};
+}
 
 const Section = styled.section<Props>`
 	padding: 1.25em;

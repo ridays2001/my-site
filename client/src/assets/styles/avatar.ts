@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { colors, devices, shadows } from '../theme/constants';
 
-type Props = {
+interface Props {
 	dark: 0 | 1;
-};
+}
 
 const Avatar = styled.img<Props>`
 	border-radius: 50%;

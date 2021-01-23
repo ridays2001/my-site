@@ -1,4 +1,5 @@
-import React, { ReactNode, useLayoutEffect, useState } from 'react';
+import type { ReactNode } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import Bootstrap from '../styles/bootstrap';
 import MainStyle from '../styles/main';
 import { colors } from './constants';

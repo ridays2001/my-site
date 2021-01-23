@@ -1,10 +1,10 @@
 import React from 'react';
 import { highlights } from '../assets/theme/constants';
 
-type Props = {
+interface Props {
 	dark: boolean;
 	className?: string;
-};
+}
 
 const getFill = (dark: boolean) => (dark ? highlights.pink : highlights.blue);
 

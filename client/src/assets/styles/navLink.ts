@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { breakpoints, colors, highlights } from '../theme/constants';
 
-type Props = {
+interface Props {
 	dark: 0 | 1;
 	active: 0 | 1;
-};
+}
 
 const NavLink = styled(Link)<Props>`
 	color: ${({ active, dark }) => (active ? colors.white1 : dark ? colors.pink : colors.azure)};

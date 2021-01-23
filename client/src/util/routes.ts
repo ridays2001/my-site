@@ -4,12 +4,12 @@ import Contact from '../routes/contact';
 import Home from '../routes/home';
 import Projects from '../routes/projects';
 
-type RouteType = {
+interface RouteType {
 	exact?: boolean;
 	path?: string;
 	component: () => JSX.Element;
 	key: string;
-};
+}
 
 const routes: Array<RouteType> = [
 	{

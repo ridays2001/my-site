@@ -7,9 +7,9 @@ import ThemeSwitch from './themeSwitch';
 
 type Pages = 'home' | 'contact' | 'blog' | 'about' | 'projects';
 
-type Props = {
+interface Props {
 	active: Pages;
-};
+}
 
 const Nav = ({ active }: Props) => {
 	const { dark } = useContext(ThemeContext);

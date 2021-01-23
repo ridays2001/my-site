@@ -1,10 +1,9 @@
-// cSpell: disable
 import { createGlobalStyle } from 'styled-components';
 import { colors, darkBg, highlights, lightBg, shadows, text } from '../theme/constants';
 
-type Props = {
+interface Props {
 	dark: 0 | 1;
-};
+}
 
 const Theme = createGlobalStyle<Props>`
 body {

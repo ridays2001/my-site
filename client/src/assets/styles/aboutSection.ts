@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { colors, devices, shadows, text } from '../theme/constants';
 
-type Props = {
+interface Props {
 	dark: 1 | 0;
-};
+}
 
 const AboutSection = styled.section<Props>`
 	margin-bottom: 2.5em;

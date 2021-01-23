@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { text } from '../theme/constants';
 
-type Props = {
+interface Props {
 	dark: 1 | 0;
-};
+}
 
 const AppFooter = styled.footer<Props>`
 	margin-bottom: 25px;

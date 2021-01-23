@@ -1,7 +1,7 @@
 import React from 'react';
 import Languages, { css, electron, eslint, html, java, js, node, react, ts } from './languageLogos';
 
-type Project = {
+interface Project {
 	description: string;
 	github: string;
 	tech: JSX.Element;
@@ -10,7 +10,7 @@ type Project = {
 	timeline: string;
 	name: string;
 	featured: boolean;
-};
+}
 
 const gh = 'https://github.com/ridays2001';
 

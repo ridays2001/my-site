@@ -3,11 +3,11 @@ import ProjectSection from '../assets/styles/projectSection';
 import { BackEnd, FrontEnd, GitHub } from '../util/icons';
 import projects from '../util/projectsData';
 
-type Props = {
+interface Props {
 	dark: boolean;
 	className: string;
 	feat: boolean;
-};
+}
 
 const ListProjects = ({ className, dark, feat }: Props) => (
 	<ProjectSection className={className} dark={dark ? 1 : 0}>

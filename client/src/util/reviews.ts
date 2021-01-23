@@ -1,8 +1,8 @@
-export type Review = {
+export interface Review {
 	name: string;
 	message: string;
 	rating: number;
-};
+}
 
 // cSpell: disable
 const reviews: Array<Review> = [

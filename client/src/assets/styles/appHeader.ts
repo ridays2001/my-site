@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { colors, shadows, text } from '../theme/constants';
 
-type Props = {
+interface Props {
 	dark: 0 | 1;
 	bg: 0 | 1;
-};
+}
 
 const AppHeader = styled.header<Props>`
 	background-color: ${({ bg, dark }) => (bg ? (dark ? colors.dark3 : colors.white3) : 'inherit')};
