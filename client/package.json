@@ -49,6 +49,28 @@
 				{
 					"default": "generic"
 				}
+			],
+			"@typescript-eslint/consistent-type-definitions": [
+				"warn",
+				"interface"
+			],
+			"@typescript-eslint/consistent-indexed-object-style": [
+				"error",
+				"record"
+			],
+			"@typescript-eslint/consistent-type-assertions": [
+				"error",
+				{
+					"assertionStyle": "as",
+					"objectLiteralTypeAssertions": "allow-as-parameter"
+				}
+			],
+			"@typescript-eslint/consistent-type-imports": [
+				"error",
+				{
+					"prefer": "type-imports",
+					"disallowTypeAnnotations": true
+				}
 			]
 		}
 	},
