@@ -2,17 +2,18 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import cors from 'cors';
-import logger from 'morgan';
-import cookies from 'cookie-parser';
-import db from './util/db';
-import testimonials from './routers/testimonials';
 import * as sentry from '@sentry/node';
-import { join } from 'path';
+import cookies from 'cookie-parser';
+import cors from 'cors';
 import rateLimit from 'express-rate-limit';
-import contact from './routers/contact';
+import logger from 'morgan';
+import { join } from 'path';
 import blog from './routers/blog';
+import contact from './routers/contact';
+import testimonials from './routers/testimonials';
+import db from './util/db';
 import parseMd from './util/parseMd';
+import { collections } from './util/schemas';
 
 import express from 'express';
 const app = express();
@@ -91,6 +92,8 @@ app.listen(port, () => {
 		.connect()
 		.catch(console.log)
 		.then(() => console.log('Successfully connected to the Database.'));
+
+	void db.db('main').collection(collections.blog).createIndex({ id: 1 });
 
 	console.log(`Listening on http://localhost${port === 80 ? '' : port}/`);
 });
