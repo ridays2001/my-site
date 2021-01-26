@@ -76,7 +76,7 @@ const limiter = rateLimit({
 router.post('/posts', limiter, async (req, res) => {
 	if (req.headers.authorization !== (process.env.AUTH as string)) return res.status(403).send('Denied!');
 	if ((req.signedCookies as { secret: string } | undefined)?.secret !== process.env.SECRET) {
-		return res.status(403).send('Denied!');
+		return res.status(403).send('Denied Cookie!');
 	}
 
 	const { id, post, title } = req.body as BlogPost | Record<string, undefined>;
@@ -174,7 +174,7 @@ router.post('/comments/:post', (req, res) => {
 				{
 					color: 0x007af5,
 					author: { name },
-					description: `__**Post:**__${post}\n__**Comment:**__ ${comment}`,
+					description: `__**Post:**__ ${post}\n__**Comment:**__ ${comment}`,
 					timestamp: new Date()
 				}
 			]
@@ -259,7 +259,7 @@ router.get('/subscribe/:name/:email', subLimiter, (req, res) => {
 			embeds: [
 				{
 					color: 0x36ff9a,
-					description: `__**Name:**__${name}\n__**Email:**__ ${email}`,
+					description: `__**Name:**__ ${name}\n__**Email:**__ ${email}`,
 					timestamp: new Date()
 				}
 			]
