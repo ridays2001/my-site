@@ -48,7 +48,7 @@ jobs:
                             cd ~/codes/my-site/server
                             rm -rf dist
                             git pull
-                            cd ~/azagent/_work/1/drop
+                            cd ~/azagent/_work/3/drop
                             unzip *.zip
                             rm -rf *.zip
                             mv dist ~/codes/my-site/server/dist
