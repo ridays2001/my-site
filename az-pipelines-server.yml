@@ -42,6 +42,9 @@ jobs:
           runOnce:
               deploy:
                   steps:
+                      - script: |
+                            cd ~/azagent/_work/2/drop
+                            rm -rf *
                       - download: current
                         artifact: drop
                       - script: |
@@ -50,6 +53,5 @@ jobs:
                             git pull
                             cd ~/azagent/_work/2/drop
                             unzip *.zip
-                            rm -rf *.zip
                             mv dist ~/codes/my-site/server/dist
                             pm2 restart server

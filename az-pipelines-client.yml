@@ -40,15 +40,17 @@ jobs:
           tags: web
       strategy:
           runOnce:
-              preDeploy:
-                  steps:
-                      - download: current
-                        artifact: drop
               deploy:
                   steps:
                       - script: |
+                            cd ~/azagent/_work/4/drop
+                            rm -rf *
+                      - download: current
+                        artifact: drop
+                      - script: |
                             cd ~/codes/my-site/client
-                            git pull
+                            rm -rf build
                             cd ~/azagent/_work/4/drop
                             unzip *.zip
-                            mv build ~/codes/test/build
+                            mv build ~/codes/my-site/client/build
+                            pm2 restart client
