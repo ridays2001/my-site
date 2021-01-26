@@ -1,0 +1,58 @@
+trigger:
+    - main
+
+pool:
+    vmImage: 'ubuntu-latest'
+
+jobs:
+    - job: Build_Client
+      steps:
+          - task: NodeTool@0
+            inputs:
+                versionSpec: '15.x'
+            displayName: 'Install Node.js'
+
+          - script: |
+                cd client
+                npm install --legacy-peer-deps
+                npm run lint
+                npm run build
+            displayName: 'Build Client'
+
+          - task: ArchiveFiles@2
+            inputs:
+                rootFolderOrFile: '$(System.DefaultWorkingDirectory)/client/build'
+                includeRootFolder: true
+                archiveType: 'zip'
+                archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+                replaceExistingArchive: true
+          - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+            artifact: drop
+
+    - deployment: VMDeploy
+      dependsOn: Build_Client
+      displayName: Deploy
+      pool:
+          vmImage: 'Ubuntu-18.04'
+      environment:
+          name: My-Site
+          resourceType: VirtualMachine
+          tags: web
+      strategy:
+          runOnce:
+              preDeploy:
+                  steps:
+                      - download: current
+                        artifact: drop
+              deploy:
+                  steps:
+                      - script: |
+                            cd ~/codes/my-site/client
+                            git pull
+                            rm -rf build
+                            cd ~/azagent/_work/4/drop
+                            unzip *.zip
+                            rm -rf *.zip
+                            mv build ~/codes/my-site/client/build
+                            cd ~/codes/my-site/client
+                            pm2 restart client
