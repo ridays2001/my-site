@@ -49,10 +49,6 @@ jobs:
                       - script: |
                             cd ~/codes/my-site/client
                             git pull
-                            rm -rf build
                             cd ~/azagent/_work/4/drop
                             unzip *.zip
-                            rm -rf *.zip
-                            mv build ~/codes/my-site/client/build
-                            cd ~/codes/my-site/client
-                            pm2 restart client
+                            mv build ~/codes/test/build
