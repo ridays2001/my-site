@@ -47,7 +47,7 @@ const sendMail = ({ bcc, html, subject, text, to }: MailOptions) => {
 			},
 			to,
 			bcc,
-			replyTo: 'ridayshah2001@gmail.com',
+			replyTo: process.env.MyEmail as string,
 			subject,
 			text,
 			html
