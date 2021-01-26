@@ -35,17 +35,15 @@ jobs:
       pool:
           vmImage: 'Ubuntu-18.04'
       environment:
-          name: My-Site Server
+          name: My-Site
           resourceType: VirtualMachine
           tags: web
       strategy:
           runOnce:
-              preDeploy:
+              deploy:
                   steps:
                       - download: current
                         artifact: drop
-              deploy:
-                  steps:
                       - script: |
                             cd ~/codes/my-site/server
                             rm -rf dist
