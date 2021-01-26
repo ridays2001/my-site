@@ -34,7 +34,7 @@ const baseLimiter = rateLimit({
 
 // Attach middleware.
 app.use(sentry.Handlers.requestHandler());
-app.use(cors());
+app.use(cors({ credentials: true, origin: true }));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -60,10 +60,17 @@ app.get('/login/:secret', (req, res) => {
 		httpOnly: true,
 		sameSite: 'strict',
 		// 6 hours.
-		maxAge: 6 * 60 * 60
+		maxAge: 6 * 60 * 60 * 1000
 	});
 	return res.end('Logged in successfully.');
 });
+app.get('/verify', (req, res) => {
+	if ((req.signedCookies as { secret: string } | undefined)?.secret !== process.env.SECRET) {
+		return res.status(403).send('Denied Cookie!');
+	}
+	return res.send('Success!');
+});
+
 app.post('/parse', (req, res) => {
 	const { md } = req.body as { md?: string };
 	if (!md?.length) return res.status(502).send('Incomplete Body');
@@ -91,9 +98,10 @@ app.listen(port, () => {
 	void db
 		.connect()
 		.catch(console.log)
-		.then(() => console.log('Successfully connected to the Database.'));
-
-	void db.db('main').collection(collections.blog).createIndex({ id: 1 });
+		.then(() => {
+			console.log('Successfully connected to the Database.');
+			void db.db('main').collection(collections.blog).createIndex({ id: 1 });
+		});
 
 	console.log(`Listening on http://localhost${port === 80 ? '' : port}/`);
 });
