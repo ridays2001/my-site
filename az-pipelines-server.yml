@@ -5,7 +5,7 @@ pool:
     vmImage: 'ubuntu-latest'
 
 jobs:
-    - job: Build_Server
+    - job: Build
       steps:
           - task: NodeTool@0
             inputs:
@@ -30,7 +30,7 @@ jobs:
             artifact: drop
 
     - deployment: VMDeploy
-      dependsOn: Build_Server
+      dependsOn: Build
       displayName: Deploy
       pool:
           vmImage: 'Ubuntu-18.04'
