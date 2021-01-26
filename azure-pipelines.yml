@@ -1,0 +1,54 @@
+trigger:
+    - main
+
+pool:
+    vmImage: 'ubuntu-latest'
+
+jobs:
+    - job: Build_Server
+      steps:
+          - task: NodeTool@0
+            inputs:
+                versionSpec: '15.x'
+            displayName: 'Install Node.js'
+
+          - script: |
+                cd server
+                npm install
+                npm run build
+            displayName: 'Build Server'
+
+          - task: ArchiveFiles@2
+            inputs:
+                rootFolderOrFile: '$(System.DefaultWorkingDirectory)/server/dist'
+                includeRootFolder: true
+                archiveType: 'zip'
+                archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+                replaceExistingArchive: true
+          - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+            artifact: drop
+
+    - deployment: VMDeploy
+      dependsOn: Build_Server
+      displayName: Deploy
+      pool:
+          vmImage: 'Ubuntu-18.04'
+      environment:
+          name: My-Site Server
+          resourceType: VirtualMachine
+          tags: web
+      strategy:
+          runOnce:
+              preDeploy:
+                  steps:
+                      - download: current
+                        artifact: drop
+              deploy:
+                  steps:
+                      - script: |
+                            cd ~/codes/my-site/server
+                            rm -rf dist
+                            cd ~/azagent/_work/1/drop
+                            unzip *.zip
+                            rm -rf *.zip
+                            mv dist ~/codes/my-site/server/dist
