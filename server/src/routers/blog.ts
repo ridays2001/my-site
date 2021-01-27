@@ -166,7 +166,7 @@ router.post('/comments/:post', (req, res) => {
 			{ $push: { comments: { $each: [{ comment: parseMd(comment), email, name, timestamp: Date.now() }] } } }
 		);
 
-	void fetch(process.env.WB_Subs as string, {
+	void fetch(process.env.WB_Misc as string, {
 		method: 'POST',
 		body: JSON.stringify({
 			tts: false,

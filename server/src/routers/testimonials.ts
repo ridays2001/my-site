@@ -48,7 +48,7 @@ router.post('/', limiter, (req, res) => {
 		.collection<Testimonial>(collections.testimonials)
 		.insertOne({ message, name, rating: Number(rating) });
 
-	void fetch(process.env.WB_Subs as string, {
+	void fetch(process.env.WB_Misc as string, {
 		method: 'POST',
 		body: JSON.stringify({
 			tts: false,
