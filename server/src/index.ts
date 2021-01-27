@@ -59,6 +59,7 @@ app.get('/login/:secret', (req, res) => {
 		signed: true,
 		httpOnly: true,
 		sameSite: 'strict',
+		secure: true,
 		// 6 hours.
 		maxAge: 6 * 60 * 60 * 1000
 	});
