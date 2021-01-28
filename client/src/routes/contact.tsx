@@ -6,6 +6,7 @@ import ThemeContext from '../assets/theme/themeContext';
 import Nav from '../components/nav';
 import { GitHub } from '../util/icons';
 import { discordInv } from '../util/misc';
+import { submitContact } from '../util/api';
 
 const Contact = () => {
 	const { dark } = useContext(ThemeContext);
@@ -14,6 +15,7 @@ const Contact = () => {
 	const [isNameValid, validateName] = useState(false);
 	const [isEmailValid, validateEmail] = useState(false);
 	const [isSubmitted, setSubmitted] = useState(false);
+	const [fail, setFail] = useState(false);
 
 	useEffect(() => {
 		document.title = 'Contact Me | Riday Shah';
@@ -29,7 +31,7 @@ const Contact = () => {
 		else validateEmail(false);
 	};
 
-	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		const name = document.getElementById('name') as HTMLInputElement;
@@ -41,20 +43,25 @@ const Contact = () => {
 		if (message.value.length < 10) {
 			return alert('Please enter a proper message so that I can get back to you.');
 		}
+		await submitContact(name.value, email.value, message.value)
+			.then((res) => {
+				setSubmitted(true);
+				if (res.status !== 200) {
+					setFail(true);
+				}
+			})
+			.catch(() => {
+				setSubmitted(true);
+				setFail(true);
+			});
 	};
 
 	return (
 		<Fragment>
 			<Nav active='contact' />
+			<h2>Contact Me</h2>
 			<ContactSection dark={dark ? 1 : 0}>
-				<h2>Contact Me</h2>
-
-				{/* TODO:
-					- Form submission confirmation message.
-					- Setup backend and connect it.
-				*/}
-
-				<div id='social' className='col-md-8 col-xl-6 mx-auto'>
+				<article id='social' className='col-md-8 col-xl-6 mx-auto'>
 					The fastest way to contact me would be either to send me a message on Discord, or send me an email.
 					I typically reply within a few mins during the day. Meanwhile, you can stalk me on my social
 					profiles:
@@ -149,63 +156,92 @@ const Contact = () => {
 							</a>
 						</li>
 					</ul>
-				</div>
+				</article>
 
-				<div id='form' className='col-md-8 col-xl-6 mx-auto text-start text-md-center'>
-					<h4 className='mt-2 mb-5 text-center'>Contact Form</h4>
-					<form onSubmit={handleSubmit}>
-						<div className='row my-3'>
-							<div className='col-md-3'>
-								<label htmlFor='name'>Name</label>
+				<article id='form' className='col-md-8 col-xl-6 mx-auto text-start text-md-center'>
+					<h4 className={`mt-2 ${isSubmitted ? 'mb-3' : 'mb-5'} text-center`}>Contact Form</h4>
+					{!isSubmitted && (
+						<form onSubmit={handleSubmit}>
+							<div className='row my-3'>
+								<div className='col-md-3'>
+									<label htmlFor='name'>Name</label>
+								</div>
+								<div className='col-md-9'>
+									<input
+										type='text'
+										name='name'
+										id='name'
+										className={`form-control ${
+											isNameTouched ? (isNameValid ? 'is-valid' : 'is-invalid') : ''
+										}`}
+										onChange={handleChange}
+										onBlur={() => (isNameTouched ? undefined : touchName(true))}
+										required
+									/>
+								</div>
 							</div>
-							<div className='col-md-9'>
-								<input
-									type='text'
-									name='name'
-									id='name'
-									className={`form-control ${
-										isNameTouched ? (isNameValid ? 'is-valid' : 'is-invalid') : ''
-									}`}
-									onChange={handleChange}
-									onBlur={() => (isNameTouched ? undefined : touchName(true))}
-								/>
-							</div>
-						</div>
 
-						<div className='row my-3'>
-							<div className='col-md-3'>
-								<label htmlFor='email'>Email</label>
+							<div className='row my-3'>
+								<div className='col-md-3'>
+									<label htmlFor='email'>Email</label>
+								</div>
+								<div className='col-md-9'>
+									<input
+										type='email'
+										name='email'
+										id='email'
+										className={`form-control ${
+											isEmailTouched ? (isEmailValid ? 'is-valid' : 'is-invalid') : ''
+										}`}
+										onChange={handleChange}
+										onBlur={() => (isEmailTouched ? undefined : touchEmail(true))}
+										required
+									/>
+								</div>
 							</div>
-							<div className='col-md-9'>
-								<input
-									type='email'
-									name='email'
-									id='email'
-									className={`form-control ${
-										isEmailTouched ? (isEmailValid ? 'is-valid' : 'is-invalid') : ''
-									}`}
-									onChange={handleChange}
-									onBlur={() => (isEmailTouched ? undefined : touchEmail(true))}
-								/>
-							</div>
-						</div>
 
-						<div className='row my-3'>
-							<div className='col-md-3'>
-								<label htmlFor='message'>Message</label>
+							<div className='row my-3'>
+								<div className='col-md-3'>
+									<label htmlFor='message'>Message</label>
+								</div>
+								<div className='col-md-9'>
+									<textarea
+										name='message'
+										id='message'
+										className='form-control'
+										rows={5}
+										required
+									></textarea>
+								</div>
 							</div>
-							<div className='col-md-9'>
-								<textarea name='message' id='message' className='form-control' rows={5}></textarea>
-							</div>
-						</div>
 
-						<div className='row mt-5 mb-3'>
-							<button type='submit' className='col-5 col-md-4 col-xl-3 col-xxl-2 btn btn-primary mx-auto'>
-								Submit
-							</button>
-						</div>
-					</form>
-				</div>
+							<div className='row mt-5 mb-3'>
+								<button type='submit' className='col-5 col-md-4 col-xl-3 col-xxl-2 btn-primary mx-auto'>
+									Submit
+								</button>
+							</div>
+						</form>
+					)}
+					{isSubmitted && !fail && (
+						<main className='alert alert-success' role='alert'>
+							<h4 className='alert-heading'>Submitted Successfully!</h4>
+							<p>
+								The form was successfully received by the server. You will receive a confirmation email
+								soon.
+							</p>
+						</main>
+					)}
+					{isSubmitted && fail && (
+						<main className='alert alert-danger' role='alert'>
+							<h4 className='alert-heading'>Something Went Wrong!</h4>
+							<p>
+								Something went wrong while submitting the form to the server. The form was{' '}
+								<strong>not received</strong>. Please try again later, or contact me directly using one
+								of my social media profiles listed above.
+							</p>
+						</main>
+					)}
+				</article>
 			</ContactSection>
 		</Fragment>
 	);
