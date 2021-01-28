@@ -1,5 +1,6 @@
 import About from '../routes/about';
 import Blog from '../routes/blog';
+import BlogPost from '../routes/blogPost';
 import Contact from '../routes/contact';
 import Home from '../routes/home';
 import Projects from '../routes/projects';
@@ -33,6 +34,11 @@ const routes: Array<RouteType> = [
 		key: 'blog',
 		path: '/blog',
 		exact: true
+	},
+	{
+		component: BlogPost,
+		key: 'blogPost',
+		path: '/blog/posts/:id'
 	},
 	{
 		component: Projects,
