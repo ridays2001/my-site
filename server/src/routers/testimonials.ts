@@ -32,15 +32,15 @@ const limiter = rateLimit({
 });
 
 router.post('/', limiter, (req, res) => {
-	if (req.headers.authorization !== (process.env.AUTH as string)) return res.status(403).send('Denied!');
+	if (req.headers.authorization !== (process.env.AUTH as string)) return res.status(401).send('Denied!');
 	const { message, name, rating } = req.body as Testimonial | Record<string, undefined>;
 
 	if (!message?.length || !name?.length || !rating) {
-		return res.status(502).send('Incomplete Body.');
+		return res.status(400).send('Incomplete Body.');
 	}
 
 	if (message.length < 25 || rating < 0 || rating > 5 || name.length < 2) {
-		return res.status(502).send('Invalid Body.');
+		return res.status(400).send('Invalid Body.');
 	}
 
 	void db
@@ -66,7 +66,7 @@ router.post('/', limiter, (req, res) => {
 		}
 	}).catch(err => captureException(err));
 
-	return res.send('Saved.');
+	return res.status(201).send('Saved.');
 });
 
 export default router;

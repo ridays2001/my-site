@@ -74,14 +74,14 @@ const limiter = rateLimit({
 });
 
 router.post('/posts', limiter, async (req, res) => {
-	if (req.headers.authorization !== (process.env.AUTH as string)) return res.status(403).send('Denied!');
+	if (req.headers.authorization !== (process.env.AUTH as string)) return res.status(401).send('Denied!');
 	if ((req.signedCookies as { secret: string } | undefined)?.secret !== process.env.SECRET) {
-		return res.status(403).send('Denied Cookie!');
+		return res.status(403).send('Missing or Invalid Cookie!');
 	}
 
 	const { id, post, title } = req.body as BlogPost | Record<string, undefined>;
 	if (!id?.length || !post?.length || !title?.length) {
-		return res.status(502).send('Incomplete Body.');
+		return res.status(400).send('Incomplete Body.');
 	}
 
 	// Send emails to mailing list.
@@ -125,15 +125,15 @@ router.post('/posts', limiter, async (req, res) => {
 		.collection<BlogPost>(collections.blog)
 		.insertOne({ id, post: parseMd(post), title, comments: [], likes: 0, timestamp: Date.now() });
 
-	return res.send('Saved.');
+	return res.status(201).send('Saved.');
 });
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 router.get('/posts/:id', async (req, res) => {
 	const { id } = req.params as { id: string } | Record<string, undefined>;
-	if (!id?.length) return res.status(504).send('Post does not exist.');
+	if (!id?.length) return res.status(400).send('Missing post id.');
 	const post = await db.db('main').collection<BlogPost>(collections.blog).findOne({ id });
-	if (!post?.id) return res.status(504).send('Post does not exist.');
+	if (!post?.id) return res.status(421).send('Post does not exist.');
 	const response: PublicPost = {
 		comments: post.comments.map(c => ({ name: c.name, comment: c.comment, timestamp: c.timestamp })),
 		id: post.id,
@@ -146,16 +146,18 @@ router.get('/posts/:id', async (req, res) => {
 });
 
 router.post('/comments/:post', (req, res) => {
-	if (req.headers.authorization !== (process.env.AUTH as string)) return res.status(403).send('Denied!');
+	if (req.headers.authorization !== (process.env.AUTH as string)) return res.status(401).send('Denied!');
 	const { comment, email, name } = req.body as BlogComment | Record<string, undefined>;
 	const { post } = req.params as { post?: string };
 
-	if (!comment?.length || !email?.length || !name?.length || !post?.length) {
-		return res.status(502).send('Incomplete Body.');
+	if (!post?.length) return res.status(400).end('Missing post id.');
+
+	if (!comment?.length || !email?.length || !name?.length) {
+		return res.status(400).send('Incomplete Body.');
 	}
 
 	if (!/.*@.*[.].*/g.test(email) || name.length < 2) {
-		return res.status(502).send('Invalid Body.');
+		return res.status(400).send('Invalid Body.');
 	}
 
 	void db
@@ -184,28 +186,28 @@ router.post('/comments/:post', (req, res) => {
 		}
 	}).catch(err => captureException(err));
 
-	return res.send('Saved');
+	return res.status(201).send('Saved');
 });
 
 router.post('/like/:post', (req, res) => {
-	if (req.headers.authorization !== (process.env.AUTH as string)) return res.status(403).send('Denied!');
+	if (req.headers.authorization !== (process.env.AUTH as string)) return res.status(401).send('Denied!');
 	const { post } = req.params as { post?: string };
 
-	if (!post) return res.status(502).send('Missing post id.');
+	if (!post) return res.status(400).send('Missing post id.');
 
 	void db
 		.db('main')
 		.collection<BlogPost>(collections.blog)
 		.updateOne({ id: post }, { $inc: { likes: 1 } });
 
-	return res.send('Like added.');
+	return res.status(201).send('Like added.');
 });
 
 router.post('/unlike/:post', (req, res) => {
-	if (req.headers.authorization !== (process.env.AUTH as string)) return res.status(403).send('Denied!');
+	if (req.headers.authorization !== (process.env.AUTH as string)) return res.status(401).send('Denied!');
 	const { post } = req.params as { post?: string };
 
-	if (!post) return res.status(502).send('Missing post id.');
+	if (!post) return res.status(400).send('Missing post id.');
 
 	void db
 		.db('main')
@@ -224,22 +226,25 @@ const subLimiter = rateLimit({
 });
 
 router.get('/subscribe', (_req, res) => {
-	res.status(502).send('Incomplete Request. Correct format - /subscribe/:name/:email');
+	res.status(400).send('Incomplete Request. Correct format - /subscribe/:name/:email');
 });
 
 router.get('/subscribe/:x', (_req, res) => {
-	res.status(502).send('Incomplete Request. Correct format - /subscribe/:name/:email');
+	res.status(400).send('Incomplete Request. Correct format - /subscribe/:name/:email');
 });
 
-router.get('/subscribe/:name/:email', subLimiter, (req, res) => {
+router.get('/subscribe/:name/:email', subLimiter, async (req, res) => {
 	const { email, name } = req.params as { name?: string; email?: string };
 	if (!email?.length || !name?.length) {
-		return res.status(502).send('Incomplete Request.');
+		return res.status(400).send('Incomplete Request.');
 	}
 
 	if (!/.*@.*[.].*/g.test(email) || name.length < 2) {
-		return res.status(502).send('Invalid Request.');
+		return res.status(400).send('Invalid Request.');
 	}
+
+	const sub = await db.db('main').collection<Subscriber>(collections.subs).findOne({ email });
+	if (sub) return res.status(409).end('Already Registered!');
 
 	const unsubscribe = `${process.env.API as string}/blog/unsubscribe/${encodeURIComponent(email)}`;
 	sendMail({
@@ -270,22 +275,22 @@ router.get('/subscribe/:name/:email', subLimiter, (req, res) => {
 	}).catch(err => captureException(err));
 
 	void db.db('main').collection<Subscriber>(collections.subs).insertOne({ name, email });
-	return res.send(`Your email (${email}) has been successfully subscribed to receive future updates!`);
+	return res.status(201).send(`Your email (${email}) has been successfully subscribed to receive future updates!`);
 });
 
 router.get('/unsubscribe', (_req, res) => {
-	res.status(502).send('Incomplete Request. Correct format - /subscribe/:email');
+	res.status(400).send('Incomplete Request. Correct format - /subscribe/:email');
 });
 
 router.get('/unsubscribe/:email', subLimiter, async (req, res) => {
 	const { email } = req.params as { email?: string };
 
 	if (!email?.length) {
-		return res.status(502).send('Incomplete Request.');
+		return res.status(400).send('Incomplete Request.');
 	}
 
 	if (!/.*@.*[.].*/g.test(email)) {
-		return res.status(502).send('Invalid Request.');
+		return res.status(400).send('Invalid Request.');
 	}
 
 	const sub = await db.db('main').collection<Subscriber>(collections.subs).findOne({ email });

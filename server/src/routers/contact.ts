@@ -31,11 +31,11 @@ router.post('/', limiter, async (req, res) => {
 	const email = (req.body as ContactForm | Record<string, undefined>).email?.trim();
 
 	if (!email?.length || !name?.length || !message?.length) {
-		return res.status(502).send('Incomplete Body.');
+		return res.status(400).send('Incomplete Body.');
 	}
 
 	if (!/.*@.*[.].*/g.test(email) || message.length < 10 || name.length < 2) {
-		return res.status(502).send('Invalid Body.');
+		return res.status(400).send('Invalid Body.');
 	}
 
 	void collection.insertOne({ id: count + 1, email, message, name, timestamp: Date.now() });
@@ -66,7 +66,7 @@ router.post('/', limiter, async (req, res) => {
 		});
 	} catch (err) {
 		sentry.captureException(err);
-		return res.status(503).send('Internal server error.');
+		return res.status(500).send('Internal server error.');
 	}
 
 	try {
@@ -88,10 +88,10 @@ router.post('/', limiter, async (req, res) => {
 		});
 	} catch (err) {
 		sentry.captureException(err);
-		return res.status(503).send('Internal server error.');
+		return res.status(500).send('Internal server error.');
 	}
 
-	return res.send('Received.');
+	return res.status(202).send('Received.');
 });
 
 export default router;

@@ -52,7 +52,7 @@ app.use('/testimonials', testimonials);
 app.use('/blog', blog);
 app.get('/login/:secret', (req, res) => {
 	const { secret } = req.params as { secret?: string };
-	if (!secret?.length) return res.status(403).end('Denied!');
+	if (!secret?.length) return res.status(401).end('Denied!');
 	if (secret !== process.env.SECRET) return res.status(403).end('Denied!');
 	res.cookie('secret', process.env.SECRET, {
 		path: '/',
@@ -67,14 +67,14 @@ app.get('/login/:secret', (req, res) => {
 });
 app.get('/verify', (req, res) => {
 	if ((req.signedCookies as { secret: string } | undefined)?.secret !== process.env.SECRET) {
-		return res.status(403).send('Denied Cookie!');
+		return res.status(403).send('Missing or Invalid Cookie!');
 	}
 	return res.send('Success!');
 });
 
 app.post('/parse', (req, res) => {
 	const { md } = req.body as { md?: string };
-	if (!md?.length) return res.status(502).send('Incomplete Body');
+	if (!md?.length) return res.status(400).send('Incomplete Body');
 	return res.json({ parsed: parseMd(md) });
 });
 

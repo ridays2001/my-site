@@ -46,7 +46,7 @@ const Contact = () => {
 		await submitContact(name.value, email.value, message.value)
 			.then((res) => {
 				setSubmitted(true);
-				if (res.status !== 200) {
+				if (res.status !== 202) {
 					setFail(true);
 				}
 			})
