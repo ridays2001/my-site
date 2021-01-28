@@ -4,9 +4,9 @@ import ContactSection from '../assets/styles/contactSection';
 import { text } from '../assets/theme/constants';
 import ThemeContext from '../assets/theme/themeContext';
 import Nav from '../components/nav';
+import { submitContact } from '../util/api';
 import { GitHub } from '../util/icons';
 import { discordInv } from '../util/misc';
-import { submitContact } from '../util/api';
 
 const Contact = () => {
 	const { dark } = useContext(ThemeContext);

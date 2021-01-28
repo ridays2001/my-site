@@ -6,8 +6,8 @@ import ThemeContext from '../assets/theme/themeContext';
 import Nav from '../components/nav';
 import type { BlogPost } from '../util/api';
 import { getBlog, subscribe } from '../util/api';
-import { Comment, Like } from '../util/icons';
 import formatDate from '../util/formatDate';
+import { Comment, Like } from '../util/icons';
 
 const Blog = () => {
 	const { dark } = useContext(ThemeContext);
