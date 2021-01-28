@@ -15,6 +15,15 @@ body {
 	transition: all 1s;
 }
 
+h1:not(.nope),
+h2:not(.nope),
+h3:not(.nope),
+h3:not(.nope),
+h4:not(.nope),
+h5:not(.nope) {
+	color: ${({ dark }) => (dark ? text.darkHigh : text.lightHigh)};
+}
+
 ::selection {
 	background-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
 	color: ${({ dark }) => (dark ? colors.white2 : colors.white1)};
@@ -36,6 +45,9 @@ a:not(.nope):hover, a:not(.nope):focus {
 	background-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
 }
 
+button:focus {
+	outline: none;
+}
 .btn-primary {
 	color: ${colors.white1};
 	background-color: ${({ dark }) => (dark ? colors.pink : colors.azure)};
@@ -47,11 +59,33 @@ a:not(.nope):hover, a:not(.nope):focus {
 	background-color: ${({ dark }) => (dark ? '#ff44a0' : '#0d68e3')};
 	border-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
 }
-.btn-check:focus + .btn-primary,
 .btn-primary:focus {
 	color: ${colors.white1};
 	background-color: ${({ dark }) => (dark ? '#ff44a0' : '#0d68e3')};
 	border-color: ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
+	box-shadow: ${({ dark }) => (dark ? 'none' : `0 0 0 0.25rem ${highlights.blue}`)};
+}
+.btn-primary svg {
+	fill: ${text.darkHigh};
+}
+
+.btn-outline-primary {
+	color: ${({ dark }) => (dark ? colors.pink : colors.azure)};
+	border-color: ${({ dark }) => (dark ? colors.pink : colors.azure)};
+}
+.btn-outline-primary:hover {
+	color: ${text.darkHigh};
+	background-color: ${({ dark }) => (dark ? colors.pink : colors.azure)};
+	border-color: ${({ dark }) => (dark ? colors.pink : colors.azure)};
+}
+.btn-outline-primary svg {
+	fill: ${({ dark }) => (dark ? colors.pink : colors.azure)};
+}
+.btn-outline-primary:hover svg {
+	fill: ${text.darkHigh};
+}
+
+.btn-outline-primary:focus {
 	box-shadow: ${({ dark }) => (dark ? 'none' : `0 0 0 0.25rem ${highlights.blue}`)};
 }
 

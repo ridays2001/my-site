@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ReviewSection from '../assets/styles/reviewSection';
+import type { Testimonial } from '../util/api';
+import { getTestimonials } from '../util/api';
 import { QuoEnd, QuoStart, Star, StarFill } from '../util/icons';
-import type { Review } from '../util/reviews';
-import reviewsData from '../util/reviews';
 
 interface Props {
 	dark: boolean;
@@ -10,45 +10,43 @@ interface Props {
 }
 
 const Testimonials = ({ className, dark }: Props) => {
-	const [index, setIndex] = useState(0);
-	const [reviews, setReviews] = useState<Array<Review>>([]);
+	const [reviews, setReviews] = useState<Array<Testimonial>>([]);
 
 	useEffect(() => {
-		setReviews(reviewsData);
+		(async () => {
+			const data = (await getTestimonials().catch(() => undefined)) ?? [];
+			setReviews(data);
+		})();
 	}, []);
-
-	useEffect(() => {
-		const lastIndex = reviews.length - 1;
-		if (index < 0) setIndex(lastIndex);
-		if (index > lastIndex) setIndex(0);
-	}, [reviews, index]);
 
 	return (
 		<ReviewSection className={className} dark={dark ? 1 : 0}>
 			<h2>Testimonials:</h2>
 			<div className='row row-cols-1 row-cols-md-2 row-cols-xxl-4 align-items-start justify-content-evenly'>
-				{reviews.map(({ message, name, rating }) => (
-					<div className='col' key={name}>
-						<div className='card'>
-							<div className='card-body'>
-								<div className='card-title mb-3 text-center'>
-									{new Array(5).fill('x').map((_, i) => {
-										if (i < rating) return <StarFill dark={dark} key={i} />;
-										return <Star dark={dark} key={i} />;
-									})}
-								</div>
-								<div className='card-text text-center'>
-									<QuoStart dark={dark} className='me-2' />
-									{message}
-									<QuoEnd dark={dark} className='ms-2' />
-									<div className='text-end'> — By {name}</div>
+				{reviews.length <= 0 && <article className='my-4'>There are no testimonials, yet.</article>}
+				{reviews.length > 0 &&
+					reviews.map(({ message, name, rating }) => (
+						<article className='col' key={name}>
+							<div className='card'>
+								<div className='card-body'>
+									<header className='card-title mb-3 text-center'>
+										{new Array(5).fill('x').map((_, i) => {
+											if (i < rating) return <StarFill dark={dark} key={i} />;
+											return <Star dark={dark} key={i} />;
+										})}
+									</header>
+									<main className='card-text text-center'>
+										<QuoStart dark={dark} className='me-2' />
+										{message}
+										<QuoEnd dark={dark} className='ms-2' />
+										<div className='text-end'> — By {name}</div>
+									</main>
 								</div>
 							</div>
-						</div>
-					</div>
-				))}
+						</article>
+					))}
 			</div>
-			<button className='btn btn-primary'>
+			<button className='btn-primary'>
 				<strong>+</strong> Add Your Own
 			</button>
 		</ReviewSection>

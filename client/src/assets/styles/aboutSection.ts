@@ -6,20 +6,17 @@ interface Props {
 }
 
 const AboutSection = styled.section<Props>`
-	margin-bottom: 2.5em;
+	text-align: start;
+	background-color: ${({ dark }) => (dark ? colors.dark1 : colors.white1)};
+	padding: 1.25em;
+	border-radius: 21px;
+	box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer1)};
+	margin-top: 1.5em !important;
 
 	strong {
 		color: ${({ dark }) => (dark ? text.darkHigh : text.lightHigh)};
 		font-weight: normal;
 		user-select: all;
-	}
-
-	main {
-		margin-top: 1.25em;
-	}
-
-	h2 {
-		color: ${({ dark }) => (dark ? text.darkHigh : text.lightHigh)};
 	}
 
 	#pfp {
@@ -39,14 +36,6 @@ const AboutSection = styled.section<Props>`
 		#pfp {
 			width: 50%;
 		}
-	}
-
-	main {
-		text-align: start;
-		background-color: ${({ dark }) => (dark ? colors.dark1 : colors.white1)};
-		padding: 1.25em;
-		border-radius: 21px;
-		box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer1)};
 	}
 
 	li {

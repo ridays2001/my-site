@@ -6,6 +6,7 @@ interface Props {
 }
 
 const AppFooter = styled.footer<Props>`
+	margin-top: 1.5em;
 	margin-bottom: 25px;
 	color: ${({ dark }) => (dark ? text.darkHigh : text.lightHigh)};
 	font-size: 1.5rem;

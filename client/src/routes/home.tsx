@@ -35,7 +35,7 @@ const Home = () => {
 			<h2 style={{ marginTop: '10vh', color: dark ? text.darkHigh : text.lightHigh }}>My Projects:</h2>
 			<ListProjects dark={dark} className='align-items-center' feat={true} />
 			<div className='row justify-content-end mb-5 pe-5'>
-				<button className='btn btn-primary col-6 col-md-2 col-xxl-1'>
+				<button className='btn-primary col-6 col-md-2 col-xxl-1'>
 					<Link
 						to={{ pathname: '/projects' }}
 						className='nope'

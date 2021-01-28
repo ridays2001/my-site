@@ -6,9 +6,7 @@ interface Props {
 }
 
 const ContactSection = styled.section<Props>`
-	h2 {
-		color: ${({ dark }) => (dark ? text.darkHigh : text.lightHigh)};
-	}
+	margin-top: 1.5em;
 
 	#form,
 	#social {
@@ -16,7 +14,10 @@ const ContactSection = styled.section<Props>`
 		padding: 1.25em;
 		border-radius: 21px;
 		box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer1)};
-		margin-bottom: 2em;
+	}
+
+	#social {
+		margin-bottom: 1.5em;
 	}
 
 	label::after {
@@ -54,6 +55,10 @@ const ContactSection = styled.section<Props>`
 		margin-left: 0.75rem;
 		margin-right: 0.75rem;
 		color: ${({ dark }) => (dark ? colors.pink : colors.azure)};
+	}
+
+	.alert {
+		border-radius: 14px;
 	}
 `;
 

@@ -24,7 +24,7 @@ const ProjectSection = styled.section<Props>`
 	}
 
 	.card-title {
-		font-size: 1.19em;
+		font-size: 1.2em;
 	}
 
 	${devices.md} {
