@@ -1,3 +1,10 @@
 {
-	"redirects": [{ "source": "/discord", "destination": "https://discord.gg/muuyMD9" }]
+	"redirects": [
+		{ "source": "/dc", "destination": "https://discord.gg/muuyMD9" },
+		{ "source": "/discord", "destination": "https://discord.gg/muuyMD9" },
+		{ "source": "/gh", "destination": "https://github.com/ridays2001" },
+		{ "source": "/github", "destination": "https://github.com/ridays2001" },
+		{ "source": "/linkedin", "destination": "https://www.linkedin.com/in/ridays2001/" },
+		{ "source": "/twitter", "destination": "https://twitter.com/ridays2001" }
+	]
 }
