@@ -91,7 +91,7 @@ const Contact = () => {
 						</li>
 
 						<li className='col-md-6'>
-							<a href='mailto:ridayshah2001@gmail.com'>
+							<a href='mailto:iam@riday.me'>
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
 									width='24'
