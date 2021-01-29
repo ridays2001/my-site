@@ -1,2 +1,6 @@
 # My Personal Website
-To be made using React TSX client and Node Typescript server.
+
+Made with Typescript, React Client, and Express Server.\
+Self Hosted on Microsoft Azure Virtual Machine (VPS), DevOps provided by Azure Pipelines.
+
+https://riday.me/
