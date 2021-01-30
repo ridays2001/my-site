@@ -16,25 +16,37 @@ const BlogPost = () => {
 	const [showComments, setComments] = useState(false);
 	const [isLiked, setLiked] = useState(false);
 	const [likeCount, setCount] = useState(0);
+	const [isSubmitted, setSubmitted] = useState(false);
 
 	useEffect(() => {
 		document.title = "Riday's Diary";
 	}, []);
 
 	useEffect(() => {
+		let mounted = true;
 		(async () => {
+			if (!mounted) return undefined;
 			const data = await getBlogPost(id).catch(() => undefined);
 			setPost(data);
 
 			if (data) setCount(data.likes);
 			setLiked(Boolean(window.localStorage.getItem(`like-${id}`)));
 		})();
+
+		return () => {
+			mounted = false;
+		};
 	}, [id]);
 
 	/* TODO:
 	 * Add option for comments.
 	 * Make a markdown editor.
 	 */
+
+	useEffect(() => {
+		const text = document.getElementById('inputMD') as HTMLInputElement;
+		console.log(text?.value);
+	}, [isSubmitted]);
 
 	return (
 		<Fragment>
@@ -76,9 +88,9 @@ const BlogPost = () => {
 								{showComments && (
 									<Fragment>
 										<ul className='list-group list-group-flush text-start'>
-											{post.comments.map(({ comment, name, timestamp }) => {
+											{post.comments.map(({ comment, name, timestamp }, i) => {
 												return (
-													<li className='list-group-item'>
+													<li className='list-group-item' key={i}>
 														<div className='row mb-3'>
 															<div className='col-md-8 text-start'>
 																<User dark={dark} /> &ensp; {name}
@@ -96,6 +108,9 @@ const BlogPost = () => {
 											})}
 										</ul>
 										<MDEditor dark={dark} />
+										<button className='btn-primary' onClick={() => setSubmitted(!isSubmitted)}>
+											Submit
+										</button>
 									</Fragment>
 								)}
 							</div>

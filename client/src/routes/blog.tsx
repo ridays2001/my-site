@@ -19,12 +19,18 @@ const Blog = () => {
 	const [isSubmitted, setSubmitted] = useState(false);
 
 	useEffect(() => {
+		let mounted = true;
 		document.title = "Riday's Diary";
 		(async () => {
+			if (!mounted) return undefined;
 			const data = (await getBlog(showAll).catch(() => undefined)) ?? [];
 			setPosts(data);
 			setLoading(false);
 		})();
+
+		return () => {
+			mounted = false;
+		};
 	}, [showAll]);
 
 	const handleSubmit = (e: FormEvent) => {

@@ -14,12 +14,13 @@ const ThemeProvider = ({ children }: { children: ReactNode | Array<ReactNode> })
 	};
 
 	useLayoutEffect(() => {
+		let mounted = true;
 		const savedTheme = window.localStorage.getItem('theme') as 'light' | 'dark';
-		if (!savedTheme) {
+		if (!savedTheme && mounted) {
 			const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 			if (darkMode) setDark(true);
 		}
-		if (savedTheme === 'dark') {
+		if (savedTheme === 'dark' && mounted) {
 			setDark(true);
 		}
 		if (dark) {
@@ -27,7 +28,9 @@ const ThemeProvider = ({ children }: { children: ReactNode | Array<ReactNode> })
 		} else {
 			document.querySelector('meta[name="theme-color"]')?.setAttribute('content', colors.azure);
 		}
-		return () => undefined;
+		return () => {
+			mounted = false;
+		};
 	}, [dark]);
 
 	return (

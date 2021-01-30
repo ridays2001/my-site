@@ -17,14 +17,20 @@ const Nav = ({ active }: Props) => {
 	const [bg, setBg] = useState(false);
 
 	useEffect(() => {
-		if (window.scrollY > 10) setBg(true);
-		else setBg(false);
-
-		window.addEventListener('scroll', () => {
+		let mounted = true;
+		if (mounted) {
 			if (window.scrollY > 10) setBg(true);
 			else setBg(false);
-		});
-		return () => undefined;
+
+			window.addEventListener('scroll', () => {
+				if (window.scrollY > 10) setBg(true);
+				else setBg(false);
+			});
+		}
+
+		return () => {
+			mounted = false;
+		};
 	}, [bg]);
 
 	const links: Array<{ pathname: string; name: string; id: Pages }> = [

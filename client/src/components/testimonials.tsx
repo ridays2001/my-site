@@ -13,10 +13,15 @@ const Testimonials = ({ className, dark }: Props) => {
 	const [reviews, setReviews] = useState<Array<Testimonial>>([]);
 
 	useEffect(() => {
+		let mounted = true;
 		(async () => {
+			if (!mounted) return undefined;
 			const data = (await getTestimonials().catch(() => undefined)) ?? [];
 			setReviews(data);
 		})();
+		return () => {
+			mounted = false;
+		};
 	}, []);
 
 	return (
@@ -25,8 +30,8 @@ const Testimonials = ({ className, dark }: Props) => {
 			<div className='row row-cols-1 row-cols-md-2 row-cols-xxl-4 align-items-start justify-content-evenly'>
 				{reviews.length <= 0 && <article className='my-4'>There are no testimonials, yet.</article>}
 				{reviews.length > 0 &&
-					reviews.map(({ message, name, rating }) => (
-						<article className='col' key={name}>
+					reviews.map(({ message, name, rating }, i) => (
+						<article className='col' key={i}>
 							<div className='card'>
 								<div className='card-body'>
 									<header className='card-title mb-3 text-center'>

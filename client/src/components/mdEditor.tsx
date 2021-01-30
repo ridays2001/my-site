@@ -31,8 +31,10 @@ const MDEditor = ({ dark }: Props) => {
 	const [parsed, setParsed] = useState('No Content.');
 
 	useEffect(() => {
-		setParsed('Loading...');
+		let mounted = true;
+		if (mounted) setParsed('Loading...');
 		(async () => {
+			if (!mounted) return undefined;
 			if (text.length > 0) {
 				const md = await parseMd(text).catch(() => undefined);
 				setParsed(md?.parsed || '');
@@ -40,6 +42,10 @@ const MDEditor = ({ dark }: Props) => {
 				setParsed('No Content.');
 			}
 		})();
+
+		return () => {
+			mounted = false;
+		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [preview]);
 
@@ -63,11 +69,16 @@ const MDEditor = ({ dark }: Props) => {
 					<EyeIcon />
 					<span className='d-none d-md-inline'>&emsp;Preview</span>
 				</button>
+
+				<input type='hidden' name='markdown' id='inputMD' value={text} />
 			</div>
 			{!preview && (
-				<textarea className='content form-control' id='markdown' onChange={(e) => setText(e.target.value)}>
-					{text}
-				</textarea>
+				<textarea
+					className='content form-control'
+					id='markdown'
+					onChange={(e) => setText(e.target.value)}
+					value={text}
+				></textarea>
 			)}
 			{preview && (
 				<div className='content'>
