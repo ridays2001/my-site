@@ -7,6 +7,7 @@ import type { BlogPost as Post } from '../util/api';
 import { getBlogPost, likePost, unlikePost } from '../util/api';
 import formatDate from '../util/formatDate';
 import { Comment, Like, User } from '../util/icons';
+import MDEditor from '../components/mdEditor';
 
 const BlogPost = () => {
 	const { dark } = useContext(ThemeContext);
@@ -46,50 +47,58 @@ const BlogPost = () => {
 						<br />
 						<p dangerouslySetInnerHTML={{ __html: post.post }}></p>
 						<section className='col-11 mx-auto card'>
-							<div className='card-title'>
-								<button className='btn-primary' onClick={() => setComments(!showComments)}>
-									<Comment dark={dark} />
-									&ensp;{post.comments.length} Comments
-								</button>
-								&emsp;&emsp;
-								<button
-									className={isLiked ? 'btn-primary' : 'btn-outline-primary'}
-									onClick={() => {
-										setLiked(!isLiked);
-										if (isLiked) {
-											unlikePost(post.id);
-											setCount(likeCount - 1);
-											window.localStorage.removeItem(`like-${id}`);
-										} else {
-											likePost(post.id);
-											setCount(likeCount + 1);
-											window.localStorage.setItem(`like-${id}`, 'true');
-										}
-									}}
-								>
-									<Like dark={dark} />
-									&ensp;{likeCount}
-								</button>
+							<div className='card-body'>
+								<div className='card-title'>
+									<button className='btn-primary' onClick={() => setComments(!showComments)}>
+										<Comment dark={dark} />
+										&ensp;{post.comments.length} Comments
+									</button>
+									&emsp;&emsp;
+									<button
+										className={isLiked ? 'btn-primary' : 'btn-outline-primary'}
+										onClick={() => {
+											setLiked(!isLiked);
+											if (isLiked) {
+												unlikePost(post.id);
+												setCount(likeCount - 1);
+												window.localStorage.removeItem(`like-${id}`);
+											} else {
+												likePost(post.id);
+												setCount(likeCount + 1);
+												window.localStorage.setItem(`like-${id}`, 'true');
+											}
+										}}
+									>
+										<Like dark={dark} />
+										&ensp;{likeCount}
+									</button>
+								</div>
+								{showComments && (
+									<Fragment>
+										<ul className='list-group list-group-flush text-start'>
+											{post.comments.map(({ comment, name, timestamp }) => {
+												return (
+													<li className='list-group-item'>
+														<div className='row mb-3'>
+															<div className='col-md-8 text-start'>
+																<User dark={dark} /> &ensp; {name}
+															</div>
+															<div className='col-md-4 text-md-end' id='time'>
+																{formatDate(timestamp)}
+															</div>
+														</div>
+														<p
+															dangerouslySetInnerHTML={{ __html: comment }}
+															className='mx-3'
+														></p>
+													</li>
+												);
+											})}
+										</ul>
+										<MDEditor dark={dark} />
+									</Fragment>
+								)}
 							</div>
-							{showComments && (
-								<ul className='list-group list-group-flush text-start'>
-									{post.comments.map(({ comment, name, timestamp }) => {
-										return (
-											<li className='list-group-item'>
-												<div className='row mb-3'>
-													<div className='col-md-8 text-start'>
-														<User dark={dark} /> &ensp; {name}
-													</div>
-													<div className='col-md-4 text-md-end' id='time'>
-														{formatDate(timestamp)}
-													</div>
-												</div>
-												<p dangerouslySetInnerHTML={{ __html: comment }} className='mx-3'></p>
-											</li>
-										);
-									})}
-								</ul>
-							)}
 						</section>
 					</article>
 				)}
