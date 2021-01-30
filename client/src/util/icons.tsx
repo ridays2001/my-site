@@ -1,5 +1,5 @@
 import React from 'react';
-import { highlights, text } from '../assets/theme/constants';
+import { highlights } from '../assets/theme/constants';
 
 interface Props {
 	dark: boolean;
