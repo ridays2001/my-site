@@ -15,6 +15,11 @@ body {
 	transition: all 1s;
 }
 
+strong, b {
+	font-weight: 500;
+	color: ${({ dark }) => (dark ? text.darkHigh : text.lightHigh)};
+}
+
 h1:not(.nope),
 h2:not(.nope),
 h3:not(.nope),
