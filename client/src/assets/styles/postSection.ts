@@ -27,6 +27,11 @@ const PostSection = styled.section<Props>`
 	#time {
 		color: ${({ dark }) => (dark ? text.darkLow : text.lightLow)};
 	}
+
+	textarea {
+		height: 100px;
+		width: auto;
+	}
 `;
 
 export default PostSection;
