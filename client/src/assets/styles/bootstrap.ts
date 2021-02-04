@@ -1536,11 +1536,6 @@ ${devices.xxl} {
 		transition: none;
 	}
 }
-.form-control:focus {
-	border-color: #86b7fe;
-	outline: 0;
-	box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-}
 textarea.form-control {
 	min-height: calc(1.5em + 0.75rem + 2px);
 }

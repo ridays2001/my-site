@@ -50,21 +50,6 @@ const BlogHome = styled.main<Props>`
 		transform: translateY(-7.5px);
 		box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer3)};
 	}
-
-	input,
-	textarea {
-		background-color: ${({ dark }) => (dark ? colors.dark2 : colors.white2)};
-		color: ${({ dark }) => (dark ? text.darkMedium : text.lightMedium)};
-		box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer2)};
-	}
-
-	input:focus,
-	textarea:focus {
-		background-color: ${({ dark }) => (dark ? colors.dark2 : colors.white2)};
-		box-shadow: 0 0 0 0.25rem ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
-		border-color: ${({ dark }) => (dark ? colors.pink : colors.azure)};
-		color: ${({ dark }) => (dark ? text.darkHigh : text.lightHigh)};
-	}
 `;
 
 export default BlogHome;

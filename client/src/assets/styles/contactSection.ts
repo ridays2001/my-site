@@ -26,21 +26,6 @@ const ContactSection = styled.section<Props>`
 		color: ${({ dark }) => (dark ? colors.darkErr : colors.lightErr)};
 	}
 
-	input,
-	textarea {
-		background-color: ${({ dark }) => (dark ? colors.dark2 : colors.white2)};
-		color: ${({ dark }) => (dark ? text.darkMedium : text.lightMedium)};
-		box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer2)};
-	}
-
-	input:focus,
-	textarea:focus {
-		background-color: ${({ dark }) => (dark ? colors.dark2 : colors.white2)};
-		box-shadow: 0 0 0 0.25rem ${({ dark }) => (dark ? highlights.pink : highlights.blue)};
-		border-color: ${({ dark }) => (dark ? colors.pink : colors.azure)};
-		color: ${({ dark }) => (dark ? text.darkHigh : text.lightHigh)};
-	}
-
 	a {
 		text-decoration: none;
 	}
