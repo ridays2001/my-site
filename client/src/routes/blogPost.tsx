@@ -4,7 +4,7 @@ import PostSection from '../assets/styles/postSection';
 import ThemeContext from '../assets/theme/themeContext';
 import Nav from '../components/nav';
 import type { BlogPost as Post } from '../util/api';
-import { getBlogPost, likePost, unlikePost } from '../util/api';
+import { getBlogPost, likePost, unlikePost, submitComment } from '../util/api';
 import formatDate from '../util/formatDate';
 import { Comment, Like, User } from '../util/icons';
 import MDEditor from '../components/mdEditor';
@@ -38,14 +38,12 @@ const BlogPost = () => {
 		};
 	}, [id]);
 
-	/* TODO:
-	 * Add option for comments.
-	 * Make a markdown editor.
-	 */
-
 	useEffect(() => {
-		const text = document.getElementById('inputMD') as HTMLInputElement;
-		console.log(text?.value);
+		const name = document.getElementById('name') as HTMLInputElement;
+		const email = document.getElementById('email') as HTMLInputElement;
+		const comment = document.getElementById('inputMD') as HTMLInputElement;
+		if (isSubmitted) submitComment(id, name.value, email.value, comment.value);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isSubmitted]);
 
 	return (
@@ -107,10 +105,35 @@ const BlogPost = () => {
 												);
 											})}
 										</ul>
-										<MDEditor dark={dark} />
-										<button className='btn-primary' onClick={() => setSubmitted(!isSubmitted)}>
-											Submit
-										</button>
+										<form id='newComment' className='mt-3' onSubmit={() => setSubmitted}>
+											<div className='col-11 mx-auto mb-4'>
+												<label htmlFor='name'>Name</label>
+												<input
+													type='text'
+													name='name'
+													id='name'
+													className='form-control my-2'
+													required
+												/>
+
+												<label htmlFor='email'>Email</label>
+												<input
+													type='text'
+													name='email'
+													id='email'
+													className='form-control my-2'
+													required
+												/>
+											</div>
+
+											<MDEditor dark={dark} />
+											<input
+												type='submit'
+												value='Add Comment'
+												className='btn btn-primary mt-3'
+												onClick={() => setSubmitted(!isSubmitted)}
+											/>
+										</form>
 									</Fragment>
 								)}
 							</div>
