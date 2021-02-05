@@ -17,6 +17,10 @@ const BlogPost = () => {
 	const [isLiked, setLiked] = useState(false);
 	const [likeCount, setCount] = useState(0);
 	const [isSubmitted, setSubmitted] = useState(false);
+	const [isNameTouched, touchName] = useState(false);
+	const [isNameValid, validateName] = useState(false);
+	const [isEmailTouched, touchEmail] = useState(false);
+	const [isEmailValid, validateEmail] = useState(false);
 
 	useEffect(() => {
 		document.title = "Riday's Diary";
@@ -38,13 +42,17 @@ const BlogPost = () => {
 		};
 	}, [id]);
 
-	useEffect(() => {
+	const handleSubmit = () => {
 		const name = document.getElementById('name') as HTMLInputElement;
 		const email = document.getElementById('email') as HTMLInputElement;
 		const comment = document.getElementById('inputMD') as HTMLInputElement;
-		if (isSubmitted) submitComment(id, name.value, email.value, comment.value);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [isSubmitted]);
+
+		if (!isNameValid || !isEmailValid || comment.value.length <= 2) {
+			return alert('Please fill out all the details!');
+		}
+		submitComment(id, name.value, email.value, comment.value).catch(() => undefined);
+		setSubmitted(true);
+	};
 
 	return (
 		<Fragment>
@@ -105,35 +113,47 @@ const BlogPost = () => {
 												);
 											})}
 										</ul>
-										<form id='newComment' className='mt-3' onSubmit={() => setSubmitted}>
-											<div className='col-11 mx-auto mb-4'>
-												<label htmlFor='name'>Name</label>
-												<input
-													type='text'
-													name='name'
-													id='name'
-													className='form-control my-2'
-													required
-												/>
 
-												<label htmlFor='email'>Email</label>
-												<input
-													type='text'
-													name='email'
-													id='email'
-													className='form-control my-2'
-													required
-												/>
-											</div>
-
-											<MDEditor dark={dark} />
+										<div className='col-11 mx-auto mb-4'>
+											<label htmlFor='name'>Name</label>
 											<input
-												type='submit'
-												value='Add Comment'
-												className='btn btn-primary mt-3'
-												onClick={() => setSubmitted(!isSubmitted)}
+												type='text'
+												name='name'
+												id='name'
+												className={`form-control my-2 ${
+													isNameTouched ? (isNameValid ? 'is-valid' : 'is-invalid') : ''
+												}`}
+												onBlur={() => (isNameTouched ? undefined : touchName(true))}
+												onChange={() => {
+													const name = document.getElementById('name') as HTMLInputElement;
+													if (/.{2,}/g.test(name.value)) validateName(true);
+													else validateName(false);
+												}}
+												required
 											/>
-										</form>
+
+											<label htmlFor='email'>Email</label>
+											<input
+												type='text'
+												name='email'
+												id='email'
+												className={`form-control my-2 ${
+													isEmailTouched ? (isEmailValid ? 'is-valid' : 'is-invalid') : ''
+												}`}
+												onBlur={() => (isEmailTouched ? undefined : touchEmail(true))}
+												onChange={() => {
+													const email = document.getElementById('email') as HTMLInputElement;
+													if (/\w+@\w+[.].+/g.test(email.value)) validateEmail(true);
+													else validateEmail(false);
+												}}
+												required
+											/>
+										</div>
+
+										<MDEditor dark={dark} />
+										<button className='btn-primary mt-3' onClick={handleSubmit}>
+											Add Comment
+										</button>
 									</Fragment>
 								)}
 							</div>
