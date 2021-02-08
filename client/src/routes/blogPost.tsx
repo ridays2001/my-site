@@ -2,12 +2,12 @@ import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PostSection from '../assets/styles/postSection';
 import ThemeContext from '../assets/theme/themeContext';
+import MDEditor from '../components/mdEditor';
 import Nav from '../components/nav';
 import type { BlogPost as Post } from '../util/api';
-import { getBlogPost, likePost, unlikePost, submitComment } from '../util/api';
+import { getBlogPost, likePost, submitComment, unlikePost } from '../util/api';
 import formatDate from '../util/formatDate';
 import { Comment, Like, User } from '../util/icons';
-import MDEditor from '../components/mdEditor';
 
 const BlogPost = () => {
 	const { dark } = useContext(ThemeContext);
@@ -50,8 +50,13 @@ const BlogPost = () => {
 		if (!isNameValid || !isEmailValid || comment.value.length <= 2) {
 			return alert('Please fill out all the details!');
 		}
-		submitComment(id, name.value, email.value, comment.value).catch(() => undefined);
-		setSubmitted(true);
+
+		submitComment(id, name.value, email.value, comment.value)
+			.catch(() => undefined)
+			.then(() => {
+				setSubmitted(true);
+				window.location.reload();
+			});
 	};
 
 	return (
