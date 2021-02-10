@@ -8,7 +8,9 @@
 		"lint": "eslint . --ext .ts",
 		"prebuild": "echo Deleting compiled files... && rimraf dist",
 		"build": "echo Compiling new files... && tsc",
-		"postbuild": "echo Copying static files... && copyfiles public/* dist"
+		"postbuild": "echo Copying static files... && copyfiles public/* dist",
+		"deploy": "pm2 start . --name server",
+		"redeploy": "pm2 restart server"
 	},
 	"author": {
 		"name": "Riday ♡",

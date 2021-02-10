@@ -12,6 +12,8 @@
 		"start": "react-scripts start",
 		"build": "react-scripts build && copyfiles serve.json build",
 		"serve": "serve -s build",
+		"deploy": "pm2 start npm --name client -- run serve",
+		"redeploy": "pm2 restart client",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"lint": "eslint ."

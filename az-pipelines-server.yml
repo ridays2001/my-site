@@ -2,7 +2,7 @@ trigger:
     - main
 
 pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: 'ubuntu-20.04'
 
 jobs:
     - job: Build
@@ -54,4 +54,5 @@ jobs:
                             cd ~/azagent/_work/2/drop
                             unzip *.zip
                             mv dist ~/codes/my-site/server/dist
-                            pm2 restart server
+                            cd ~/codes/my-site/server
+                            npm run redeploy
