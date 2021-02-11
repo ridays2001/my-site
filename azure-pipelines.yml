@@ -1,0 +1,70 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+    - main
+
+pool:
+    vmImage: 'ubuntu-20.04'
+
+jobs:
+    - job: Build
+      steps:
+          - task: NodeTool@0
+            inputs:
+                versionSpec: '15.x'
+            displayName: 'Install Node.js'
+
+          - script: |
+                mkdir temp
+                cd server
+                npm install
+                npm run build
+                mv dist ../temp
+                cd ../client
+                npm install --legacy-peer-deps
+                npm run build
+                mv build ../temp
+            displayName: 'Build Server'
+
+          - task: ArchiveFiles@2
+            inputs:
+                rootFolderOrFile: '$(System.DefaultWorkingDirectory)/temp'
+                includeRootFolder: true
+                archiveType: 'zip'
+                archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+                replaceExistingArchive: true
+          - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+            artifact: drop
+
+    - deployment: VMDeploy
+      dependsOn: Build
+      displayName: Deploy
+      pool:
+          vmImage: 'Ubuntu-20.04'
+      environment:
+          name: web
+          resourceType: VirtualMachine
+          tags: web
+      strategy:
+          runOnce:
+              deploy:
+                  steps:
+                      - script: |
+                            cd $(Build.ArtifactStagingDirectory)
+                            cd ../drop
+                            rm -rf *.zip
+                      - download: current
+                        artifact: drop
+                      - script: |
+                            cd $(Build.ArtifactStagingDirectory)
+                            cd ../drop
+                            unzip $(Build.BuildId).zip
+                            mv dist ~/my-site/server/dist
+                            mv build ~/my-site/client/build
+                            cd ~/my-site/server
+                            npm run redeploy
+                            cd ~/my-site/client
+                            npm run redeploy
