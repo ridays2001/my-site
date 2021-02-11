@@ -55,7 +55,7 @@ jobs:
                       - script: |
                             cd $(Build.ArtifactStagingDirectory)
                             cd ../drop
-                            rm -rf *.zip
+                            rm -rf *
                       - download: current
                         artifact: drop
                       - script: |
