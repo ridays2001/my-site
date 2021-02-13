@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ReviewSection from '../assets/styles/reviewSection';
 import type { Testimonial } from '../util/api';
 import { getTestimonials } from '../util/api';
@@ -51,9 +52,9 @@ const Testimonials = ({ className, dark }: Props) => {
 						</article>
 					))}
 			</div>
-			<button className='btn-primary'>
+			<Link to={{ pathname: '/new-testimonial' }} className='nope btn btn-primary'>
 				<strong>+</strong> Add Your Own
-			</button>
+			</Link>
 		</ReviewSection>
 	);
 };
