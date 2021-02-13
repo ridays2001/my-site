@@ -3,6 +3,7 @@ import Blog from '../routes/blog';
 import BlogPost from '../routes/blogPost';
 import Contact from '../routes/contact';
 import Home from '../routes/home';
+import NewTestimonial from '../routes/newTestimonial';
 import Projects from '../routes/projects';
 
 interface RouteType {
@@ -44,6 +45,11 @@ const routes: Array<RouteType> = [
 		component: Projects,
 		key: 'projects',
 		path: '/projects'
+	},
+	{
+		component: NewTestimonial,
+		key: 'new-testimonial',
+		path: '/new-testimonial'
 	}
 ];
 
