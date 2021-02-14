@@ -1,15 +1,19 @@
-import About from '../routes/about';
-import Blog from '../routes/blog';
-import BlogPost from '../routes/blogPost';
-import Contact from '../routes/contact';
-import Home from '../routes/home';
-import NewTestimonial from '../routes/newTestimonial';
-import Projects from '../routes/projects';
+import type { LazyExoticComponent } from 'react';
+import { lazy } from 'react';
+
+// Lazy loaded components to improve performance.
+const About = lazy(() => import('../routes/about'));
+const Blog = lazy(() => import('../routes/blog'));
+const BlogPost = lazy(() => import('../routes/blogPost'));
+const Contact = lazy(() => import('../routes/contact'));
+const Home = lazy(() => import('../routes/home'));
+const NewTestimonial = lazy(() => import('../routes/newTestimonial'));
+const Projects = lazy(() => import('../routes/projects'));
 
 interface RouteType {
 	exact?: boolean;
 	path?: string;
-	component: () => JSX.Element;
+	component: LazyExoticComponent<() => JSX.Element>;
 	key: string;
 }
 
