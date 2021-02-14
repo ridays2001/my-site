@@ -56,7 +56,7 @@ router.post('/', limiter, (req, res) => {
 				{
 					color: 0x007af5,
 					author: { name },
-					description: `__**Rating:**__${rating}\n__**Message:**__ ${message}`,
+					description: `__**Rating:**__ ${rating}\n__**Message:**__ ${message}`,
 					timestamp: new Date()
 				}
 			]
