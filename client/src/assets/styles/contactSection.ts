@@ -45,6 +45,19 @@ const ContactSection = styled.section<Props>`
 	.alert {
 		border-radius: 14px;
 	}
+
+	.alert-success h4 {
+		color: #0f5132;
+	}
+
+	.alert-danger h4 {
+		color: #842029;
+	}
+
+	.alert-danger strong {
+		color: #842029;
+		text-decoration: underline;
+	}
 `;
 
 export default ContactSection;
