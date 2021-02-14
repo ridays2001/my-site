@@ -9,6 +9,7 @@ const Contact = lazy(() => import('../routes/contact'));
 const Home = lazy(() => import('../routes/home'));
 const NewTestimonial = lazy(() => import('../routes/newTestimonial'));
 const Projects = lazy(() => import('../routes/projects'));
+const Error = lazy(() => import('../routes/error'));
 
 interface RouteType {
 	exact?: boolean;
@@ -54,6 +55,10 @@ const routes: Array<RouteType> = [
 		component: NewTestimonial,
 		key: 'new-testimonial',
 		path: '/new-testimonial'
+	},
+	{
+		component: Error,
+		key: 'error'
 	}
 ];
 
