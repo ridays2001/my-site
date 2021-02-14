@@ -7,6 +7,7 @@ This file contains the list of all routes planned for the site.
 | Path                | Page                                      |
 | ------------------- | ----------------------------------------- |
 | `/`                 | Home Page                                 |
+| `/new-testimonial`  | New Testimonial                           |
 | `/contact`          | Contact Me                                |
 | `/about`            | About Me                                  |
 | `/projects`         | Portfolio (List of all notable projects). |
