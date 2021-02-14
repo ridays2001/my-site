@@ -8,7 +8,7 @@ import ThemeSwitch from './themeSwitch';
 type Pages = 'home' | 'contact' | 'blog' | 'about' | 'projects';
 
 interface Props {
-	active: Pages;
+	active?: Pages;
 }
 
 const Nav = ({ active }: Props) => {
