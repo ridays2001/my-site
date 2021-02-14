@@ -21,7 +21,7 @@ const NewTestimonial = () => {
 
 	return (
 		<Fragment>
-			<Nav active='home' />
+			<Nav />
 			<h2 className='mt-2'>Add Your Own Testimonial</h2>
 			<NewReview dark={dark ? 1 : 0} className='l1 col-md-8 col-xl-6 row mt-4 mx-auto text-start text-md-center'>
 				{!isSubmitted && (
