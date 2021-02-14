@@ -8,7 +8,7 @@ const App = () => {
 	const { dark } = useContext(ThemeContext);
 	return (
 		<div className='App justify-content-center text-center'>
-			<Suspense fallback={<h1>Page is loading...</h1>}>
+			<Suspense fallback={<h1 style={{ marginTop: '5em' }}>Loading... Please wait.</h1>}>
 				<Switch>
 					{routes.map((route) => (
 						<Route {...route} />
