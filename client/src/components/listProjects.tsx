@@ -16,7 +16,7 @@ const ListProjects = ({ className, dark, feat }: Props) => (
 				.filter((project) => (feat ? project.featured : true))
 				.map(({ back, description, front, github, tech, timeline, name }) => (
 					<div className='d-flex col align-self-stretch' key={name}>
-						<div className='card w-100'>
+						<div className='l1 card w-100'>
 							<div className='card-body text-start'>
 								<div className='card-title'>{name}</div>
 								<div className='card-subtitle mb-3 text-end'>{timeline}</div>

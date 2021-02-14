@@ -34,6 +34,21 @@ const Theme = createGlobalStyle<Props>`
 		color: ${({ dark }) => (dark ? colors.white2 : colors.white1)};
 	}
 
+	.l1 {
+		border-radius: 21px;
+		background-color: ${({ dark }) => (dark ? colors.dark1 : colors.white1)};
+		box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer1)};
+		padding: 1.25em;
+		margin-top: 1.5em;
+	}
+
+	.l2 {
+		border-radius: 14px;
+		background-color: ${({ dark }) => (dark ? colors.dark2 : colors.white2)};
+		box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer2)};
+		padding: 1.25em;
+	}
+
 	a:not(.nope) {
 		color: ${({ dark }) => (dark ? colors.pink : colors.azure)};
 		display: inline-block;

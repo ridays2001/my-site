@@ -6,11 +6,6 @@ interface Props {
 }
 
 const NewReview = styled.section<Props>`
-	background-color: ${({ dark }) => (dark ? colors.dark1 : colors.white1)};
-	padding: 1.25em;
-	border-radius: 21px;
-	box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer1)};
-
 	label::after {
 		content: '*';
 		font-size: 1.25rem;

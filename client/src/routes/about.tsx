@@ -15,7 +15,7 @@ const About = () => {
 		<Fragment>
 			<Nav active='about' />
 			<h2>About Me:</h2>
-			<AboutSection dark={dark ? 1 : 0} className='row col-11 col-md-5 mx-auto justify-content-evenly'>
+			<AboutSection dark={dark ? 1 : 0} className='l1 row col-11 col-md-5 mx-auto justify-content-evenly'>
 				<div className='d-flex col-10 col-md-6 align-items-center justify-content-evenly mt-3'>
 					<img src={pfp} alt='My PFP' className='img-fluid' id='pfp' />
 				</div>

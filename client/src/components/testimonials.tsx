@@ -33,7 +33,7 @@ const Testimonials = ({ className, dark }: Props) => {
 				{reviews.length > 0 &&
 					reviews.map(({ message, name, rating }, i) => (
 						<article className='col' key={i}>
-							<div className='card'>
+							<div className='l1 card'>
 								<div className='card-body'>
 									<header className='card-title mb-3 text-center'>
 										{new Array(5).fill('x').map((_, i) => {

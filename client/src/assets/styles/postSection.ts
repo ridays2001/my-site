@@ -6,16 +6,9 @@ interface Props {
 }
 
 const PostSection = styled.section<Props>`
-	margin-top: 1.5em;
-	background-color: ${({ dark }) => (dark ? colors.dark1 : colors.white1)};
-	box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer1)};
-	border-radius: 21px;
-
 	.card {
+		padding: 0 !important;
 		margin-top: 1.5em;
-		border-radius: 14px;
-		background-color: ${({ dark }) => (dark ? colors.dark2 : colors.white2)};
-		box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer2)};
 		font-size: 0.85rem;
 	}
 

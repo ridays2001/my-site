@@ -61,7 +61,7 @@ const Contact = () => {
 			<Nav active='contact' />
 			<h2>Contact Me</h2>
 			<ContactSection dark={dark ? 1 : 0}>
-				<article id='social' className='col-md-8 col-xl-6 mx-auto'>
+				<article id='social' className='l1 col-md-8 col-xl-6 mx-auto'>
 					The fastest way to contact me would be either to send me a message on Discord, or send me an email.
 					I typically reply within a few mins during the day. Meanwhile, you can stalk me on my social
 					profiles:
@@ -158,7 +158,7 @@ const Contact = () => {
 					</ul>
 				</article>
 
-				<article id='form' className='col-md-8 col-xl-6 mx-auto text-start text-md-center'>
+				<article id='form' className='l1 col-md-8 col-xl-6 mx-auto text-start text-md-center'>
 					<h4 className={`mt-2 ${isSubmitted ? 'mb-3' : 'mb-5'} text-center`}>Contact Form</h4>
 					{!isSubmitted && (
 						<form onSubmit={handleSubmit}>

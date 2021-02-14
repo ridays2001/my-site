@@ -7,11 +7,6 @@ interface Props {
 
 const AboutSection = styled.section<Props>`
 	text-align: start;
-	background-color: ${({ dark }) => (dark ? colors.dark1 : colors.white1)};
-	padding: 1.25em;
-	border-radius: 21px;
-	box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer1)};
-	margin-top: 1.5em !important;
 
 	strong {
 		color: ${({ dark }) => (dark ? text.darkHigh : text.lightHigh)};

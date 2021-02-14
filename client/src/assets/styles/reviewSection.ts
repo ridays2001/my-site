@@ -9,11 +9,7 @@ const ReviewSection = styled.section<Props>`
 	cursor: default;
 
 	.card {
-		background-color: ${({ dark }) => (dark ? colors.dark1 : colors.white1)};
-		box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer1)};
 		margin: 2em 1em;
-		border-radius: 21px;
-		padding: 1.25em;
 		transition: all 0.25s ease;
 	}
 

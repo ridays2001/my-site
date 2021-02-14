@@ -8,14 +8,6 @@ interface Props {
 const ContactSection = styled.section<Props>`
 	margin-top: 1.5em;
 
-	#form,
-	#social {
-		background-color: ${({ dark }) => (dark ? colors.dark1 : colors.white1)};
-		padding: 1.25em;
-		border-radius: 21px;
-		box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer1)};
-	}
-
 	#social {
 		margin-bottom: 1.5em;
 	}

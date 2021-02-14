@@ -13,23 +13,12 @@ const BlogHome = styled.main<Props>`
 		color: inherit;
 	}
 
-	.box {
-		padding: 1.25em;
-		background-color: ${({ dark }) => (dark ? colors.dark1 : colors.white1)};
-		border-radius: 21px;
-		box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer1)};
-	}
-
 	article {
 		margin-bottom: 1.5em;
 	}
 
 	.card {
-		background-color: ${({ dark }) => (dark ? colors.dark2 : colors.white2)};
-		box-shadow: ${({ dark }) => (dark ? 'none' : shadows.layer2)};
 		margin: 2em 1em;
-		border-radius: 14px;
-		padding: 1.25em;
 		transition: all 0.3s ease;
 	}
 

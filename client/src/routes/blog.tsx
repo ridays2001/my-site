@@ -53,12 +53,12 @@ const Blog = () => {
 			<Nav active='blog' />
 			<h2 className='mb-4'>Riday's Diary</h2>
 			<BlogHome dark={dark ? 1 : 0}>
-				<article className='box col-11 col-md-8 col-xl-6 mx-auto'>
+				<article className='l1 col-11 col-md-8 col-xl-6 mx-auto'>
 					<h3 className='mb-3'>Recent Posts</h3>
 					{isLoading && <h2>Loading...</h2>}
 					{!isLoading &&
 						posts.map((post) => (
-							<div className='card col-10 mx-auto' key={post.id}>
+							<div className='l2 card col-10 mx-auto' key={post.id}>
 								<Link to={{ pathname: `/blog/posts/${post.id}` }} className='nope'>
 									<div className='card-body'>
 										<header className='card-title'>{post.title}</header>
@@ -84,7 +84,7 @@ const Blog = () => {
 					)}
 				</article>
 				{!isSubmitted && (
-					<aside className='box col-11 col-md-6 h-100 mx-auto'>
+					<aside className='l1 col-11 col-md-6 h-100 mx-auto'>
 						Join My Mailing List!
 						<form onSubmit={handleSubmit}>
 							<div className='mt-3 col-md-9 mx-auto text-md-start'>
@@ -112,7 +112,7 @@ const Blog = () => {
 					</aside>
 				)}
 				{isSubmitted && (
-					<aside className='box col-11 col-md-6 h-100 p-5 mx-auto'>
+					<aside className='l1 col-11 col-md-6 h-100 p-5 mx-auto'>
 						Thank you for joining the mailing list! Expect an email every week or so, when I write new blog
 						posts. An automated email will be sent to the name and email that you provided.
 					</aside>

@@ -63,13 +63,13 @@ const BlogPost = () => {
 		<Fragment>
 			<Nav active='blog' />
 			<h2>Riday's Diary</h2>
-			<PostSection dark={dark ? 1 : 0} className='col-11 col-md-8 col-xl-6 py-4 px-lg-5 mx-auto'>
+			<PostSection dark={dark ? 1 : 0} className='l1 col-11 col-md-8 col-xl-6 py-4 px-lg-5 mx-auto'>
 				{post && (
 					<article>
 						<h5>{post.title}</h5>
 						<br />
 						<p dangerouslySetInnerHTML={{ __html: post.post }}></p>
-						<section className='col-11 mx-auto card'>
+						<section className='col-11 mx-auto card l2'>
 							<div className='card-body'>
 								<div className='card-title'>
 									<button className='btn-primary' onClick={() => setComments(!showComments)}>
