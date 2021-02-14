@@ -1,4 +1,5 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import NewReview from '../assets/styles/newReview';
 import ThemeContext from '../assets/theme/themeContext';
 import Nav from '../components/nav';
@@ -135,11 +136,25 @@ const NewTestimonial = () => {
 						</article>
 					</Fragment>
 				)}
-				{isSubmitted && !hasFailed && <div>Submitted successfully!</div>}
-				{isSubmitted && hasFailed && <div>Something went wrong!</div>}
-				{/* TODO:
-				 * Add alerts for success and fail.
-				 */}
+				{isSubmitted && !hasFailed && (
+					<main className='alert alert-success' role='alert'>
+						<h4 className='alert-heading'>Submitted Successfully!</h4>
+						<p>
+							Thank you for sharing your testimonial. I really appreciate it. You can go back to{' '}
+							<Link to={{ pathname: '/' }}>Home</Link> to check your newly submitted testimonial.
+						</p>
+					</main>
+				)}
+				{isSubmitted && hasFailed && (
+					<main className='alert alert-danger' role='alert'>
+						<h4 className='alert-heading'>Something Went Wrong!</h4>
+						<p>
+							Something went wrong while submitting the testimonial to the server. Your testimonial was{' '}
+							<strong>not received</strong>. Please try again later, or{' '}
+							<Link to={{ pathname: '/contact' }}>Contact Me.</Link>
+						</p>
+					</main>
+				)}
 			</NewReview>
 		</Fragment>
 	);
