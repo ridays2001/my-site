@@ -56,12 +56,17 @@ jobs:
                             cd $(Build.ArtifactStagingDirectory)
                             cd ../drop
                             rm -rf *
+                            cd ~/my-site/server
+                            rm -rf dist
+                            cd ../client
+                            rm -rf build
                       - download: current
                         artifact: drop
                       - script: |
                             cd $(Build.ArtifactStagingDirectory)
                             cd ../drop
                             unzip $(Build.BuildId).zip
+                            cd temp
                             mv dist ~/my-site/server/dist
                             mv build ~/my-site/client/build
                             cd ~/my-site/server
