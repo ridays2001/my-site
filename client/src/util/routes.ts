@@ -5,6 +5,7 @@ import { lazy } from 'react';
 const About = lazy(() => import('../routes/about'));
 const Blog = lazy(() => import('../routes/blog'));
 const BlogPost = lazy(() => import('../routes/blogPost'));
+const NewPost = lazy(() => import('../routes/newPost'));
 const Contact = lazy(() => import('../routes/contact'));
 const Home = lazy(() => import('../routes/home'));
 const NewTestimonial = lazy(() => import('../routes/newTestimonial'));
@@ -45,6 +46,11 @@ const routes: Array<RouteType> = [
 		component: BlogPost,
 		key: 'blogPost',
 		path: '/blog/posts/:id'
+	},
+	{
+		component: NewPost,
+		key: 'new-post',
+		path: '/blog/new'
 	},
 	{
 		component: Projects,
