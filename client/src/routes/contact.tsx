@@ -6,7 +6,6 @@ import ThemeContext from '../assets/theme/themeContext';
 import Nav from '../components/nav';
 import { submitContact } from '../util/api';
 import { GitHub } from '../util/icons';
-import { discordInv } from '../util/misc';
 
 const Contact = () => {
 	const { dark } = useContext(ThemeContext);
@@ -67,7 +66,7 @@ const Contact = () => {
 					profiles:
 					<ul className='mt-3 col-md-10 col-xl-8 mx-auto text-start list-unstyled row'>
 						<li className='col-md-6'>
-							<a href={discordInv}>
+							<a href='https://riday.me/discord'>
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
 									width='24'
