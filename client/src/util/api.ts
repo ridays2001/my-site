@@ -89,6 +89,8 @@ export const subscribe = (name: string, email: string) => {
 };
 export const unsubscribe = (email: string) => fetch(`${base}/blog/unsubscribe/${encodeURIComponent(email)}`);
 
+export const verify = () => fetch(`${base}/verify`, { credentials: 'include' });
+
 export const submitPost = (id: string, title: string, post: string) => {
 	return fetch(`${base}/blog/posts`, {
 		method: 'POST',
