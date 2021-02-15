@@ -82,7 +82,10 @@ const BlogPost = () => {
 												<Comment dark={dark} />
 												&ensp;{post.comments.length} Comments
 											</button>
-											&emsp;&emsp;
+											<span className='d-none d-md-inline'>&emsp;&emsp;</span>
+											<span className='d-block d-md-none'>
+												<br />
+											</span>
 											<button
 												className={isLiked ? 'btn-primary' : 'btn-outline-primary'}
 												onClick={() => {
