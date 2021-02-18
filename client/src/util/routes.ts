@@ -6,6 +6,7 @@ const About = lazy(() => import('../routes/about'));
 const Blog = lazy(() => import('../routes/blog'));
 const BlogPost = lazy(() => import('../routes/blogPost'));
 const NewPost = lazy(() => import('../routes/newPost'));
+const BlogUnsubscribe = lazy(() => import('../routes/blogUnsubscribe'));
 const Contact = lazy(() => import('../routes/contact'));
 const Home = lazy(() => import('../routes/home'));
 const NewTestimonial = lazy(() => import('../routes/newTestimonial'));
@@ -51,6 +52,11 @@ const routes: Array<RouteType> = [
 		component: NewPost,
 		key: 'new-post',
 		path: '/blog/new'
+	},
+	{
+		component: BlogUnsubscribe,
+		key: 'blog-unsubscribe',
+		path: '/blog/unsubscribe'
 	},
 	{
 		component: Projects,
