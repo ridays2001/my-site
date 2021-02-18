@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, highlights, shadows, text } from '../theme/constants';
+import { colors } from '../theme/constants';
 
 interface Props {
 	dark: 0 | 1;
@@ -32,23 +32,6 @@ const ContactSection = styled.section<Props>`
 		margin-left: 0.75rem;
 		margin-right: 0.75rem;
 		color: ${({ dark }) => (dark ? colors.pink : colors.azure)};
-	}
-
-	.alert {
-		border-radius: 14px;
-	}
-
-	.alert-success h4 {
-		color: #0f5132;
-	}
-
-	.alert-danger h4 {
-		color: #842029;
-	}
-
-	.alert-danger strong {
-		color: #842029;
-		text-decoration: underline;
 	}
 `;
 

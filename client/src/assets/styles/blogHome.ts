@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, devices, highlights, shadows, text } from '../theme/constants';
+import { devices, shadows, text } from '../theme/constants';
 
 interface Props {
 	dark: 0 | 1;
