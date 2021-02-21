@@ -73,6 +73,9 @@ const BlogPost = () => {
 						{post && (
 							<article>
 								<h5>{post.title}</h5>
+								<p id='post-ts' className='time'>
+									{formatDate(post.timestamp, true)}
+								</p>
 								<br />
 								<p dangerouslySetInnerHTML={{ __html: post.post }}></p>
 								<section className='col-11 mx-auto card l2'>
@@ -115,7 +118,7 @@ const BlogPost = () => {
 																	<div className='col-md-8 text-start'>
 																		<User dark={dark} /> &ensp; {name}
 																	</div>
-																	<div className='col-md-4 text-md-end' id='time'>
+																	<div className='col-md-4 text-md-end time'>
 																		{formatDate(timestamp)}
 																	</div>
 																</div>
