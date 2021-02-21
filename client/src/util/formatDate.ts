@@ -1,4 +1,4 @@
-const formatDate = (timestamp: number | Date) => {
+const formatDate = (timestamp: number | Date, long?: boolean) => {
 	const ts = new Date(timestamp);
 	const weekDay = new Intl.DateTimeFormat(undefined, { weekday: 'short' }).format(ts);
 	const date = new Intl.DateTimeFormat(undefined, {
@@ -10,7 +10,8 @@ const formatDate = (timestamp: number | Date) => {
 	const time = new Intl.DateTimeFormat(undefined, { hour12: prefer12, hour: '2-digit', minute: '2-digit' }).format(
 		ts
 	);
-	if (new Date().toDateString() === ts.toDateString()) return `At ${time} [UTC + 5:30]`;
+	if (long) return `On ${weekDay}, ${date} at ${time}`;
+	if (new Date().toDateString() === ts.toDateString()) return `Today, at ${time}`;
 	return `On ${weekDay}, ${date}`;
 };
 
