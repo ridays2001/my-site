@@ -17,7 +17,11 @@ const PostSection = styled.section<Props>`
 		font-size: 1.2rem;
 	}
 
-	#time {
+	#post-ts {
+		margin-bottom: 0.5em;
+	}
+
+	.time {
 		color: ${({ dark }) => (dark ? text.darkLow : text.lightLow)};
 	}
 
