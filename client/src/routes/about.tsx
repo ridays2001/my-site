@@ -35,7 +35,7 @@ const About = () => {
 					</p>
 
 					<p key='learn'>
-						I am a self-taught developer. I learnt most of what I know by reading online guides, articles,
+						I am a self-taught developer. I learned most of what I know by reading online guides, articles,
 						documentations, and by interacting with other members of my broad community. I consider myself
 						as a passionate person who is curious to learn about new technologies.
 					</p>
