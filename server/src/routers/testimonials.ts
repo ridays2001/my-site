@@ -23,9 +23,9 @@ router.get('/', async (_req, res) => {
 	return res.json(testimonials);
 });
 
-// 1 max testimonial over the duration of 24 hours.
+// 4 max testimonials over the duration of 24 hours.
 const limiter = rateLimit({
-	max: 1,
+	max: 4,
 	windowMs: 24 * 60 * 60 * 1000,
 	message: 'Please do not abuse this service and provide genuine testimonials only.',
 	headers: true

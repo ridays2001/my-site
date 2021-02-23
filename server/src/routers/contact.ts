@@ -15,10 +15,10 @@ import contactMessage from '../util/templates/contactMessage';
 import express from 'express';
 const router = express.Router();
 
-// 3 max contact forms over a duration of 15 mins.
+// 3 max contact forms over a duration of 30 mins.
 const limiter = rateLimit({
 	max: 3,
-	windowMs: 15 * 60 * 1000,
+	windowMs: 30 * 60 * 1000,
 	message: 'Too many contact forms sent. Please wait for about an hour or so before sending another contact form.',
 	headers: true
 });

@@ -217,10 +217,10 @@ router.post('/unlike/:post', (req, res) => {
 	return res.send('Like Removed.');
 });
 
-// 5 max requests over the duration of 24 hours.
+// 5 max requests over the duration of an hour.
 const subLimiter = rateLimit({
 	max: 5,
-	windowMs: 24 * 60 * 60 * 1000,
+	windowMs: 60 * 60 * 1000,
 	message: 'Please do not abuse this service.',
 	headers: true
 });
