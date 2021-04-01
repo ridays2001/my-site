@@ -70,6 +70,8 @@ jobs:
                             mv dist ~/my-site/server/dist
                             mv build ~/my-site/client/build
                             cd ~/my-site/server
-                            npm run redeploy
+                            ~/.nvm/versions/node/*/bin/npm i
+                            ~/.nvm/versions/node/*/bin/npm run redeploy
                             cd ~/my-site/client
-                            npm run redeploy
+                            ~/.nvm/versions/node/*/bin/npm i
+                            ~/.nvm/versions/node/*/bin/npm run redeploy
