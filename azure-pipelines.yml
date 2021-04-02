@@ -27,7 +27,7 @@ jobs:
                 npm install --legacy-peer-deps
                 npm run build
                 mv build ../temp
-            displayName: 'Build Server'
+            displayName: 'Build Projects'
 
           - task: ArchiveFiles@2
             inputs:
@@ -70,8 +70,8 @@ jobs:
                             mv dist ~/my-site/server/dist
                             mv build ~/my-site/client/build
                             cd ~/my-site/server
-                            ~/.nvm/versions/node/*/bin/npm i
-                            ~/.nvm/versions/node/*/bin/npm run redeploy
+                            npm i
+                            npm run redeploy
                             cd ~/my-site/client
-                            ~/.nvm/versions/node/*/bin/npm i
-                            ~/.nvm/versions/node/*/bin/npm run redeploy
+                            npm i
+                            npm run redeploy
