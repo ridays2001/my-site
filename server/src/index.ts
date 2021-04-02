@@ -83,12 +83,15 @@ app.use(sentry.Handlers.errorHandler());
 
 // 404 Errors.
 app.use((req, res) => {
-	sentry.withScope(scope => {
-		scope.setTag('Side', req.url.startsWith('/client') ? 'Client' : 'Server');
-		scope.setTag('IP', req.ip);
+	// Ignore spammy requests that do not concern us.
+	if (req.hostname === 'api.riday.me') {
+		sentry.withScope(scope => {
+			scope.setTag('Side', req.url.startsWith('/client') ? 'Client' : 'Server');
+			scope.setTag('IP', req.ip);
 
-		sentry.captureMessage(`[404] ${req.url.replace('/client', '')}`);
-	});
+			sentry.captureMessage(`[404] ${req.url.replace('/client', '')}`);
+		});
+	}
 
 	return res.status(404).send('Error: Not Found!');
 });
