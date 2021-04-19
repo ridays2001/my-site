@@ -44,6 +44,17 @@ const Section = styled.section<Props>`
 			margin-top: 0;
 		}
 	}
+
+	@media screen and (max-height: 590px) {
+		div {
+			width: 70%;
+		}
+
+		#hero-statement {
+			margin-top: -3em;
+			font-size: 0.8rem;
+		}
+	}
 `;
 
 export default Section;

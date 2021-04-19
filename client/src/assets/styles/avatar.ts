@@ -20,6 +20,11 @@ const Avatar = styled.img<Props>`
 		width: 60%;
 	}
 
+	@media screen and (max-height: 590px) {
+		width: 100%;
+		border: solid 4.5px ${({ dark }) => (dark ? colors.pink : colors.azure)};
+	}
+
 	/* Different animation lengths for different devices. */
 
 	@keyframes floating {
