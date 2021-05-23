@@ -10,7 +10,7 @@
 	"license": "MIT",
 	"scripts": {
 		"start": "react-scripts start",
-		"build": "react-scripts build && copyfiles serve.json build",
+		"build": "react-scripts build && copyfiles _redirects build",
 		"serve": "serve -s build",
 		"deploy": "pm2 start npm --name client -- run serve",
 		"redeploy": "pm2 restart client",
