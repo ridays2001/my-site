@@ -11,9 +11,6 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build && copyfiles _redirects build",
-		"serve": "serve -s build",
-		"deploy": "pm2 start npm --name client -- run serve",
-		"redeploy": "pm2 restart client",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"lint": "eslint ."
@@ -37,7 +34,6 @@
 		"@types/styled-components": "^5.1.9",
 		"copyfiles": "^2.4.1",
 		"react-scripts": "^4.0.3",
-		"serve": "^11.3.2",
 		"typescript": "^4.2.3"
 	},
 	"eslintConfig": {
