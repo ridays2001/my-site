@@ -71,7 +71,7 @@ const BlogPost = () => {
 					<h2>Riday's Diary</h2>
 					<PostSection dark={dark ? 1 : 0} className='l1 col-11 col-md-8 col-xl-6 py-4 px-lg-5 mx-auto'>
 						{post && (
-							<article>
+							<article className='col-10 mx-auto'>
 								<h5>{post.title}</h5>
 								<p id='post-ts' className='time'>
 									{formatDate(post.timestamp, true)}
@@ -180,6 +180,16 @@ const BlogPost = () => {
 												</div>
 
 												<MDEditor dark={dark} />
+												<div className='my-4 col-10 mx-auto'>
+													Note: This editor is called a Markdown editor. Markdown is a special
+													syntax which supports **
+													<strong>bold</strong>**, _<em>italic</em>_, ~
+													<span style={{ textDecoration: 'line-through' }}>
+														strikethrough
+													</span>
+													~, and many more formatting options. Try searching for "markdown
+													syntax" on the internet.
+												</div>
 												<button className='btn-primary mt-3' onClick={handleSubmit}>
 													Add Comment
 												</button>
