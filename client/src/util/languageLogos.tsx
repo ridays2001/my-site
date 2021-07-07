@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import CssLogo from '../assets/images/CSS.svg';
 import ElectronLogo from '../assets/images/Electron.svg';
 import EslintLogo from '../assets/images/ESLint.svg';
+import GatsbyLogo from '../assets/images/Gatsby.svg';
 import HtmlLogo from '../assets/images/HTML.svg';
 import JavaLogo from '../assets/images/Java.svg';
 import JsLogo from '../assets/images/JS.svg';
@@ -52,6 +53,11 @@ export const react = {
 export const ts = {
 	name: 'Typescript',
 	logo: TsLogo
+};
+
+export const gatsby = {
+	name: 'Gatsby',
+	logo: GatsbyLogo
 };
 
 const Languages = ({ list }: { list: Array<{ name: string; logo: string }> }) => (
