@@ -1,5 +1,5 @@
 import React from 'react';
-import Languages, { css, electron, eslint, html, java, js, node, react, ts } from './languageLogos';
+import Languages, { css, electron, eslint, gatsby, html, java, js, node, react, ts } from './languageLogos';
 
 interface Project {
 	description: string;
@@ -16,12 +16,23 @@ const gh = 'https://github.com/ridays2001';
 
 const projects: Array<Project> = [
 	{
-		description: 'My personal website that you currently tread on.',
+		description: 'A static tutorials business website, with markdown handling for the blog section.',
+		back: 'None, this is a static site.',
+		featured: true,
+		front: 'TS (Gatsby with Typescript)',
+		github: `${gh}/hs-tutorz`,
+		name: 'HS Tutorz',
+		tech: <Languages list={[ts, gatsby, react, css]} />,
+		timeline: 'June 2021'
+	},
+	{
+		description:
+			'My personal website. Includes a markdown-powered blog, with html sanitization for all user input.',
 		github: `${gh}/my-site`,
 		tech: <Languages list={[ts, react, css]} />,
-		timeline: 'December 2020',
+		timeline: 'December 2020 - January 2021',
 		name: 'My Personal Website',
-		featured: false,
+		featured: true,
 		front: 'TS (React TSX) and CSS (Bootstrap).',
 		back: 'TS (Express) and Mongo DB.'
 	},
@@ -97,23 +108,24 @@ const projects: Array<Project> = [
 		back: 'Node (Express) and MySQL DB.'
 	},
 	{
-		description: 'My discord bot, with music functionality. Made with Love ♥.',
+		description:
+			'My discord bot, with music functionality (YouTube API) and in-memory Redis database to handle music queue.',
 		github: `${gh}/Julis`,
 		tech: <Languages list={[node]} />,
 		timeline: 'August - September 2020',
 		name: 'Julis',
-		featured: true,
+		featured: false,
 		front: 'Markdown (Discord)',
 		back: 'Node and Firestore DB.'
 	},
 	{
 		// prettier-ignore
-		description: 'A student portal site for my sister\'s home tutorials.',
+		description: 'A student portal site for a home tutorials. My first full stack website.',
 		github: `${gh}/ht-site`,
 		tech: <Languages list={[node, js, css]} />,
 		timeline: 'July 2020',
 		name: 'HT - Site',
-		featured: true,
+		featured: false,
 		front: 'Pug, JS (jQuery), and CSS (Bootstrap).',
 		back: 'Node (Express) and Firestore DB.'
 	}
