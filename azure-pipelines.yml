@@ -23,9 +23,6 @@ jobs:
                 npm install
                 npm run build
                 mv dist ../temp
-                cd ../client
-                npm install --legacy-peer-deps
-                npm run build
                 mv build ../temp
             displayName: 'Build Projects'
 
@@ -58,8 +55,6 @@ jobs:
                             rm -rf *
                             cd ~/my-site/server
                             rm -rf dist
-                            cd ../client
-                            rm -rf build
                       - download: current
                         artifact: drop
                       - script: |
@@ -68,10 +63,6 @@ jobs:
                             unzip $(Build.BuildId).zip
                             cd temp
                             mv dist ~/my-site/server/dist
-                            mv build ~/my-site/client/build
                             cd ~/my-site/server
-                            npm i
-                            npm run redeploy
-                            cd ~/my-site/client
                             npm i
                             npm run redeploy
