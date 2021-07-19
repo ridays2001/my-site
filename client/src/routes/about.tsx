@@ -32,20 +32,21 @@ const About = () => {
 					</p>
 
 					<p key='life'>
-						I am an IT student at K. J. Somaiya Institute of Engineering and Information Technology. On the
-						side, I work as a freelance web developer developing various things like discord bots and
-						websites.
+						I am currently a B. Tech student at K. J. Somaiya Institute of Engineering and Information
+						Technology. On the side, I work as a freelance web developer developing various things like
+						websites, APIs, and other web related technologies.
 					</p>
 
 					<p key='learn'>
 						I am a self-taught developer. I learned most of what I know by reading online guides, articles,
 						documentations, and by interacting with other members of my broad community. I consider myself
-						as a passionate person who is curious to learn about new technologies.
+						as a passionate person who is curious to learn about new technologies and who learns them really
+						quickly.
 					</p>
 
 					<p key='projects'>
 						I love making open source projects while learning new things. Making projects is a great way to
-						learn a new programming concepts. I am currently learning React, Typescript, and Electron.js.
+						learn a new programming concepts. I am currently learning UX Designing.
 					</p>
 
 					<p key='tech'>Here are a few technologies I have recently mingled with:</p>
@@ -87,7 +88,7 @@ const About = () => {
 					</p>
 
 					<p key='hobbies'>
-						I like to read various books and articles, listen to music, watch anime and other TV series,
+						I like to read various books and articles, listen to music, watch movies and TV series,
 						occasionally play games, and hang around with others when I am free.
 					</p>
 				</article>
