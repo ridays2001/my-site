@@ -1,6 +1,7 @@
 # My Personal Website
 
 Made with Typescript, React Client, and Express Server.\
-Self Hosted on Microsoft Azure Virtual Machine (VPS), DevOps provided by Azure Pipelines.
+Front-end hosted on Netlify.
+API self-hosted on DigitalOcean with Nginx and Azure pipelines.
 
 https://riday.me/
