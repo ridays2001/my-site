@@ -2,10 +2,7 @@ import { MongoClient } from 'mongodb';
 
 class MongoDB extends MongoClient {
 	public constructor() {
-		super(process.env.DB_URI as string, {
-			useNewUrlParser: true,
-			useUnifiedTopology: true
-		});
+		super(process.env.DB_URI as string);
 	}
 
 	public connect() {

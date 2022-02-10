@@ -39,7 +39,7 @@ const sendMail = ({ bcc, html, subject, text, to }: MailOptions) => {
 		}
 	});
 
-	smtp.sendMail(
+	void smtp.sendMail(
 		{
 			from: {
 				name: 'Riday Shah',
@@ -52,7 +52,7 @@ const sendMail = ({ bcc, html, subject, text, to }: MailOptions) => {
 			text,
 			html
 		},
-		(err, info: { accepted: Array<string> }) => {
+		(err, info: { accepted: Array<unknown> }) => {
 			console.log(err ?? info.accepted);
 			smtp.close();
 		}
