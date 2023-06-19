@@ -26,27 +26,18 @@ const About = () => {
 				<article className='col-md-10 col-lg-9 mt-5'>
 					<p key='intro'>👋🏻 Hi! I am Riday, a freelance developer based in Mumbai, India.</p>
 
-					<p key='about'>
-						I develop a range of things that live on the internet. I aim to develop things that matter to
-						someone. Things that bring smiles.
-					</p>
+					<p key='about'>I am a versatile Full Stack Developer specializing in Optimization.</p>
 
 					<p key='life'>
-						I am currently a B. Tech student at K. J. Somaiya Institute of Engineering and Information
-						Technology. On the side, I work as a freelance web developer developing various things like
-						websites, APIs, and other web related technologies.
+						I recently completed my B. Tech from K. J. Somaiya Institute of Technology. Over the past couple
+						of years, I have worked as a freelance developer developing a range of solutions like websites,
+						APIs, web scrappers, desktop apps, and much more...
 					</p>
 
 					<p key='learn'>
 						I am a self-taught developer. I learned most of what I know by reading online guides, articles,
-						documentations, and by interacting with other members of my broad community. I consider myself
-						as a passionate person who is curious to learn about new technologies and who learns them really
-						quickly.
-					</p>
-
-					<p key='projects'>
-						I love making open source projects while learning new things. Making projects is a great way to
-						learn a new programming concepts. I am currently learning UX Designing.
+						documentations, and by interacting with other members of the community. I consider myself a
+						passionate person who is deeply curious to learn more about new technologies.
 					</p>
 
 					<p key='tech'>Here are a few technologies I have recently mingled with:</p>
@@ -61,11 +52,13 @@ const About = () => {
 							'UI / UX',
 							'HTML / CSS',
 							'Electron.js',
+							'React Native',
 							'Azure',
 							'Heroku',
 							'Vercel',
 							'Netlify',
-							'AWS'
+							'AWS',
+							'GCP'
 						].map(e => (
 							<li className='col-md-6' key={e}>
 								{e}
@@ -74,17 +67,8 @@ const About = () => {
 					</ul>
 
 					<p key='active'>
-						I am active on Discord as <strong>Riday 💙#7468</strong>. You can find me hanging out in various
-						channels of The Programmer's Hangout{' '}
-						<a
-							href='https://discord.gg/programming'
-							target='_blank'
-							rel='noreferrer'
-							aria-label='The invite link for TPH.'
-						>
-							(Invite)
-						</a>{' '}
-						discord server.
+						Reach out to me via Email - <strong>iam@riday.me</strong> or send me a friend request on Discord
+						- <strong>@ridays2001</strong>.
 					</p>
 
 					<p key='hobbies'>
